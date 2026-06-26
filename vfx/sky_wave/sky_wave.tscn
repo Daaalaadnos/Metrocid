@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://snnx2cgbeu5m"]
+
+[ext_resource type="Shader" uid="uid://15myfj1appf8" path="res://vfx/sky_wave/sky_wave.gdshader" id="1_r5wmj"]
+[ext_resource type="Texture2D" uid="uid://1po0rvx88v8t" path="res://export/vfx/T_Noise_HU85k.png" id="2_aj5um"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j3pel"]
+render_priority = 0
+shader = ExtResource("1_r5wmj")
+shader_parameter/bass_color = Color(1.6093774, 1.7455758, 1.8428605, 0.29411766)
+shader_parameter/bass_alpha = 0.1250000059375
+shader_parameter/noise_texture1 = ExtResource("2_aj5um")
+shader_parameter/noise_texture2 = ExtResource("2_aj5um")
+shader_parameter/tex_scale1 = 2.5
+shader_parameter/tex_scale2 = 3.0
+shader_parameter/sub_value = 0.0
+shader_parameter/text_move_dir = Vector2(0.1, 0.1)
+shader_parameter/second_text_move_dir = Vector2(0.1, 0.2)
+shader_parameter/wave_amp = 2.0
+shader_parameter/depth = 2.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_r5wmj"]
+size = Vector2(3000, 3000)
+
+[node name="SkyWave" type="Node3D" unique_id=1324036315]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=164307632]
+material_override = SubResource("ShaderMaterial_j3pel")
+mesh = SubResource("PlaneMesh_r5wmj")

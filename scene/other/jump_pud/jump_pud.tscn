@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ko821q8sp6q6"]
+
+[ext_resource type="Script" uid="uid://yv6xahgyhi8w" path="res://scene/other/jump_pud/jump_pud.gd" id="1_f31f8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g4v7s"]
+
+[node name="Jump_pud" type="Area3D" unique_id=2106674748]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_f31f8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1721012434]
+shape = SubResource("SphereShape3D_g4v7s")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=1778049849]
+radius = 0.37845924
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

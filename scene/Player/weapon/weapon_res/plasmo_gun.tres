@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeaponRes" format=3 uid="uid://bpcpi2ghgpvkl"]
+
+[ext_resource type="Resource" uid="uid://dpp1bld3relm1" path="res://scene/bullet/res/defolt_player_bullet.tres" id="1_ejkc6"]
+[ext_resource type="Script" uid="uid://sq6g7vffbska" path="res://scene/Player/weapon/weapon_res/weapon_res.gd" id="1_f4ii8"]
+[ext_resource type="PackedScene" uid="uid://cal3rypach271" path="res://scene/bullet/defolt_bulets/defolt_bulets.tscn" id="2_2xi60"]
+
+[resource]
+script = ExtResource("1_f4ii8")
+name = "queen37"
+is_unlocked = true
+bullet_scene = ExtResource("2_2xi60")
+bullet_res = ExtResource("1_ejkc6")
+fire_rate = 0.15
+spred_pre_shot = 2.5
+aim_assist_power_mod = 10.0
+metadata/_custom_type_script = "uid://sq6g7vffbska"

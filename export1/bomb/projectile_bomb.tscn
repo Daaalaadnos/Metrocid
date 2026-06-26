@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://fwnnp0h8qk0q"]
+
+[ext_resource type="Script" uid="uid://cafgmir8bqldq" path="res://export1/bomb/projectile_bomb.gd" id="1_skdcq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u8hbj"]
+friction = 0.1
+bounce = 0.6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bmvo7"]
+radius = 0.0897031
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_u8hbj"]
+radius = 2.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8hbj"]
+shading_mode = 0
+albedo_color = Color(1.395, 0.343, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_u8hbj"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhu23"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture_force_srgb = true
+
+[sub_resource type="Curve" id="Curve_3fism"]
+_data = [Vector2(0, 1), 0.0, -0.5598, 0, 1, Vector2(0.762712, 0.573034), -0.5598, -2.41493, 1, 1, Vector2(1, 0), -2.41493, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0mvv7"]
+curve = SubResource("Curve_3fism")
+
+[sub_resource type="Gradient" id="Gradient_aq1pf"]
+offsets = PackedFloat32Array(0, 0.933775)
+colors = PackedColorArray(1, 1, 1, 1, 0.187176, 0.187176, 0.187176, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_70445"]
+gradient = SubResource("Gradient_aq1pf")
+
+[sub_resource type="Gradient" id="Gradient_2qcem"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h18bf"]
+gradient = SubResource("Gradient_2qcem")
+
+[sub_resource type="Curve" id="Curve_0mvv7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_aq1pf"]
+curve = SubResource("Curve_0mvv7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ugoht"]
+emission_shape_scale = Vector3(0.02, 0.02, 0.02)
+emission_shape = 1
+emission_sphere_radius = 6.0
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+gravity = Vector3(0, 0, 0)
+scale_min = 0.03
+scale_max = 0.05
+scale_curve = SubResource("CurveTexture_aq1pf")
+color = Color(1.105, 0.361, 0, 1)
+color_ramp = SubResource("GradientTexture1D_h18bf")
+color_initial_ramp = SubResource("GradientTexture1D_70445")
+alpha_curve = SubResource("CurveTexture_0mvv7")
+
+[sub_resource type="BoxMesh" id="BoxMesh_qruvh"]
+
+[node name="projectile_bomb" type="RigidBody3D" unique_id=985849188 groups=["bomb"]]
+collision_layer = 256
+collision_mask = 19
+mass = 0.6
+physics_material_override = SubResource("PhysicsMaterial_u8hbj")
+gravity_scale = 2.0
+sleeping = true
+contact_monitor = true
+max_contacts_reported = 10
+linear_damp = 1.0
+script = ExtResource("1_skdcq")
+SPEED = 30.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=618163496]
+shape = SubResource("SphereShape3D_bmvo7")
+
+[node name="explosion_area" type="Area3D" parent="." unique_id=674177556]
+collision_layer = 0
+collision_mask = 18
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="explosion_area" unique_id=461062143]
+shape = SubResource("SphereShape3D_u8hbj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1264862257]
+material_override = SubResource("StandardMaterial3D_u8hbj")
+mesh = SubResource("SphereMesh_u8hbj")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1974471161]
+top_level = true
+target_position = Vector3(0, -0.155, 0)
+
+[node name="fire_sparks_vfx" type="GPUParticles3D" parent="." unique_id=408668362]
+material_override = SubResource("StandardMaterial3D_yhu23")
+amount = 30
+lifetime = 0.5
+randomness = 0.73
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ugoht")
+draw_pass_1 = SubResource("BoxMesh_qruvh")
+
+[node name="explosion_vfx" type="Node3D" parent="." unique_id=665637630]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="explosion_area" to="." method="_on_area_3d_body_entered"]

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bweump2df66i1"]
+
+[ext_resource type="Script" uid="uid://081m05lx87rb" path="res://scene/bullet/bullet_visual/bullet_vfx.gd" id="1_6rltd"]
+
+[node name="BulletVfx" type="Node3D" unique_id=226797834]
+script = ExtResource("1_6rltd")
+
+[node name="body" type="Node3D" parent="." unique_id=665708626]
+
+[node name="start_vfx" type="Node3D" parent="." unique_id=684695872]
+
+[node name="life_vfx" type="Node3D" parent="." unique_id=54681307]
+
+[node name="dead_vfx" type="Node3D" parent="." unique_id=1415688529]
+
+[node name="other" type="Node3D" parent="." unique_id=326050463]

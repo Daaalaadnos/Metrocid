@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dragjekude5jt"]
+
+[ext_resource type="Script" uid="uid://dhyidlyjno6rk" path="res://export1/circular saw/circular saw.gd" id="1_j1rnb"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6tpkh"]
+height = 0.182617
+radius = 0.698242
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6h4i3"]
+albedo_color = Color(0.159276, 0.207432, 0.222986, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6tpkh"]
+height = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6h4i3"]
+height = 0.113281
+radius = 1.0249
+
+[node name="circular saw" type="Area3D"]
+collision_layer = 0
+collision_mask = 273
+script = ExtResource("1_j1rnb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_6tpkh")
+
+[node name="CSGCylinder3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_6h4i3")
+mesh = SubResource("CylinderMesh_6tpkh")
+
+[node name="partial damage area" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 272
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="partial damage area"]
+shape = SubResource("CylinderShape3D_6h4i3")
+
+[node name="forward_ray_cast" type="RayCast3D" parent="."]
+enabled = false
+target_position = Vector3(0, 0, -1)
+
+[node name="right_ray_cast" type="RayCast3D" parent="."]
+enabled = false
+target_position = Vector3(1, 0, 0)
+
+[node name="left_ray_cas" type="RayCast3D" parent="."]
+enabled = false
+target_position = Vector3(-1, 0, 0)
+
+[node name="floor_ray_cast" type="RayCast3D" parent="."]
+target_position = Vector3(0, -0.5, 0)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="partial damage area" to="." method="_on_partial_damage_area_area_entered"]
+[connection signal="body_entered" from="partial damage area" to="." method="_on_partial_damage_area_body_entered"]

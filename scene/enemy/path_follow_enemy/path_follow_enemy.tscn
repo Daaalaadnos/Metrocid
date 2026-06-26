@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://kkr10fe54632"]
+
+[ext_resource type="PackedScene" uid="uid://c275c1yqhmn74" path="res://scene/enemy/base_enemy/bass_enemy.tscn" id="1_54inu"]
+[ext_resource type="Resource" uid="uid://bysw61i6ukk70" path="res://scene/bullet/res/defolt_enemy_bullet.tres" id="2_2msdm"]
+[ext_resource type="Script" uid="uid://byptr6qxrqsas" path="res://scene/enemy/path_follow_enemy/path_follow_enemy.gd" id="2_4qefn"]
+[ext_resource type="Resource" uid="uid://ba66v0rajqh8x" path="res://scene/enemy/path_follow_enemy/path_follow_enemy_res.tres" id="3_q4rgn"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_q4rgn"]
+radius = 1.0676078
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4qefn"]
+radius = 20.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_52c1n"]
+
+[sub_resource type="Gradient" id="Gradient_4qefn"]
+offsets = PackedFloat32Array(0, 0.6280488, 0.9085366, 1)
+colors = PackedColorArray(1, 1, 1, 0.16862746, 0.95, 0.95, 0.95, 0.38039216, 0.65073967, 0.65073967, 0.65073967, 0.65073967, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3mspg"]
+gradient = SubResource("Gradient_4qefn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0.1)
+metadata/_snap_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4rgn"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.703, 0.33999997, 1)
+albedo_texture = SubResource("GradientTexture2D_3mspg")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_33oty"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ptikw"]
+size = Vector2(2, 2)
+
+[sub_resource type="SphereMesh" id="SphereMesh_3n1b4"]
+radius = 0.8
+height = 1.6
+
+[sub_resource type="SphereMesh" id="SphereMesh_2abhu"]
+radius = 1.0
+height = 2.0
+
+[node name="Path_follow_enemy" unique_id=841492306 instance=ExtResource("1_54inu")]
+script = ExtResource("2_4qefn")
+enemy_res = ExtResource("3_q4rgn")
+bullet_res = ExtResource("2_2msdm")
+
+[node name="CollisionShape3D" parent="." index="0" unique_id=1669744929]
+shape = SubResource("SphereShape3D_q4rgn")
+
+[node name="player_detected_area" parent="." index="2" unique_id=144066589]
+monitoring = true
+
+[node name="CollisionShape3D" parent="player_detected_area" index="0" unique_id=2055776013]
+shape = SubResource("SphereShape3D_4qefn")
+
+[node name="CollisionShape3D" parent="hit_zone_area_cont/hit_zone_area1" parent_id_path=PackedInt32Array(867196241) index="0" unique_id=1575027611]
+shape = SubResource("SphereShape3D_52c1n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="body_cont" parent_id_path=PackedInt32Array(965716849) index="0" unique_id=179296049]
+material_override = SubResource("StandardMaterial3D_q4rgn")
+mesh = SubResource("QuadMesh_33oty")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="body_cont" parent_id_path=PackedInt32Array(965716849) index="1" unique_id=1006414012]
+material_override = SubResource("StandardMaterial3D_q4rgn")
+mesh = SubResource("QuadMesh_ptikw")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="body_cont" parent_id_path=PackedInt32Array(965716849) index="2" unique_id=2042819696]
+material_override = SubResource("StandardMaterial3D_q4rgn")
+mesh = SubResource("SphereMesh_3n1b4")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="body_cont" parent_id_path=PackedInt32Array(965716849) index="3" unique_id=401278196]
+material_override = SubResource("StandardMaterial3D_q4rgn")
+mesh = SubResource("SphereMesh_2abhu")
+
+[node name="Marker3D" type="Marker3D" parent="bullet_start_cont" parent_id_path=PackedInt32Array(1845257758) index="0" unique_id=1832926628]

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bhuxayq8la0op"]
+
+[ext_resource type="Script" uid="uid://b85hkdlsjb41b" path="res://scene/other/room_triger/room_triger.gd" id="1_4mx64"]
+
+[node name="RoomTriger" type="Area3D" unique_id=1645738910]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_4mx64")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

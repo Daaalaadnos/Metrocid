@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BulletPatam" format=3 uid="uid://bysw61i6ukk70"]
+
+[ext_resource type="Script" uid="uid://kxvre1rpvl4a" path="res://scene/bullet/res/bullet_res.gd" id="1_lycnl"]
+[ext_resource type="PackedScene" uid="uid://bqditdcri3atj" path="res://scene/bullet/bullet_visual/enemy_laser_bullet.tscn" id="2_lycnl"]
+
+[resource]
+script = ExtResource("1_lycnl")
+damage = 20
+speed = 75
+visual_part_scene = ExtResource("2_lycnl")
+metadata/_custom_type_script = "uid://kxvre1rpvl4a"

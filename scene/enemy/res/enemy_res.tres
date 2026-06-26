@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyRes" format=3 uid="uid://x8mjw0vqb1gf"]
+
+[ext_resource type="Script" uid="uid://te0h2sxloqis" path="res://scene/enemy/res/enemy_res.gd" id="1_71iij"]
+[ext_resource type="Resource" uid="uid://bysw61i6ukk70" path="res://scene/bullet/res/defolt_enemy_bullet.tres" id="1_lwiyf"]
+[ext_resource type="PackedScene" uid="uid://cal3rypach271" path="res://scene/bullet/defolt_bulets/defolt_bulets.tscn" id="1_sa0fu"]
+
+[resource]
+script = ExtResource("1_71iij")
+HP = 70
+bullet_scene = ExtResource("1_sa0fu")
+bullet_res = ExtResource("1_lwiyf")
+metadata/_custom_type_script = "uid://te0h2sxloqis"

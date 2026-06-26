@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WpInven" format=3 uid="uid://c6mqywa70hps8"]
+
+[ext_resource type="Script" uid="uid://uqs52nt2mkr3" path="res://scene/Player/weapon/weapon_res/weapon_inventory.gd" id="1_vy1ra"]
+[ext_resource type="Script" uid="uid://sq6g7vffbska" path="res://scene/Player/weapon/weapon_res/weapon_res.gd" id="2_kwnqn"]
+[ext_resource type="Resource" uid="uid://bpcpi2ghgpvkl" path="res://scene/Player/weapon/weapon_res/plasmo_gun.tres" id="3_ho716"]
+[ext_resource type="Resource" uid="uid://cpudk60o3esld" path="res://scene/Player/weapon/weapon_res/plasmo_shot_gun.tres" id="4_5cjfj"]
+[ext_resource type="Resource" uid="uid://cx2lifs224fwu" path="res://scene/Player/weapon/weapon_res/plasmo_rifle.tres" id="5_5cjfj"]
+
+[resource]
+script = ExtResource("1_vy1ra")
+inventory = Array[ExtResource("2_kwnqn")]([ExtResource("3_ho716"), ExtResource("4_5cjfj"), ExtResource("5_5cjfj")])
+metadata/_custom_type_script = "uid://uqs52nt2mkr3"

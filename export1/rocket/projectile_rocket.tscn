@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bdd3gtvxn8iy"]
+
+[ext_resource type="Script" uid="uid://bw5udv0x58dh5" path="res://export1/rocket/projectile_rocket.gd" id="1_t0go8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_p6ah2"]
+height = 0.165283
+radius = 0.0947266
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p6ah2"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1.27, 0.22, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_yhu23"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yhu23"]
+radius = 4.0
+
+[node name="ProjectileRocket" type="Area3D" unique_id=843409773]
+collision_layer = 0
+collision_mask = 259
+script = ExtResource("1_t0go8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1634847353]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -4.53553e-10, 0.0103761)
+shape = SubResource("CylinderShape3D_p6ah2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=873353110]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_p6ah2")
+mesh = SubResource("SphereMesh_yhu23")
+
+[node name="explosion_area" type="Area3D" parent="." unique_id=624731609]
+collision_layer = 0
+collision_mask = 274
+
+[node name="explosion_area_collision" type="CollisionShape3D" parent="explosion_area" unique_id=1134422597]
+shape = SubResource("SphereShape3D_yhu23")
+
+[node name="contact_ray_cast" type="RayCast3D" parent="." unique_id=49540989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0945302)
+target_position = Vector3(0, 0, 0.3)
+collision_mask = 3
+
+[node name="vfx" type="Node3D" parent="." unique_id=58113641]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
