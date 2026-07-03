@@ -12,6 +12,10 @@ func _ready() -> void:
 	set_vfx(start_vfx_cont,true)
 	set_vfx(live_vfx_cont,true)
 
+	#var tween:Tween = create_tween()
+	#
+	#tween.tween_property($body,'scale',Vector3.ONE * 2.5,0.5)
+
 func dead() -> void:
 	body_cont.hide()
 	

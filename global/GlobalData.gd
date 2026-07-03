@@ -1,5 +1,7 @@
 extends Node
 
+var pl_res:PlRes = load('res://scene/Player/main/pl_res.tres')
+
 var player:Player = null:
 	set(value):
 		player = value

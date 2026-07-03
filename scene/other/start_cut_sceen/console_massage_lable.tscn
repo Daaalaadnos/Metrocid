@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bmvwiecbbmkqg"]
+
+[ext_resource type="Script" uid="uid://bbtep7b8v13pg" path="res://scene/other/start_cut_sceen/console_massage_lable.gd" id="1_7ypu8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font_size = 64
+font_color = Color(0.68, 0, 0, 1)
+
+[node name="console_massage_lable" type="Label" unique_id=1465165277]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "aaaaa"
+label_settings = SubResource("LabelSettings_g4v7s")
+script = ExtResource("1_7ypu8")

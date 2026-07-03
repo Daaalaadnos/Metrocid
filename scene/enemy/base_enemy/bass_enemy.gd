@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 class_name BaseEnemyClass
 
+signal sg_enemy_dead
+
 enum State{DREAM,MOVE,ATTACK,STAN,DEAD}
 var state = State.DREAM
 var nex_state = null
@@ -23,6 +25,8 @@ var is_dead:bool = false
 var player:Player
 var player_in_attack_area:bool = false
 
+var start_pos:Vector3
+
 func _ready() -> void:
 
 	if GlobalData.player != null:
@@ -33,6 +37,9 @@ func _ready() -> void:
 
 	HP = enemy_res.HP
 	bullet_start_markers_area = %bullet_start_cont.get_children()
+	
+	await get_tree().process_frame
+	start_pos = global_position
 	
 
 func change_state(new_state:State) -> void:	
@@ -72,6 +79,7 @@ func  stan() -> void:
 	pass
 
 func  dead() -> void:
+	sg_enemy_dead.emit()
 	pass
 
 
@@ -168,7 +176,7 @@ func shot() -> void:
 			var sprad_dir := direction
 			sprad_dir = sprad_dir.rotated(Vector3.UP, deg_to_rad(randf_range(-enemy_res.spred_power,enemy_res.spred_power)))
 			sprad_dir = sprad_dir.rotated(Vector3.RIGHT, deg_to_rad(randf_range(-enemy_res.spred_power,enemy_res.spred_power)))
-			bullet.set_start(enemy_res.bullet_res,sprad_dir,enemy_res.damage,true)
+			bullet.set_start(sprad_dir,enemy_res.damage,enemy_res.bullet_res.speed,enemy_res.bullet_res.visual_part_scene,true)
 			#bullet.SPEED = 25
 			bullet.scale *= 3
 

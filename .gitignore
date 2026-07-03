@@ -1,3 +1,15 @@
-# Godot 4+ specific ignores
-.godot/
-/android/
+# Игнорировать всё
+*
+
+# Но оставить сам .gitignore
+!.gitignore
+
+# Разблокировать папки
+!scene/
+!global/
+!vfx/
+
+# И всё внутри этих папок
+!scene/**
+!global/**
+!vfx/**

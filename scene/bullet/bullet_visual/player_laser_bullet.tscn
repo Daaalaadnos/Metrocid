@@ -6,7 +6,7 @@
 offsets = PackedFloat32Array(0, 0.35365853, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.31764707, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_28s7t"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_iuv0s"]
 gradient = SubResource("Gradient_iuv0s")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
@@ -17,7 +17,7 @@ metadata/_snap_enabled = true
 transparency = 1
 shading_mode = 0
 albedo_color = Color(0.5429, 0.80322504, 0.89, 1)
-albedo_texture = SubResource("GradientTexture2D_28s7t")
+albedo_texture = SubResource("GradientTexture2D_iuv0s")
 billboard_mode = 1
 billboard_keep_scale = true
 
@@ -28,7 +28,7 @@ size = Vector2(0.4, 0.4)
 offsets = PackedFloat32Array(0, 0.35365853, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.31764707, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_100ja"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_28s7t"]
 gradient = SubResource("Gradient_orkhi")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
@@ -39,7 +39,7 @@ metadata/_snap_enabled = true
 transparency = 1
 shading_mode = 0
 albedo_color = Color(0.5411765, 0.8039216, 0.8901961, 1)
-albedo_texture = SubResource("GradientTexture2D_100ja")
+albedo_texture = SubResource("GradientTexture2D_28s7t")
 billboard_mode = 1
 billboard_keep_scale = true
 
@@ -94,7 +94,7 @@ alpha_curve = SubResource("CurveTexture_8o4gf")
 offsets = PackedFloat32Array(0.7094972, 0.877095, 0.9385475)
 colors = PackedColorArray(1, 1, 1, 0, 2.055, 2.055, 2.055, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_0pu3w"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dkyj1"]
 gradient = SubResource("Gradient_emkxe")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
@@ -106,7 +106,7 @@ transparency = 1
 cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_texture = SubResource("GradientTexture2D_0pu3w")
+albedo_texture = SubResource("GradientTexture2D_dkyj1")
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
@@ -117,13 +117,13 @@ particles_anim_loop = false
 _data = [Vector2(0.45296165, 1), 0.0, 0.0, 0, 0, Vector2(0.83623683, 0.0064285994), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_28s7t"]
+[sub_resource type="CurveTexture" id="CurveTexture_5ld8s"]
 curve = SubResource("Curve_iuv0s")
 
 [sub_resource type="Gradient" id="Gradient_dkyj1"]
 colors = PackedColorArray(1.5565991, 1.5565991, 1.5565991, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_5ld8s"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_orkhi"]
 gradient = SubResource("Gradient_dkyj1")
 
 [sub_resource type="Curve" id="Curve_orkhi"]
@@ -137,17 +137,17 @@ curve = SubResource("Curve_orkhi")
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_l21rd"]
+[sub_resource type="CurveTexture" id="CurveTexture_m0c4i"]
 curve = SubResource("Curve_m0c4i")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ynm5u"]
 gravity = Vector3(0, 0, 0)
 scale_min = 2.0
 scale_max = 2.0
-scale_curve = SubResource("CurveTexture_l21rd")
+scale_curve = SubResource("CurveTexture_m0c4i")
 color = Color(0.5411765, 0.8039216, 0.8901961, 1)
-color_ramp = SubResource("GradientTexture1D_5ld8s")
-alpha_curve = SubResource("CurveTexture_28s7t")
+color_ramp = SubResource("GradientTexture1D_orkhi")
+alpha_curve = SubResource("CurveTexture_5ld8s")
 emission_curve = SubResource("CurveTexture_100ja")
 
 [sub_resource type="QuadMesh" id="QuadMesh_ena1o"]

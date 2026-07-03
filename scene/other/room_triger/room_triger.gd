@@ -7,7 +7,6 @@ func update_enemy(new_status) -> void:
 			child.pl_status_update(new_status)
 
 
-
 func _on_body_entered(body: Node3D) -> void:
 	update_enemy(true)
 

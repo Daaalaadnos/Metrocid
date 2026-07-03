@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var parent:CharacterBody3D = get_node("..")
-@onready var head_camera:Camera3D = get_node('cam_cont/head_camera')
+@onready var head_camera: Camera3D = %head_camera
 @onready var camera_cont : Node3D = get_node('cam_cont')
 
 #камера
@@ -13,7 +13,7 @@ var joy_sensetivity:float
 @export var joy_normal_sensetivity := 110.17
 @export var joy_aim_sensetivity := 90.1
 
-@export var normal_fov := 100
+@export var normal_fov := 75
 @export var aim_fov := 60
 
 

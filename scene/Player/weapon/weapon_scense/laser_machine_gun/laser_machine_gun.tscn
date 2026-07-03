@@ -1,0 +1,301 @@
+[gd_scene format=3 uid="uid://b2mamejwyv8n0"]
+
+[ext_resource type="PackedScene" uid="uid://b3eb8l66eunfe" path="res://scene/Player/weapon/weapon_scense/bass_weapon/bass_weapon.tscn" id="1_cfki8"]
+[ext_resource type="Resource" uid="uid://ik4mdk36hjw4" path="res://scene/Player/weapon/weapon_res/weapon_stats/WS_Laser_Machine_Gun.tres" id="2_usnu5"]
+[ext_resource type="Texture2D" uid="uid://dei2j2wlqk2pq" path="res://export/texture/iron_wall_plate001.png" id="3_cfki8"]
+[ext_resource type="Script" uid="uid://wpth5eah5g04" path="res://scene/Player/weapon/weapon_scense/laser_machine_gun/vfx.gd" id="3_tgkdt"]
+[ext_resource type="Texture2D" uid="uid://41dw5ddsida" path="res://export/texture/spark_tex_test.png" id="5_4ukvn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cfki8"]
+no_depth_test = true
+albedo_color = Color(2.454227, 2.454227, 2.454227, 1)
+albedo_texture = ExtResource("3_cfki8")
+albedo_texture_force_srgb = true
+uv1_scale = Vector3(1.98, 1.98, 1.98)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 150.0
+texture_filter = 2
+
+[sub_resource type="Gradient" id="Gradient_tgkdt"]
+colors = PackedColorArray(0.2520276, 0.25202766, 0.25202763, 1, 1, 1, 1, 0.19215687)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4ukvn"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cfki8"]
+noise = SubResource("FastNoiseLite_4ukvn")
+color_ramp = SubResource("Gradient_tgkdt")
+seamless = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqces"]
+transparency = 1
+no_depth_test = true
+albedo_color = Color(0.9873515, 1.5596056, 1.8247963, 1)
+albedo_texture = SubResource("NoiseTexture2D_cfki8")
+albedo_texture_force_srgb = true
+uv1_triplanar = true
+fov_override = 80.0
+
+[sub_resource type="Gradient" id="Gradient_fki13"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.31753555, 1)
+colors = PackedColorArray(2.055, 2.055, 2.055, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4ukvn"]
+gradient = SubResource("Gradient_fki13")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8x56r"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_4ukvn")
+albedo_texture_force_srgb = true
+texture_filter = 2
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_ckuf8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ixb3i"]
+curve = SubResource("Curve_ckuf8")
+
+[sub_resource type="Curve" id="Curve_cfki8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99111116, 0.6516854), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tgkdt"]
+curve = SubResource("Curve_cfki8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yx3ws"]
+lifetime_randomness = 0.56
+direction = Vector3(0, 0, -1)
+spread = 25.0
+initial_velocity_min = 15.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -1.9500022
+radial_accel_max = -1.9500022
+scale_min = 0.049999997
+scale_max = 0.099999994
+color = Color(0.5411765, 0.8039216, 0.8901961, 1)
+alpha_curve = SubResource("CurveTexture_ixb3i")
+emission_curve = SubResource("CurveTexture_tgkdt")
+
+[sub_resource type="QuadMesh" id="QuadMesh_b1tke"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_68uaj"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("5_4ukvn")
+albedo_texture_force_srgb = true
+texture_filter = 2
+billboard_keep_scale = true
+
+[sub_resource type="Curve" id="Curve_blvmj"]
+_data = [Vector2(0, 0.1460675), 0.0, 0.0, 0, 0, Vector2(0.64888895, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yoyyy"]
+curve = SubResource("Curve_blvmj")
+
+[sub_resource type="Gradient" id="Gradient_w13t5"]
+offsets = PackedFloat32Array(0.31658292, 0.8592965)
+colors = PackedColorArray(1, 1, 1, 0.27058825, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1ywmd"]
+gradient = SubResource("Gradient_w13t5")
+
+[sub_resource type="Curve" id="Curve_nyngy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.6629214), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8n8j5"]
+curve = SubResource("Curve_nyngy")
+
+[sub_resource type="Curve" id="Curve_kdsba"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.62222224, 0.73033714), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3mwmf"]
+curve = SubResource("Curve_kdsba")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cglbj"]
+lifetime_randomness = 0.27
+particle_flag_rotate_y = true
+angle_min = -246.4
+angle_max = 153.30002
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = -2.2351742e-05
+gravity = Vector3(0, 0, 0)
+scale_min = 0.79999995
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_3mwmf")
+color = Color(1.4494375, 3.7237523, 4.415934, 0.57254905)
+color_ramp = SubResource("GradientTexture1D_1ywmd")
+alpha_curve = SubResource("CurveTexture_yoyyy")
+emission_curve = SubResource("CurveTexture_8n8j5")
+
+[sub_resource type="QuadMesh" id="QuadMesh_fki13"]
+orientation = 1
+
+[sub_resource type="Curve" id="Curve_yoyyy"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.23111111, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_fyqpt"]
+curve = SubResource("Curve_yoyyy")
+
+[sub_resource type="Gradient" id="Gradient_4ukvn"]
+offsets = PackedFloat32Array(0, 0.28140703)
+colors = PackedColorArray(1, 1, 1, 1, 0.288, 0.48960003, 0.72, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xqces"]
+gradient = SubResource("Gradient_4ukvn")
+
+[sub_resource type="Curve" id="Curve_fyqpt"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5466667, 0.8764045), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_s7ki4"]
+curve = SubResource("Curve_fyqpt")
+
+[sub_resource type="Curve" id="Curve_xqces"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5866667, 0.022471905), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_68uaj"]
+curve = SubResource("Curve_xqces")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4ukvn"]
+emission_shape = 1
+emission_sphere_radius = 0.3
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -100.0
+radial_accel_max = -2.2351742e-06
+radial_accel_curve = SubResource("CurveTexture_s7ki4")
+scale_min = 0.01
+scale_max = 0.049999997
+scale_curve = SubResource("CurveTexture_68uaj")
+color_ramp = SubResource("GradientTexture1D_xqces")
+alpha_curve = SubResource("CurveTexture_fyqpt")
+
+[sub_resource type="QuadMesh" id="QuadMesh_xqces"]
+
+[node name="Laser_Machine_Gun" unique_id=1142635454 instance=ExtResource("1_cfki8")]
+WpRes = ExtResource("2_usnu5")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="container/anim_container" parent_id_path=PackedInt32Array(1031952059) index="0" unique_id=751152705]
+material_override = SubResource("StandardMaterial3D_cfki8")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="container/anim_container/CSGCombiner3D" index="0" unique_id=1373551069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.35327148)
+size = Vector3(0.36499023, 0.5, 2)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="container/anim_container/CSGCombiner3D" index="1" unique_id=1087032759]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.17533061)
+size = Vector3(0.5095215, 0.56152344, 0.33496094)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="container/anim_container/CSGCombiner3D" index="2" unique_id=734296912]
+transform = Transform3D(0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0, 1, 0.26532102, 0.26350188, 0.12883358)
+size = Vector3(0.045166016, 0.14282227, 0.21508789)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="container/anim_container/CSGCombiner3D" index="3" unique_id=2105955260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27929285, 0.34885386, 0.12883358)
+size = Vector3(0.09008789, 0.06933594, 0.3623047)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="container/anim_container/CSGCombiner3D" index="4" unique_id=709763566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27929285, 0.34885386, 0.27367002)
+size = Vector3(0.10571289, 0.099853516, 0.072631836)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="container/anim_container/CSGCombiner3D" index="5" unique_id=1964767462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36628664, -0.048853904, 0.14708646)
+size = Vector3(0.2675171, 0.11694336, 0.11352539)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="container/anim_container/CSGCombiner3D" index="6" unique_id=223915072]
+transform = Transform3D(0.96748465, 0.0070849387, 0.25283024, -0.009092192, 0.9999357, 0.0067716883, -0.25276595, -0.008850276, 0.96748686, 0.4654289, -0.065331765, 0.14725696)
+size = Vector3(0.28562927, 0.18554688, 0.18164063)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="container/anim_container/CSGCombiner3D" index="7" unique_id=1229440565]
+transform = Transform3D(0.9668093, 0.10733713, 0.23185878, -0.008026854, 0.9197864, -0.39233705, -0.2553729, 0.37745407, 0.8901196, 0.5578544, -0.17633176, 0.48161644)
+size = Vector3(0.16308594, 0.1015625, 0.5653076)
+
+[node name="CSGCombiner3D5" type="CSGCombiner3D" parent="container/anim_container" parent_id_path=PackedInt32Array(1031952059) index="1" unique_id=150993511]
+material_override = SubResource("StandardMaterial3D_xqces")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="container/anim_container/CSGCombiner3D5" index="0" unique_id=1431293600]
+transform = Transform3D(-0.35057133, 0.38833183, 0.85223126, 0.1477321, 0.9215196, -0.35913348, -0.9248108, 0, -0.38042745, -0.35509974, 0.08144005, -0.39946064)
+size = Vector3(0.08300781, 0.1, 0.47875977)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="container/anim_container/CSGCombiner3D5" index="1" unique_id=254682149]
+transform = Transform3D(-0.35057133, 0.38833183, 0.85223126, 0.1477321, 0.9215196, -0.35913348, -0.9248108, 0, -0.38042745, -0.29335415, 0.22796369, -0.39946064)
+size = Vector3(0.08300781, 0.1, 0.47875977)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="container/anim_container/CSGCombiner3D5" index="2" unique_id=73877294]
+transform = Transform3D(-0.35057133, 0.38833183, 0.85223126, 0.1477321, 0.9215196, -0.35913348, -0.9248108, 0, -0.38042745, -0.41860774, -0.06926569, -0.39946064)
+size = Vector3(0.08300781, 0.1, 0.47875977)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="container/anim_container/CSGCombiner3D5" index="3" unique_id=2120873191]
+transform = Transform3D(-0.35057133, 0.38833183, 0.85223126, 0.1477321, 0.9215196, -0.35913348, -0.9248108, 0, -0.38042745, -0.24833253, 0.036447942, -0.28360072)
+size = Vector3(0.08300781, 0.1, 0.47875977)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="container/anim_container/CSGCombiner3D5" index="4" unique_id=522737141]
+transform = Transform3D(-0.35057133, 0.38833183, 0.85223126, 0.1477321, 0.9215196, -0.35913348, -0.9248108, 0, -0.38042745, -0.18658692, 0.18297157, -0.28360072)
+size = Vector3(0.08300781, 0.1, 0.47875977)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="container/anim_container/CSGCombiner3D5" index="5" unique_id=1743168316]
+transform = Transform3D(-0.35057133, 0.38833183, 0.85223126, 0.1477321, 0.9215196, -0.35913348, -0.9248108, 0, -0.38042745, -0.3118405, -0.11425781, -0.28360072)
+size = Vector3(0.08300781, 0.1, 0.47875977)
+
+[node name="bullet_marker" parent="container/sub_container" parent_id_path=PackedInt32Array(1281037086) index="0" unique_id=1025981661]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9102252)
+
+[node name="vfx" parent="container" parent_id_path=PackedInt32Array(1582595328) index="2" unique_id=1651183382]
+script = ExtResource("3_tgkdt")
+
+[node name="sparks" type="GPUParticles3D" parent="container/vfx" index="0" unique_id=1926339582]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.650861)
+material_override = SubResource("StandardMaterial3D_8x56r")
+emitting = false
+amount = 20
+lifetime = 0.1
+one_shot = true
+explosiveness = 1.0
+randomness = 0.25
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_yx3ws")
+draw_pass_1 = SubResource("QuadMesh_b1tke")
+
+[node name="plasm_shot_wave" type="GPUParticles3D" parent="container/vfx" index="1" unique_id=1217433709]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -0.69384885)
+material_override = SubResource("StandardMaterial3D_68uaj")
+emitting = false
+amount = 10
+lifetime = 0.2
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_cglbj")
+draw_pass_1 = SubResource("QuadMesh_fki13")
+
+[node name="pipe_spark" type="GPUParticles3D" parent="container/vfx" index="2" unique_id=1719289934]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36462504, 0.16165334, -0.31432775)
+material_override = SubResource("StandardMaterial3D_8x56r")
+amount = 50
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_4ukvn")
+draw_pass_1 = SubResource("QuadMesh_xqces")

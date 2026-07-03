@@ -6,10 +6,12 @@ enum State{START,ATTACK,FREEZ,DEAD}
 var state = State.START
 var nex_state = null
 
+@onready var life_timer: Timer = $timers/life_timer
+
 @export var audion_pl_cont:Node3D
 
-var bullet_res:BulletPatam
-var bullet_visual:BulletVfx
+
+var bullet_visual_scene:BulletVfx
 
 const LAYER_WORLD  = 1 << 0
 const LAYER_PLAYER = 1 << 1
@@ -21,6 +23,9 @@ const LAYER_ENEMY  = 1 << 2
 var direction:Vector3
 
 var damage:int 
+
+func _ready() -> void:
+	life_timer.start()
 
 func change_state(new_state:State) -> void:	
 	if nex_state != null and new_state < nex_state:
@@ -43,24 +48,27 @@ func apply_change_state() -> void:
 	state = nex_state
 	nex_state = null
 
-func set_start(new_res:BulletPatam,new_dir:Vector3,new_damage:int = 1,is_enemy_bullet:bool = false) -> void:
-	bullet_res = new_res
-	SPEED = bullet_res.speed
-	add_visual()
+func set_start(new_dir:Vector3,new_damage:int = 1,new_speed:float = 10.0,new_vfx:PackedScene = null,is_enemy_bullet:bool = false) -> void:
+	if new_vfx == null:
+		call_deferred('queue_free')
+		push_warning('bullet_vfx_scene == null')
+		return
+	
 	if is_enemy_bullet:
 		collision_mask = LAYER_WORLD | LAYER_PLAYER
 	else:
 		collision_mask = LAYER_WORLD | LAYER_ENEMY
+
 	direction = new_dir
 	damage = new_damage
+	SPEED = new_speed
+	
+	add_visual(new_vfx)
 	change_state(State.ATTACK)
 
-func add_visual() -> void:
-	if bullet_res == null and bullet_res.visual_part_scene == null:
-		return
-	
-	bullet_visual = bullet_res.visual_part_scene.instantiate()
-	add_child(bullet_visual)
+func add_visual(vfx_scene:PackedScene = null) -> void:
+	bullet_visual_scene = vfx_scene.instantiate()
+	add_child(bullet_visual_scene)
 
 func start() -> void:
 	pass
@@ -74,7 +82,7 @@ func freez() -> void:
 func dead() -> void:
 	velocity = Vector3.ZERO
 	
-	bullet_visual.dead()
+	bullet_visual_scene.dead()
 	await get_tree().create_timer(1.0).timeout
 	call_deferred('queue_free')
 
@@ -148,31 +156,32 @@ func make_damage(target) -> void:
 		target.get_damage(damage)
 
 
-func aim_assist(delta:float,target_node:Node3D) -> void:
-	var target_point:Vector3
-	if target_node:
-		target_point = target_node.global_position
-	else:
-		target_point = global_position - (global_transform.basis.z * 10.0)
-		# 1. Получаем вектор направления на цель локально (относительно пушки)
-		# Это сбросит глобальные координаты и покажет, где цель относительно НАШЕГО центра
-	var local_target_dir: Vector3 = to_local(target_point).normalized()
+#func aim_assist(delta:float,target_node:Node3D) -> void:
+	#var target_point:Vector3
+	#if target_node:
+		#target_point = target_node.global_position
+	#else:
+		#target_point = global_position - (global_transform.basis.z * 10.0)
+		## 1. Получаем вектор направления на цель локально (относительно пушки)
+		## Это сбросит глобальные координаты и покажет, где цель относительно НАШЕГО центра
+	#var local_target_dir: Vector3 = to_local(target_point).normalized()
+#
+	## 2. Считаем поворот влево-вправо (вокруг оси Y)
+	## atan2 работает как компас: смотрит на координаты X и Z и говорит точный угол
+	#var angle_y := atan2(-local_target_dir.x, -local_target_dir.z)
+#
+	## 3. Считаем поворот вверх-вниз (вокруг оси X)
+	## Нам нужно узнать угол наклона относительно высоты (Y) и длины на плоскости
+	#var flat_distance := Vector2(local_target_dir.x, local_target_dir.z).length()
+	#var angle_x := atan2(local_target_dir.y, flat_distance)
+#
+	## 4. Применяем углы в ноду поворота
+	#rotation.x = lerp_angle(rotation.x,angle_x,delta * bullet_res.aim_assist_power_mod)
+	#rotation.y = lerp_angle(rotation.y,angle_y,delta * bullet_res.aim_assist_power_mod)
+	#rotation.z = 0
 
-	# 2. Считаем поворот влево-вправо (вокруг оси Y)
-	# atan2 работает как компас: смотрит на координаты X и Z и говорит точный угол
-	var angle_y := atan2(-local_target_dir.x, -local_target_dir.z)
-
-	# 3. Считаем поворот вверх-вниз (вокруг оси X)
-	# Нам нужно узнать угол наклона относительно высоты (Y) и длины на плоскости
-	var flat_distance := Vector2(local_target_dir.x, local_target_dir.z).length()
-	var angle_x := atan2(local_target_dir.y, flat_distance)
-
-	# 4. Применяем углы в ноду поворота
-	rotation.x = lerp_angle(rotation.x,angle_x,delta * bullet_res.aim_assist_power_mod)
-	rotation.y = lerp_angle(rotation.y,angle_y,delta * bullet_res.aim_assist_power_mod)
-	rotation.z = 0
 
 
-func _on_life_time_timeout() -> void:
+func _on_life_timer_timeout() -> void:
 	if state != State.DEAD:
 		change_state(State.DEAD)

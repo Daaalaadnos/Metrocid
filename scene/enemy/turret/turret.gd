@@ -4,6 +4,11 @@ extends BaseEnemyClass
 
 
 func  dead() -> void:
+	if is_dead:
+		return
+	
+	super.dead()
+	
 	is_dead = true
 	%body_cont.hide()
 	#%dead_timer.start(dead_time)

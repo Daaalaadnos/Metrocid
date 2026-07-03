@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityData" format=3 uid="uid://q3alq6m8gcu1"]
+
+[ext_resource type="PackedScene" uid="uid://cly8x2q4e7tmy" path="res://scene/Player/ability/desh_manager/desh_manager.tscn" id="1_b4ogh"]
+[ext_resource type="Script" uid="uid://diuxxny15nd6n" path="res://scene/Player/inventory/ability/ability_data.gd" id="2_vittv"]
+
+[resource]
+script = ExtResource("2_vittv")
+name = "dash"
+ability_scene = ExtResource("1_b4ogh")
+metadata/_custom_type_script = "uid://diuxxny15nd6n"

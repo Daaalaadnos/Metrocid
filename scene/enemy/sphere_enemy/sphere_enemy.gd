@@ -8,10 +8,14 @@ extends BaseEnemyClass
 
 var dist_to_pl:float
 
+func _ready() -> void:
+	super._ready()
+	%desh_timer.start()
+
 func dead() -> void:
-	
-	$CollisionShape3D.shape.radius = 0.2
-	collision_layer = 0 << 0
+	super.dead()
+	$CollisionShape3D.scale *= 0.2
+	collision_layer = 0
 	
 	%dead_player.play()
 	#collision_mask = 0 << 1
@@ -50,7 +54,7 @@ func st_attack(delta):
 	
 	if desh_timer.is_stopped():
 		desh_timer.start(randf_range(enemy_res.dead_time,enemy_res.dead_time + 1.0))
-		desh()
+		desh(player.global_position)
 	
 	if fire_rate_timer.is_stopped():
 		fire_rate_timer.start(randf_range(enemy_res.fire_rite,enemy_res.fire_rite + 0.5))
@@ -65,15 +69,17 @@ func st_dead(delta):
 		velocity += get_gravity() * delta
 
 
-func desh() -> void:
+func desh(target_:Vector3) -> void:
 	
-	direction = global_position.direction_to(player.global_position - Vector3(0,2.5,0))
-	dist_to_pl = (global_position * Vector3(1,0,1)).distance_to(player.global_position * Vector3(1,0,1))
-	print(dist_to_pl)
+	%desh_player.play()
+	%desh_stop.start()
+	direction = global_position.direction_to(target_ - Vector3(0,2.5,0))
+	dist_to_pl = (global_position * Vector3(1,0,1)).distance_to(target_ * Vector3(1,0,1))
+	
 	
 	var target_point:Vector3
 	if dist_to_pl < dash_min_dist_to_pl or dist_to_pl > dash_max_dist_to_pl:
-		var pos_player := player.global_position
+		var pos_player := target_
 		var pos_mob := global_position
 		
 		var dir_flat := Vector3(pos_player.x - pos_mob.x, 0, pos_player.z - pos_mob.z).normalized()
@@ -81,20 +87,24 @@ func desh() -> void:
 		target_point = pos_player - (dir_flat * dash_min_dist_to_pl)
 
 	else:
-		var back_dir := Vector3(global_position.x - player.global_position.x, 0, global_position.z - player.global_position.z).normalized()
+		var back_dir := Vector3(global_position.x - target_.x, 0, global_position.z - target_.z).normalized()
 
 		var side_modifier: float = [-1.0, 1.0][randi_range(0, 1)]
 
-		var angle := deg_to_rad(randf_range(15,60)) * side_modifier
+		var angle := deg_to_rad(randf_range(10,120)) * side_modifier
 
 		var orbit_dir := back_dir.rotated(Vector3.UP, angle)
 		
-		target_point = player.global_position + (orbit_dir * (dash_min_dist_to_pl + 2.0))
+		target_point = target_ + (orbit_dir * (dash_min_dist_to_pl + 2.0))
 	
-	target_point.y = player.global_position.y + randf_range(3,5)
+	target_point.y = target_.y + randf_range(3,5)
 	
 	# Проверяем препятствия. Функция вернет безопасную ГЛOБАЛЬНУЮ точку
 	var final_point: Vector3 = check_obstacles(target_point)
+	
+	#var impuls = global_position.direction_to(final_point) * global_position.distance_to(final_point)
+	
+	#velocity = impuls
 	
 	tween_move(final_point)
 
@@ -108,7 +118,7 @@ func check_obstacles(target_position: Vector3) -> Vector3:
 		# Если впереди стена, берем точку удара
 		var hit_point = raycast.get_collision_point()
 		if global_position.distance_to(hit_point) <= 2.0:
-			return global_position.direction_to(hit_point) * -2
+			return global_position
 		# И отступаем от нее назад к мобу на 1.5 метра, чтобы не застрять в текстуре
 		var safe_direction = hit_point.direction_to(global_position)
 		return hit_point + safe_direction * 1.5
@@ -136,3 +146,7 @@ func tween_move(target_point:Vector3) -> void:
 			pass
 			velocity = Vector3.ZERO # Сбрасываем скорость после остановки
 	)
+
+
+func _on_desh_stop_timeout() -> void:
+	velocity = Vector3.ZERO

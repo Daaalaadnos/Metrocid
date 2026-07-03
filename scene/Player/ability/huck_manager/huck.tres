@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityData" format=3 uid="uid://cw0sif22rwuol"]
+
+[ext_resource type="PackedScene" uid="uid://b18ikulek7v83" path="res://scene/Player/ability/huck_manager/huck_manager.tscn" id="1_weq7t"]
+[ext_resource type="Script" uid="uid://diuxxny15nd6n" path="res://scene/Player/inventory/ability/ability_data.gd" id="2_de7pb"]
+
+[resource]
+script = ExtResource("2_de7pb")
+id = "huck"
+name = "huck"
+ability_scene = ExtResource("1_weq7t")
+metadata/_custom_type_script = "uid://diuxxny15nd6n"

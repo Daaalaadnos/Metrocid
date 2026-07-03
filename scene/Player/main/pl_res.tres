@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="PlRes" format=3 uid="uid://b3wncsbst3bth"]
+
+[ext_resource type="Script" uid="uid://dbc3qbq1i2277" path="res://scene/Player/inventory/Pl_Inventory.gd" id="1_cq5l3"]
+[ext_resource type="Script" uid="uid://bgaov43dal53d" path="res://scene/Player/main/pl_res.gd" id="1_o56i4"]
+[ext_resource type="Script" uid="uid://diuxxny15nd6n" path="res://scene/Player/inventory/ability/ability_data.gd" id="1_pq2dg"]
+[ext_resource type="Resource" uid="uid://cw0sif22rwuol" path="res://scene/Player/ability/huck_manager/huck.tres" id="2_2im5i"]
+[ext_resource type="Script" uid="uid://eud75lbyih57" path="res://scene/Player/inventory/weapon_slot.gd" id="2_cq5l3"]
+[ext_resource type="Script" uid="uid://c6b7qo2uifdve" path="res://scene/Player/inventory/weapon_inventory.gd" id="2_mly16"]
+[ext_resource type="Script" uid="uid://c5tl2keud244a" path="res://scene/Player/inventory/ability/ability_inventory.gd" id="2_pq37n"]
+[ext_resource type="Script" uid="uid://crfbtns47xrlq" path="res://scene/Player/weapon/weapon_res/weapon_inv_res/weapon_inv_res.gd" id="3_i3xxk"]
+[ext_resource type="Resource" uid="uid://q3alq6m8gcu1" path="res://scene/Player/ability/desh_manager/dash.tres" id="3_t8lo4"]
+[ext_resource type="Resource" uid="uid://ba2muokh0w485" path="res://scene/Player/ability/jetpack_manager/jetpack.tres" id="4_t8lo4"]
+[ext_resource type="PackedScene" uid="uid://b2mamejwyv8n0" path="res://scene/Player/weapon/weapon_scense/laser_machine_gun/laser_machine_gun.tscn" id="5_rlwqr"]
+[ext_resource type="Script" uid="uid://c6neg8abyy62m" path="res://scene/Player/weapon/weapon_res/weapon_stats/weapon_stars_res.gd" id="6_ycb5k"]
+[ext_resource type="PackedScene" uid="uid://dvqejt1ew5ly7" path="res://scene/Player/weapon/weapon_scense/laser_aim_gun/laser_aim_gun.tscn" id="7_5ddy2"]
+[ext_resource type="Resource" uid="uid://cjnhas78ch2vc" path="res://scene/Player/weapon/weapon_res/weapon_stats/WS_laser_aim_gun.tres" id="7_ycb5k"]
+[ext_resource type="Resource" uid="uid://ik4mdk36hjw4" path="res://scene/Player/weapon/weapon_res/weapon_stats/WS_Laser_Machine_Gun.tres" id="10_ejb8r"]
+
+[sub_resource type="Resource" id="Resource_5ddy2"]
+script = ExtResource("2_pq37n")
+ability_list = Array[ExtResource("1_pq2dg")]([ExtResource("2_2im5i"), ExtResource("3_t8lo4"), ExtResource("4_t8lo4")])
+metadata/_custom_type_script = "uid://c5tl2keud244a"
+
+[sub_resource type="Resource" id="Resource_qcyv4"]
+script = ExtResource("3_i3xxk")
+weapon_scene = ExtResource("5_rlwqr")
+weapon_stats = ExtResource("10_ejb8r")
+metadata/_custom_type_script = "uid://crfbtns47xrlq"
+
+[sub_resource type="Resource" id="Resource_7ey71"]
+script = ExtResource("3_i3xxk")
+weapon_scene = ExtResource("7_5ddy2")
+weapon_stats = ExtResource("7_ycb5k")
+metadata/_custom_type_script = "uid://crfbtns47xrlq"
+
+[sub_resource type="Resource" id="Resource_i3xxk"]
+script = ExtResource("6_ycb5k")
+metadata/_custom_type_script = "uid://c6neg8abyy62m"
+
+[sub_resource type="Resource" id="Resource_f384y"]
+script = ExtResource("3_i3xxk")
+weapon_scene = ExtResource("5_rlwqr")
+weapon_stats = SubResource("Resource_i3xxk")
+metadata/_custom_type_script = "uid://crfbtns47xrlq"
+
+[sub_resource type="Resource" id="Resource_s7834"]
+script = ExtResource("2_cq5l3")
+weapon_resurs = SubResource("Resource_f384y")
+metadata/_custom_type_script = "uid://eud75lbyih57"
+
+[sub_resource type="Resource" id="Resource_bmd2s"]
+script = ExtResource("3_i3xxk")
+weapon_scene = ExtResource("7_5ddy2")
+weapon_stats = ExtResource("7_ycb5k")
+metadata/_custom_type_script = "uid://crfbtns47xrlq"
+
+[sub_resource type="Resource" id="Resource_0ryj2"]
+script = ExtResource("2_cq5l3")
+weapon_resurs = SubResource("Resource_bmd2s")
+metadata/_custom_type_script = "uid://eud75lbyih57"
+
+[sub_resource type="Resource" id="Resource_b7atn"]
+script = ExtResource("2_mly16")
+weapon_array = Array[ExtResource("3_i3xxk")]([SubResource("Resource_qcyv4"), SubResource("Resource_7ey71")])
+weapon_slots = Array[ExtResource("2_cq5l3")]([SubResource("Resource_s7834"), SubResource("Resource_0ryj2")])
+metadata/_custom_type_script = "uid://c6b7qo2uifdve"
+
+[sub_resource type="Resource" id="Resource_p44hq"]
+script = ExtResource("1_cq5l3")
+weapon_inventory = SubResource("Resource_b7atn")
+ability_inventory = SubResource("Resource_5ddy2")
+metadata/_custom_type_script = "uid://dbc3qbq1i2277"
+
+[resource]
+script = ExtResource("1_o56i4")
+inventory = SubResource("Resource_p44hq")
+metadata/_custom_type_script = "uid://bgaov43dal53d"

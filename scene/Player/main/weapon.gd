@@ -1,7 +1,5 @@
 extends Node3D
 
-class_name BassWeapon
-
 enum State{IDLE,CHARGE,SHOT,RELOAD}
 var state = State.IDLE
 var nex_state = null

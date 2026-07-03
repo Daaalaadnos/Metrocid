@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://cjnhas78ch2vc"]
+
+[ext_resource type="PackedScene" uid="uid://66iw18jrbp54" path="res://scene/bullet/aim_bullet/aim_bullet.tscn" id="1_c602f"]
+[ext_resource type="PackedScene" uid="uid://bl782qwa7n65y" path="res://scene/bullet/bullet_visual/player_aim_bullets.tscn" id="2_c602f"]
+[ext_resource type="Script" uid="uid://c6neg8abyy62m" path="res://scene/Player/weapon/weapon_res/weapon_stats/weapon_stars_res.gd" id="3_yakyt"]
+
+[resource]
+script = ExtResource("3_yakyt")
+name = "laser_aim_gun"
+damage = 1.0
+fire_rate = 0.1
+bullet_in_shot = 5
+charge_time = 0.0
+max_spred = 50.0
+min_spred = 50.0
+spred_pre_shot = 4.0
+spred_damp_mod = 12.0
+aim_assist_power_mod = 5.0
+bullet_scene = ExtResource("1_c602f")
+bullet_vfx = ExtResource("2_c602f")
+bullet_speed = 5.0
+metadata/_custom_type_script = "uid://c6neg8abyy62m"

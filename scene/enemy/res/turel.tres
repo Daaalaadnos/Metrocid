@@ -9,5 +9,6 @@ script = ExtResource("1_xkikw")
 HP = 50
 bullet_scene = ExtResource("1_pfivc")
 bullet_res = ExtResource("1_4gvby")
+damage = 5
 fire_rite = 1.5
 metadata/_custom_type_script = "uid://te0h2sxloqis"

@@ -6,7 +6,10 @@
 radius = 0.08131957
 
 [node name="defolt_bulets" unique_id=171724009 instance=ExtResource("1_66w5s")]
-SPEED = 15.0
 
 [node name="CollisionShape3D" parent="." index="0" unique_id=291462547]
 shape = SubResource("SphereShape3D_66w5s")
+
+[node name="life_timer" parent="timers" parent_id_path=PackedInt32Array(1499029250) index="0" unique_id=267332042]
+wait_time = 10.0
+one_shot = true

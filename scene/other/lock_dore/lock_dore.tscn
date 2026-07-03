@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dysul441d0vqq"]
+
+[ext_resource type="Shader" uid="uid://dqw45xfkicxf4" path="res://scene/other/lock_dore/noise_wave_sd.gdshader" id="1_eitad"]
+[ext_resource type="Script" uid="uid://cexobjjnxnm55" path="res://scene/other/lock_dore/lock_dore.gd" id="1_ip70f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+size = Vector3(5, 5, 0.2)
+
+[sub_resource type="Gradient" id="Gradient_vm0f8"]
+offsets = PackedFloat32Array(0.02617801, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1oq6b"]
+frequency = 0.0056
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yemd4"]
+noise = SubResource("FastNoiseLite_1oq6b")
+color_ramp = SubResource("Gradient_vm0f8")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fcnqv"]
+render_priority = 0
+shader = ExtResource("1_eitad")
+shader_parameter/bass_color = Color(0.4, 0, 0.006666565, 1)
+shader_parameter/bass_alpha = 1.0
+shader_parameter/texture1 = SubResource("NoiseTexture2D_yemd4")
+shader_parameter/move_dir = Vector2(0, -0.1)
+shader_parameter/tex_speed = 0.335
+shader_parameter/wave_amp = 0.205
+shader_parameter/wave_freq = 0.995
+
+[sub_resource type="QuadMesh" id="QuadMesh_g4v7s"]
+size = Vector2(10, 10)
+subdivide_width = 10
+subdivide_depth = 10
+
+[node name="lock_dore" type="StaticBody3D" unique_id=1088614766 groups=["events"]]
+script = ExtResource("1_ip70f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1231711749]
+shape = SubResource("BoxShape3D_g4v7s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2014511489]
+material_override = SubResource("ShaderMaterial_fcnqv")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_g4v7s")

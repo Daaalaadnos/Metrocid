@@ -6,26 +6,40 @@
 [ext_resource type="PackedScene" uid="uid://v4sidcl1o6m3" path="res://scene/enemy/turret/turret.tscn" id="3_ihv6u"]
 [ext_resource type="PackedScene" uid="uid://bk2swfg0a30vy" path="res://scene/enemy/sphere_enemy/sphere_enemy.tscn" id="3_moo1f"]
 [ext_resource type="PackedScene" uid="uid://snnx2cgbeu5m" path="res://vfx/sky_wave/sky_wave.tscn" id="4_ihv6u"]
+[ext_resource type="PackedScene" uid="uid://bn5dox1rmnbmh" path="res://scene/other/wave_spawner/wave_spawner.tscn" id="5_p2cec"]
 [ext_resource type="PackedScene" uid="uid://ko821q8sp6q6" path="res://scene/other/jump_pud/jump_pud.tscn" id="6_xujbs"]
+[ext_resource type="PackedScene" uid="uid://dysul441d0vqq" path="res://scene/other/lock_dore/lock_dore.tscn" id="8_ywif0"]
+[ext_resource type="PackedScene" uid="uid://dkeja3jk65u6v" path="res://scene/other/pick_item/pick_item.tscn" id="9_h6617"]
+[ext_resource type="Resource" uid="uid://ba2muokh0w485" path="res://scene/Player/ability/jetpack_manager/jetpack.tres" id="10_1131t"]
+[ext_resource type="Script" uid="uid://crfbtns47xrlq" path="res://scene/Player/weapon/weapon_res/weapon_inv_res/weapon_inv_res.gd" id="11_eqqta"]
+[ext_resource type="PackedScene" uid="uid://dvqejt1ew5ly7" path="res://scene/Player/weapon/weapon_scense/laser_aim_gun/laser_aim_gun.tscn" id="12_15f67"]
+[ext_resource type="Resource" uid="uid://cjnhas78ch2vc" path="res://scene/Player/weapon/weapon_res/weapon_stats/WS_laser_aim_gun.tres" id="13_emwxs"]
 
-[sub_resource type="Environment" id="Environment_7qp81"]
+[sub_resource type="Environment" id="Environment_1131t"]
+ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
-glow_levels/1 = 8.3
-glow_levels/5 = 12.08
-fog_mode = 1
-fog_light_color = Color(0.105298035, 0.14171496, 0.17370352, 1)
-fog_light_energy = 5.14
-fog_density = 0.9251
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.025
-volumetric_fog_albedo = Color(0.13808918, 0.18289888, 0.21809137, 1)
-volumetric_fog_gi_inject = 1.1
-volumetric_fog_anisotropy = 0.4
-volumetric_fog_length = 1024.0
+reflected_light_source = 1
+tonemap_mode = 3
+ssao_enabled = true
+ssao_radius = 9.76
+ssil_radius = 16.0
+ssil_intensity = 9.65
+sdfgi_bounce_feedback = 0.0
+fog_enabled = true
+fog_light_color = Color(0.3417386, 0.41842598, 0.4906953, 1)
+fog_height = -30.0
+fog_height_density = 0.01
+volumetric_fog_density = 0.03
+volumetric_fog_albedo = Color(0.1291287, 0.23513559, 0.31506446, 1)
+volumetric_fog_emission = Color(0.11372549, 0.15294118, 0.18431373, 1)
+volumetric_fog_emission_energy = 5.0
+volumetric_fog_gi_inject = 0.03
+volumetric_fog_length = 32.0
+volumetric_fog_ambient_inject = 16.0
 adjustment_enabled = true
-adjustment_brightness = 0.79
-adjustment_contrast = 1.015
-adjustment_saturation = 1.16
+adjustment_brightness = 0.9
+adjustment_contrast = 1.1
+adjustment_saturation = 1.3
 
 [sub_resource type="Gradient" id="Gradient_kf3ws"]
 
@@ -48,16 +62,39 @@ uv1_triplanar = true
 fov_override = 100.0
 stencil_flags = 2
 
+[sub_resource type="Gradient" id="Gradient_d0u6y"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_57qmd"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yf5fn"]
+noise = SubResource("FastNoiseLite_57qmd")
+color_ramp = SubResource("Gradient_d0u6y")
+seamless = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4v7s"]
+albedo_texture = SubResource("NoiseTexture2D_yf5fn")
+uv1_scale = Vector3(0.475, 0.475, 0.475)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_g4v7s"]
-radius = 36.332996
+radius = 12.361169
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yf5fn"]
+size = Vector3(26.887695, 12.570068, 12.213013)
+
+[sub_resource type="Resource" id="Resource_ryrii"]
+script = ExtResource("11_eqqta")
+weapon_scene = ExtResource("12_15f67")
+weapon_stats = ExtResource("13_emwxs")
+metadata/_custom_type_script = "uid://crfbtns47xrlq"
 
 [node name="Test_level" type="Node3D" unique_id=1832762494]
 
 [node name="Player" parent="." unique_id=1663602563 instance=ExtResource("2_3mewd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.447276, 0, 5.763524)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=723435469]
-environment = SubResource("Environment_7qp81")
+environment = SubResource("Environment_1131t")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=548814665]
 transform = Transform3D(1, 0, 0, 0, 0.564967, 0.8251135, 0, -0.8251135, 0.564967, 0, 0, 0)
@@ -225,6 +262,13 @@ light_color = Color(0.56911767, 0.7327539, 0.88108903, 1)
 light_energy = 5.293
 omni_range = 23.317974
 
+[node name="CSGBox3D" type="CSGBox3D" parent="env" unique_id=1047231503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -73.18806, 0)
+use_collision = true
+flip_faces = true
+size = Vector3(20, 10, 20)
+material = SubResource("StandardMaterial3D_g4v7s")
+
 [node name="enemy" type="Node3D" parent="." unique_id=1538091523]
 
 [node name="turret2" parent="enemy" unique_id=841492306 instance=ExtResource("3_ihv6u")]
@@ -252,12 +296,50 @@ transform = Transform3D(0.00091661594, -0.41102326, 0.91162443, -0.9999975, -0.0
 transform = Transform3D(-0.0010461186, 0.46909398, -0.8831476, -0.99999744, -0.0022300773, -1.6458859e-10, -0.0019694876, 0.88314545, 0.469095, -2.901418, 25.143648, -2.1242929)
 
 [node name="RoomTriger" parent="enemy" unique_id=1645738910 instance=ExtResource("3_1s7tg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40.157875)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="enemy/RoomTriger" unique_id=1224623246]
 shape = SubResource("SphereShape3D_g4v7s")
 
 [node name="Sphere_enemy" parent="enemy/RoomTriger" unique_id=1753176432 instance=ExtResource("3_moo1f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.29284, 5.880425, -14.508866)
+
+[node name="Wave_spawner" parent="enemy" unique_id=1942522377 node_paths=PackedStringArray("waves", "events") instance=ExtResource("5_p2cec")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -73.401, 0)
+waves = [NodePath("Node3D"), NodePath("Node3D2"), NodePath("Node3D3"), NodePath("Node3D4")]
+events = [NodePath("../../other/lock_dore"), NodePath("../../other/lock_dore2")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enemy/Wave_spawner" unique_id=385416254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.0995483)
+shape = SubResource("BoxShape3D_yf5fn")
+
+[node name="Node3D" type="Node3D" parent="enemy/Wave_spawner" unique_id=1643955284]
+
+[node name="Sphere_enemy" parent="enemy/Wave_spawner/Node3D" unique_id=371021000 instance=ExtResource("3_moo1f")]
+
+[node name="Node3D2" type="Node3D" parent="enemy/Wave_spawner" unique_id=1923359386]
+
+[node name="Sphere_enemy" parent="enemy/Wave_spawner/Node3D2" unique_id=747164222 instance=ExtResource("3_moo1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1826675, 0, 0)
+
+[node name="Sphere_enemy2" parent="enemy/Wave_spawner/Node3D2" unique_id=937913397 instance=ExtResource("3_moo1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5410364, 0, 0)
+
+[node name="Node3D3" type="Node3D" parent="enemy/Wave_spawner" unique_id=1489015693]
+
+[node name="Sphere_enemy" parent="enemy/Wave_spawner/Node3D3" unique_id=1849826573 instance=ExtResource("3_moo1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2938843, 0)
+
+[node name="Sphere_enemy2" parent="enemy/Wave_spawner/Node3D3" unique_id=324674976 instance=ExtResource("3_moo1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.33546, -1.9414444, 0)
+
+[node name="Sphere_enemy3" parent="enemy/Wave_spawner/Node3D3" unique_id=586532845 instance=ExtResource("3_moo1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.08251, -1.8778458, 0)
+
+[node name="Node3D4" type="Node3D" parent="enemy/Wave_spawner" unique_id=1416910396]
+
+[node name="turret" parent="enemy/Wave_spawner/Node3D4" unique_id=645471462 instance=ExtResource("3_ihv6u")]
+transform = Transform3D(-0.9982056, -0.059879612, 0, 0.059879612, -0.9982056, 0, 0, 0, 1, 0, 3.7556, 0)
 
 [node name="other" type="Node3D" parent="." unique_id=2014503613]
 
@@ -290,6 +372,26 @@ target_marker = NodePath("Marker3D")
 
 [node name="Marker3D" type="Marker3D" parent="other/Jump_pud" unique_id=1558935421]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.397327, 0)
+
+[node name="lock_dore" parent="other" unique_id=1088614766 instance=ExtResource("8_ywif0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -73.02378, -6.899394)
+
+[node name="lock_dore2" parent="other" unique_id=687107124 instance=ExtResource("8_ywif0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1874695, 1.2213135, 12.614238)
+
+[node name="loot" type="Node3D" parent="other" unique_id=1742277641]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.679234, 0, 16.947859)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="other/loot" unique_id=1854307086]
+size = Vector3(11.170166, 1, 6.609375)
+
+[node name="pick_item" parent="other/loot" unique_id=1226905619 instance=ExtResource("9_h6617")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.132885, 1.2706133, 0)
+loot = ExtResource("10_1131t")
+
+[node name="pick_item2" parent="other/loot" unique_id=1038511495 instance=ExtResource("9_h6617")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0758286, 1.2706133, 0)
+loot = SubResource("Resource_ryrii")
 
 [node name="vfx" type="Node3D" parent="." unique_id=1807184983]
 

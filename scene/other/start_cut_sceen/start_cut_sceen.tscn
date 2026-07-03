@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://d2j37hwkydmfw"]
+
+[ext_resource type="Script" uid="uid://b6xi5skcxcil" path="res://scene/other/start_cut_sceen/start_cut_sceen.gd" id="1_ofpar"]
+[ext_resource type="PackedScene" uid="uid://bmvwiecbbmkqg" path="res://scene/other/start_cut_sceen/console_massage_lable.tscn" id="2_1ano4"]
+[ext_resource type="Script" uid="uid://b2m7qk38mie8r" path="res://scene/other/start_cut_sceen/back_screen_color.gd" id="3_lfwh7"]
+
+[sub_resource type="Animation" id="Animation_vyn6c"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_ofpar"]
+resource_name = "test"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ano4"]
+_data = {
+&"RESET": SubResource("Animation_vyn6c"),
+&"test": SubResource("Animation_ofpar")
+}
+
+[node name="StartCutSceen" type="Node" unique_id=1784240052]
+script = ExtResource("1_ofpar")
+line_scene = ExtResource("2_1ano4")
+
+[node name="red_screen_color" type="ColorRect" parent="." unique_id=1414352903]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("3_lfwh7")
+
+[node name="Control" type="Control" parent="red_screen_color" unique_id=298020286]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="red_screen_color/Control" unique_id=690751972]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="console_container" type="VBoxContainer" parent="red_screen_color/Control/MarginContainer" unique_id=1052314050]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2016716029]
+libraries/ = SubResource("AnimationLibrary_1ano4")
+autoplay = &"test"

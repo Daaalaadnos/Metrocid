@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://bwalgjqqqvf07"]
+
+[ext_resource type="Script" uid="uid://drcgojxpicj4f" path="res://scene/Player/ui/hud/ui_bar_manager.gd" id="1_h4c5g"]
+[ext_resource type="Script" uid="uid://b0542g5vymb6m" path="res://scene/Player/ui/hud/massage_manager.gd" id="2_v106a"]
+[ext_resource type="PackedScene" uid="uid://b66aoyr5u1f4l" path="res://scene/Player/ui/hud/massage_lable/massage_lable.tscn" id="3_ipwia"]
+
+[sub_resource type="Gradient" id="Gradient_d0u6y"]
+colors = PackedColorArray(0, 0, 0, 0.09019608, 1, 1, 1, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_57qmd"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yf5fn"]
+noise = SubResource("FastNoiseLite_57qmd")
+color_ramp = SubResource("Gradient_d0u6y")
+
+[sub_resource type="Gradient" id="Gradient_vd63o"]
+offsets = PackedFloat32Array(0.6666667, 0.9166667, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.16420469, 0, 0, 0, 0.4509804)
+metadata/_snap_enabled = true
+metadata/_snap_count = 12
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yemd4"]
+gradient = SubResource("Gradient_vd63o")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.90000004, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13t6v"]
+bg_color = Color(0.6, 0.6, 0.6, 0.22745098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yico"]
+bg_color = Color(0.9, 0.432, 0.432, 0.52156866)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vd63o"]
+bg_color = Color(0.39000002, 0.5633333, 0.65, 0.49411765)
+
+[node name="player_hud" type="Control" unique_id=1577660799]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2100827138]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_yf5fn")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1497465512]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_yemd4")
+
+[node name="ui_bar_manager" type="Control" parent="." unique_id=1527186992]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 43.155
+grow_horizontal = 2
+script = ExtResource("1_h4c5g")
+
+[node name="hp_bar" type="ProgressBar" parent="ui_bar_manager" unique_id=1851074588]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -0.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_13t6v")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4yico")
+value = 61.18
+show_percentage = false
+
+[node name="shild_bar" type="ProgressBar" parent="ui_bar_manager" unique_id=2077545646]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -0.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_13t6v")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vd63o")
+value = 96.54
+show_percentage = false
+
+[node name="Control" type="Control" parent="." unique_id=740290200]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -395.0
+offset_top = -179.0
+offset_right = 395.0
+offset_bottom = 179.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_v106a")
+massage_lable_scene = ExtResource("3_ipwia")
+
+[node name="loot_masage_cont" type="VBoxContainer" parent="Control" unique_id=2094286148]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -146.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2

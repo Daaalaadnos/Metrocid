@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_lycnl")
-damage = 20
-speed = 75
+damage = 5
+speed = 20
 visual_part_scene = ExtResource("2_lycnl")
 metadata/_custom_type_script = "uid://kxvre1rpvl4a"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityData" format=3 uid="uid://ba2muokh0w485"]
+
+[ext_resource type="PackedScene" uid="uid://cv1ktpx7vfo2g" path="res://scene/Player/ability/jetpack_manager/jetpack_manager.tscn" id="1_1wuem"]
+[ext_resource type="Script" uid="uid://diuxxny15nd6n" path="res://scene/Player/inventory/ability/ability_data.gd" id="2_hpxvd"]
+
+[resource]
+script = ExtResource("2_hpxvd")
+id = "jetpack"
+name = "jetpack"
+ability_scene = ExtResource("1_1wuem")
+metadata/_custom_type_script = "uid://diuxxny15nd6n"
