@@ -3,11 +3,12 @@ extends CharacterBody3D
 class_name Enemy
 
 signal sg_enemy_dead
+@onready var player_detected_area: Area3D = %player_detected_area
 
 @export var speed:float = 5.0
 var direction:Vector3
 
-enum State{DREAM,IDLE,STAN,DEAD}
+enum State{DREAM,ACTIVE,STAN,DEAD}
 var state = State.DREAM
 var nex_state = null
 
@@ -21,6 +22,8 @@ var is_dead:bool = false
 var player:Player
 var player_in_attack_area:bool = false
 
+var start_pos:Vector3
+
 func _ready() -> void:
 
 	if GlobalData.player != null:
@@ -30,7 +33,8 @@ func _ready() -> void:
 
 
 	HP = enemy_res.HP
-	
+	await get_tree().process_frame
+	start_pos = global_position
 
 func change_state(new_state:State) -> void:	
 	if nex_state != null and new_state < nex_state:
@@ -43,8 +47,8 @@ func apply_change_state() -> void:
 	match nex_state:
 		State.DREAM:
 			ch_dream()
-		State.IDLE:
-			ch_idle()
+		State.ACTIVE:
+			ch_active()
 		State.STAN:
 			ch_stan()
 		State.DEAD:
@@ -56,21 +60,27 @@ func apply_change_state() -> void:
 func ch_dream() -> void:
 	pass
 
-func ch_idle() -> void:
+func ch_active() -> void:
 	pass
 
 func  ch_stan() -> void:
 	pass
 
 func  ch_dead() -> void:
+	
+	is_dead = true
+	velocity.y += 100
 	sg_enemy_dead.emit()
-	pass
+	await get_tree().create_timer(2.0).timeout
+	call_deferred('queue_free')
 
 
 func _process(delta: float) -> void:
 	match state:
 		State.DREAM:
 			st_dream(delta)
+		State.ACTIVE:
+			st_active(delta)
 		State.STAN:
 			st_stan(delta)
 		State.DEAD:
@@ -82,6 +92,8 @@ func _physics_process(delta: float) -> void:
 	match state:
 		State.DREAM:
 			st_ph_dream(delta)
+		State.ACTIVE:
+			st_ph_active(delta)
 		State.STAN:
 			st_ph_stan(delta)
 		State.DEAD:
@@ -96,10 +108,10 @@ func st_dream(delta):
 func st_ph_dream(delta):
 	pass
 
-func st_idle(delta):
+func st_active(delta):
 	pass
 
-func st_ph_idle(delta):
+func st_ph_active(delta):
 	pass
 
 func st_stan(delta):
@@ -114,6 +126,9 @@ func st_dead(delta):
 func st_ph_dead(delta):
 	pass
 
+func dead() -> void:
+	change_state(State.DEAD)
+
 func _on_player_ready(player_ref: CharacterBody3D) -> void:
 	player = player_ref
 
@@ -123,6 +138,9 @@ func _on_player_ready(player_ref: CharacterBody3D) -> void:
 	print("Враг ", name, " успешно нашел игрока!")
 
 
-
 func pl_status_update(new_status:bool = false) -> void:
 	player_in_attack_area = new_status
+
+func _on_player_detected_area_body_exited(body: Node3D) -> void:
+	if body is Player:
+		player_in_attack_area = false

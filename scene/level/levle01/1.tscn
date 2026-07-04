@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bj2qf5ogrpdo8"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_yf5fn"]
+vertices = PackedVector3Array(-11.25, -7, -5.75, -11.25, -7, 5.75, 11.5, -7, 5.75, 11.5, -7, -5.75)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_source_geometry_mode = 1
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" unique_id=904184777 groups=["navigation_mesh_source_group"]]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=914838380]
+flip_faces = true
+size = Vector3(24, 15, 13)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=2061637609 groups=["navigation_mesh_source_group"]]
+navigation_mesh = SubResource("NavigationMesh_yf5fn")

@@ -36,6 +36,7 @@ enemy=""
 hit_zone=""
 huck_point=""
 events=""
+navigation_mesh_source_group=""
 
 [input]
 

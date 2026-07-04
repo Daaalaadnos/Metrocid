@@ -177,8 +177,6 @@ func shot() -> void:
 			sprad_dir = sprad_dir.rotated(Vector3.UP, deg_to_rad(randf_range(-enemy_res.spred_power,enemy_res.spred_power)))
 			sprad_dir = sprad_dir.rotated(Vector3.RIGHT, deg_to_rad(randf_range(-enemy_res.spred_power,enemy_res.spred_power)))
 			bullet.set_start(sprad_dir,enemy_res.damage,enemy_res.bullet_res.speed,enemy_res.bullet_res.visual_part_scene,true)
-			#bullet.SPEED = 25
-			bullet.scale *= 3
 
 func player_is_see() -> bool:
 	

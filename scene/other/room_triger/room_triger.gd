@@ -3,7 +3,7 @@ extends Area3D
 
 func update_enemy(new_status) -> void:
 	for child in get_children():
-		if child is BaseEnemyClass:
+		if child is BaseEnemyClass or child is Enemy:
 			child.pl_status_update(new_status)
 
 

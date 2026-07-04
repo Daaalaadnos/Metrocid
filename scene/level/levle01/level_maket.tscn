@@ -366,14 +366,6 @@ radius = 4.0
 height = 369.09375
 sides = 10
 
-[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="zone1_1" unique_id=615502037]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -182.10156, -49)
-operation = 2
-flip_faces = true
-radius = 4.0
-height = 364.54688
-sides = 10
-
 [node name="CSGBox3D15" type="CSGBox3D" parent="zone1_1" unique_id=699737001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48.804916, 5)
 operation = 2

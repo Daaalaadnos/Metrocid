@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://7qq2auot6lb4"]
+
+[ext_resource type="Script" uid="uid://byjsc5v6mmi5c" path="res://scene/enemy/component_test/component/ec_cilde_enemy_manager/ec_cilde_enemy_manager.gd" id="1_s143l"]
+
+[node name="EC_cilde_enemy_manager" type="Node" unique_id=1780348987]
+script = ExtResource("1_s143l")

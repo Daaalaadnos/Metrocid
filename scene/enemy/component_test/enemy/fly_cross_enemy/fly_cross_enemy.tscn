@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bk46ht5qmrp47"]
+
+[ext_resource type="PackedScene" uid="uid://dbhaap73tyo6c" path="res://scene/enemy/component_test/enemy/bass_enemy/enemy.tscn" id="1_s187p"]
+[ext_resource type="Script" uid="uid://kxvre1rpvl4a" path="res://scene/bullet/res/bullet_res.gd" id="2_fbfki"]
+[ext_resource type="PackedScene" uid="uid://bl782qwa7n65y" path="res://scene/bullet/bullet_visual/player_aim_bullets.tscn" id="3_k1qvb"]
+[ext_resource type="PackedScene" uid="uid://bbtyrhbxdoxu4" path="res://scene/bullet/bass_bullet/bass_bullet.tscn" id="4_qx5rv"]
+[ext_resource type="Script" uid="uid://te0h2sxloqis" path="res://scene/enemy/res/enemy_res.gd" id="5_asgdj"]
+[ext_resource type="PackedScene" uid="uid://diidtkvxbbqss" path="res://scene/enemy/component_test/component/ec_fly_cross/ec_fly_cross.tscn" id="6_fomv8"]
+[ext_resource type="PackedScene" uid="uid://difwywbiv6lq8" path="res://scene/enemy/component_test/component/ec_stats_manager/ec_stats_manager.tscn" id="8_asgdj"]
+[ext_resource type="PackedScene" uid="uid://7qq2auot6lb4" path="res://scene/enemy/component_test/component/ec_cilde_enemy_manager/ec_cilde_enemy_manager.tscn" id="9_21jak"]
+[ext_resource type="PackedScene" uid="uid://bsyeo6h3leytq" path="res://scene/enemy/component_test/enemy/statick_shot_enemy/statick_shot_enemy.tscn" id="10_6in1u"]
+
+[sub_resource type="Resource" id="Resource_25ajv"]
+script = ExtResource("2_fbfki")
+visual_part_scene = ExtResource("3_k1qvb")
+metadata/_custom_type_script = "uid://kxvre1rpvl4a"
+
+[sub_resource type="Resource" id="Resource_a2vjr"]
+script = ExtResource("5_asgdj")
+HP = 200
+SPEED = 15.0
+bullet_scene = ExtResource("4_qx5rv")
+bullet_res = SubResource("Resource_25ajv")
+metadata/_custom_type_script = "uid://te0h2sxloqis"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qx5rv"]
+albedo_color = Color(0.6233625, 0.6233625, 0.3216907, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_21jak"]
+top_radius = 0.6376953
+bottom_radius = 0.6376953
+height = 0.4716797
+
+[node name="fly_cross_enemy" unique_id=1940006177 instance=ExtResource("1_s187p")]
+enemy_res = SubResource("Resource_a2vjr")
+
+[node name="MeshInstance3D" parent="." index="1" unique_id=1527656094]
+material_override = SubResource("StandardMaterial3D_qx5rv")
+mesh = SubResource("CylinderMesh_21jak")
+
+[node name="ec_fly_cross" parent="." index="5" unique_id=1732546695 instance=ExtResource("6_fomv8")]
+target_height = 5.0
+
+[node name="ground_cast" type="RayCast3D" parent="." index="6" unique_id=171406216]
+unique_name_in_owner = true
+target_position = Vector3(0, -3, 0)
+
+[node name="wall_cast" type="RayCast3D" parent="." index="7" unique_id=350195688]
+unique_name_in_owner = true
+target_position = Vector3(0, -3, 0)
+
+[node name="EC_stats_manager" parent="." index="8" unique_id=467628094 node_paths=PackedStringArray("areas") instance=ExtResource("8_asgdj")]
+areas = [NodePath("../take_damage")]
+
+[node name="EC_cilde_enemy_manager" parent="." index="9" unique_id=1780348987 node_paths=PackedStringArray("child_enemy") instance=ExtResource("9_21jak")]
+child_enemy = [NodePath("../statick_shot_enemy"), NodePath("../statick_shot_enemy2")]
+
+[node name="statick_shot_enemy" parent="." index="10" unique_id=1919237673 instance=ExtResource("10_6in1u")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.7, 0, 0)
+
+[node name="statick_shot_enemy2" parent="." index="11" unique_id=1098484551 instance=ExtResource("10_6in1u")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.7, 0, 0)

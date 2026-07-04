@@ -133,7 +133,8 @@ func  st_ph_attack(delta) -> void:
 		var collider = collision.get_collider()
 		if collider == GlobalData.player:
 			SignalHub.emit_signal('playr_make_damage',damage)
-		make_damage(collider)
+		else :
+			make_damage(collider)
 		change_state(State.DEAD)
 
 func  st_freez(delta) -> void:
