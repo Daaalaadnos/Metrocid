@@ -1,8 +1,7 @@
 [gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://ik4mdk36hjw4"]
 
-[ext_resource type="PackedScene" uid="uid://cb0a1paokdaql" path="res://scene/bullet/bullet_visual/player_laser_bullet.tscn" id="1_e0rp2"]
+[ext_resource type="Resource" uid="uid://4gyaavbjjgmw" path="res://scene/bullet/res/PL_Elektrik_bullet.tres" id="1_73cns"]
 [ext_resource type="Script" uid="uid://c6neg8abyy62m" path="res://scene/Player/weapon/weapon_res/weapon_stats/weapon_stars_res.gd" id="1_wuaw1"]
-[ext_resource type="PackedScene" uid="uid://cal3rypach271" path="res://scene/bullet/defolt_bulets/defolt_bulets.tscn" id="2_aw0pe"]
 
 [resource]
 script = ExtResource("1_wuaw1")
@@ -10,7 +9,6 @@ name = "Laser_Machine_Gun"
 is_unlocked = true
 damage = 7.0
 fire_rate = 0.07
-bullet_scene = ExtResource("2_aw0pe")
-bullet_vfx = ExtResource("1_e0rp2")
+bullet_res = ExtResource("1_73cns")
 bullet_speed = 30.0
 metadata/_custom_type_script = "uid://c6neg8abyy62m"

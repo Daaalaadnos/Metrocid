@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://mvq5rcllrlso" path="res://scene/Player/main/stats_manager.gd" id="16_vd63o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mabfd"]
-size = Vector3(0.8, 2, 0.8)
+size = Vector3(0.8, 1.6928711, 0.8)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fb6s1"]
 height = 40.0
@@ -61,6 +61,9 @@ shader_parameter/lens_distortion_strength = 0.0010000000475
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_vd63o"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_yf5fn"]
+size = Vector3(1, 1.7363281, 1)
+
 [node name="Player" type="CharacterBody3D" unique_id=1663602563]
 collision_layer = 2
 collision_mask = 5
@@ -74,7 +77,7 @@ unique_name_in_owner = true
 one_shot = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1788517609]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7001759, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85374033, 0)
 shape = SubResource("BoxShape3D_mabfd")
 
 [node name="head" type="Node3D" parent="." unique_id=1331048476]
@@ -162,4 +165,13 @@ texture = SubResource("CanvasTexture_vd63o")
 [node name="ability_manager" type="Node" parent="." unique_id=1900304865]
 script = ExtResource("16_mabfd")
 
+[node name="take_damage_area" type="Area3D" parent="." unique_id=997897843]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="take_damage_area" unique_id=1373303029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83517456, 0)
+shape = SubResource("BoxShape3D_yf5fn")
+
 [connection signal="timeout" from="Timers/step/step_timer" to="." method="_on_step_timer_timeout"]
+[connection signal="body_entered" from="take_damage_area" to="stats_manager" method="_on_take_damage_area_body_entered"]

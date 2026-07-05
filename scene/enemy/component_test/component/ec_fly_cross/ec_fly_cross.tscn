@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://diidtkvxbbqss"]
-
-[ext_resource type="Script" uid="uid://bjnqn52lin1pp" path="res://scene/enemy/component_test/component/ec_fly_cross/ec_fly_cross.gd" id="1_xdr24"]
-
-[node name="ec_fly_cross" type="Node" unique_id=1732546695]
-script = ExtResource("1_xdr24")

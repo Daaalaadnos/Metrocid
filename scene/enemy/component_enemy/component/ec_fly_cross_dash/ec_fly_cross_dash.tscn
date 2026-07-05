@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://d2m3k23sads5a"]
+
+[ext_resource type="Script" uid="uid://dr70b34fwxjq1" path="res://scene/enemy/component_enemy/component/ec_fly_cross_dash/ec_fly_cross_dash.gd" id="1_6n3xq"]
+
+[node name="ec_fly_cross_dash" type="Node" unique_id=222826156]
+script = ExtResource("1_6n3xq")
+
+[node name="dash_timer" type="Timer" parent="." unique_id=1794239057]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true

@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://bb10wvwnr13c1"]
-
-[ext_resource type="Script" uid="uid://qcpjok6sm8c5" path="res://scene/enemy/component_test/component/ec_base/ec_base.gd" id="1_m4x8q"]
-
-[node name="BassEc" type="Node" unique_id=1111325507]
-script = ExtResource("1_m4x8q")

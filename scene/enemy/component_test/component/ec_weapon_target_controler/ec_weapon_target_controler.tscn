@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://bqkh3aj6s2tcc"]
-
-[ext_resource type="Script" uid="uid://cjay5w0utlig7" path="res://scene/enemy/component_test/component/ec_weapon_target_controler/ec_weapon_target_controler.gd" id="1_b8am7"]
-
-[node name="EC_weapon_target_controler" type="Node" unique_id=181684004]
-script = ExtResource("1_b8am7")

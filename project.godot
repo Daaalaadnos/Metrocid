@@ -150,6 +150,8 @@ dash={
 3d_physics/layer_3="enemy"
 3d_physics/layer_4="bullet"
 3d_physics/layer_5="enemy_hit_zone"
+3d_physics/layer_6="player_bullet"
+3d_physics/layer_7="enemy_bullet"
 
 [physics]
 

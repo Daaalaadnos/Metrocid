@@ -14,7 +14,7 @@ var nex_state = null
 @onready var weapon_cont:Node3D = get_node('%weapon_cont')
 
 @export var bullet_scene:PackedScene
-@export var bullet_res:BulletPatam
+@export var bullet_res:BulletStats
 
 @export_category('weapon_stats')
 @export var damage:int = 10
@@ -134,7 +134,7 @@ func shot() -> void:
 		sprad_dir = sprad_dir.rotated(Vector3.UP, deg_to_rad(randf_range(-spred,spred)))
 		sprad_dir = sprad_dir.rotated(Vector3.RIGHT, deg_to_rad(randf_range(-spred,spred)))
 		bullet.global_position = %bullet_marker.global_position
-		bullet.set_start(bullet_res,sprad_dir,damage)
+		#bullet.set_start(WP_r,sprad_dir,target_node,damage)
 
 		spred = clampf(spred + spred_pre_shot,min_spred,max_spred)
 

@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://b3l3c4h1papqt"]
+
+[ext_resource type="PackedScene" uid="uid://dbhaap73tyo6c" path="res://scene/enemy/component_enemy/enemy/bass_enemy/enemy.tscn" id="1_ui3np"]
+[ext_resource type="Script" uid="uid://bat58i7sjnxry" path="res://scene/enemy/component_enemy/enemy/chese_enemy/chese_enemy.gd" id="2_tyinx"]
+[ext_resource type="Script" uid="uid://te0h2sxloqis" path="res://scene/enemy/res/enemy_res.gd" id="3_b0qqy"]
+[ext_resource type="Resource" uid="uid://bysw61i6ukk70" path="res://scene/bullet/res/defolt_enemy_bullet.tres" id="3_sntne"]
+[ext_resource type="PackedScene" uid="uid://dtxohlhimoo64" path="res://scene/enemy/component_enemy/component/ec_chese/ec_chese.tscn" id="3_wuev0"]
+[ext_resource type="PackedScene" uid="uid://bbtyrhbxdoxu4" path="res://scene/bullet/parent_bullet/bass_bullet.tscn" id="4_ntl61"]
+[ext_resource type="PackedScene" uid="uid://difwywbiv6lq8" path="res://scene/enemy/component_enemy/component/ec_stats_manager/ec_stats_manager.tscn" id="7_ntl61"]
+
+[sub_resource type="Resource" id="Resource_wuev0"]
+script = ExtResource("3_b0qqy")
+HP = 150
+SPEED = 3.0
+bullet_scene = ExtResource("4_ntl61")
+bullet_res = ExtResource("3_sntne")
+metadata/_custom_type_script = "uid://te0h2sxloqis"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74ks4"]
+albedo_color = Color(0.26700002, 0.4, 0.172, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1koqp"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0)
+
+[node name="Chese_enemy" unique_id=1940006177 instance=ExtResource("1_ui3np")]
+script = ExtResource("2_tyinx")
+enemy_res = SubResource("Resource_wuev0")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="body_cont" parent_id_path=PackedInt32Array(1875976887) index="0" unique_id=914320382]
+material_override = SubResource("StandardMaterial3D_74ks4")
+material_overlay = SubResource("StandardMaterial3D_1koqp")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="body_cont/CSGCombiner3D" index="0" unique_id=1311862531]
+
+[node name="EC_chese_manager" parent="." index="4" unique_id=1073523569 instance=ExtResource("3_wuev0")]
+
+[node name="EC_stats_manager" parent="." index="5" unique_id=467628094 node_paths=PackedStringArray("areas") instance=ExtResource("7_ntl61")]
+areas = [null]
+
+[node name="ground_cast" type="RayCast3D" parent="." index="6" unique_id=1234189801]
+target_position = Vector3(0, -3, 0)

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyRes" format=3 uid="uid://bmx4vfopcckyh"]
 
 [ext_resource type="Resource" uid="uid://bysw61i6ukk70" path="res://scene/bullet/res/defolt_enemy_bullet.tres" id="1_4gvby"]
-[ext_resource type="PackedScene" uid="uid://cal3rypach271" path="res://scene/bullet/defolt_bulets/defolt_bulets.tscn" id="1_pfivc"]
+[ext_resource type="PackedScene" uid="uid://cal3rypach271" path="res://scene/bullet/Elektrik_plasm_bullet_scene/Elektrik_plasm_bullet.tscn" id="1_pfivc"]
 [ext_resource type="Script" uid="uid://te0h2sxloqis" path="res://scene/enemy/res/enemy_res.gd" id="1_xkikw"]
 
 [resource]

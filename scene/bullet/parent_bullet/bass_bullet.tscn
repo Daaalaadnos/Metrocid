@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bbtyrhbxdoxu4"]
+
+[ext_resource type="Script" uid="uid://c3timcktv1bq7" path="res://scene/bullet/parent_bullet/bass_bullet.gd" id="1_o02i5"]
+
+[node name="BassBullet" type="CharacterBody3D" unique_id=171724009 node_paths=PackedStringArray("audion_pl_cont")]
+collision_layer = 8
+script = ExtResource("1_o02i5")
+audion_pl_cont = NodePath("audio_pl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=291462547]
+
+[node name="audio_pl" type="Node3D" parent="." unique_id=958444740]
+
+[node name="timers" type="Node" parent="." unique_id=1499029250]
+
+[node name="life_timer" type="Timer" parent="timers" unique_id=267332042]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="timers/life_timer" to="." method="_on_life_timer_timeout"]

@@ -23,6 +23,5 @@ var spred:float
 @export var aim_assist_power_mod:float = 20.0
 
 @export_category('bullet_stats')
-@export var bullet_scene:PackedScene
-@export var bullet_vfx:PackedScene
+@export var bullet_res:BulletStats
 @export var bullet_speed:float = 10

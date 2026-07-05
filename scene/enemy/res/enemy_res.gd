@@ -13,7 +13,7 @@ class_name EnemyRes
 
 @export_category('weapon')
 @export var bullet_scene:PackedScene
-@export var bullet_res:BulletPatam
+@export var bullet_res:BulletStats
 @export var damage:int = 10
 @export var fire_rite:float = 1.0
 @export var bullet_in_shot:int = 1

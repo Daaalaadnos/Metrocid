@@ -2,6 +2,8 @@ extends Node
 
 var PR:PlRes
 
+
+
 func _ready() -> void:
 	PR = GlobalData.pl_res
 	SignalHub.playr_make_damage.connect(get_damage)
@@ -27,3 +29,8 @@ func get_damage(damage) -> void:
 		PR.hp = max(PR.hp + damage_over_shild,0)
 		
 	%shild_delay_timer.start(PR.shild_restore_delay)
+
+
+func _on_take_damage_area_body_entered(body: Node3D) -> void:
+	if body is BaseBullet:
+		get_damage(body.damage)

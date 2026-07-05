@@ -4,12 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://rt28u42toot1" path="res://scene/vfx/stazis_zone/stazis_zone.tscn" id="2_kfsjn"]
 [ext_resource type="PackedScene" uid="uid://b6dl8sxi4pa88" path="res://scene/level/levle01/level_maket.tscn" id="2_xqpvw"]
 [ext_resource type="PackedScene" uid="uid://bj1vo1ccb37xi" path="res://scene/other/huck_point/huck_point.tscn" id="4_13t6v"]
-[ext_resource type="PackedScene" uid="uid://v4sidcl1o6m3" path="res://scene/enemy/turret/turret.tscn" id="5_4yico"]
 [ext_resource type="PackedScene" uid="uid://bhuxayq8la0op" path="res://scene/other/room_triger/room_triger.tscn" id="5_50ugt"]
 [ext_resource type="PackedScene" uid="uid://bn5dox1rmnbmh" path="res://scene/other/wave_spawner/wave_spawner.tscn" id="10_4lm07"]
 [ext_resource type="PackedScene" uid="uid://dkeja3jk65u6v" path="res://scene/other/pick_item/pick_item.tscn" id="10_yxgvu"]
 [ext_resource type="Resource" uid="uid://cw0sif22rwuol" path="res://scene/Player/ability/huck_manager/huck.tres" id="11_h1cn6"]
-[ext_resource type="PackedScene" uid="uid://bk2swfg0a30vy" path="res://scene/enemy/sphere_enemy/sphere_enemy.tscn" id="11_rrgpa"]
 [ext_resource type="PackedScene" uid="uid://dysul441d0vqq" path="res://scene/other/lock_dore/lock_dore.tscn" id="11_yxgvu"]
 
 [sub_resource type="Environment" id="Environment_6nl0e"]
@@ -273,33 +271,12 @@ transform = Transform3D(1, 0, 0, 0, -5.9604645e-08, -0.99999994, 0, 0.99999994, 
 transform = Transform3D(1, 0, 0, 0, 1, 2.202708e-12, 0, -2.202708e-12, 1, 1, 1.9999847, -18.000256)
 shape = SubResource("BoxShape3D_g4v7s")
 
-[node name="turret" parent="zone1_koridor/enemy/zone2" unique_id=841492306 instance=ExtResource("5_4yico")]
-transform = Transform3D(1, 0, 0, 0, 0.9999998, 7.1054274e-15, 0, -7.1054274e-15, 0.9999998, 0, 0, -9)
-
-[node name="turret4" parent="zone1_koridor/enemy/zone2" unique_id=43050140 instance=ExtResource("5_4yico")]
-transform = Transform3D(1, 0, 0, 0, -0.99999964, 8.7422734e-08, 0, -8.7422734e-08, -0.99999964, 0, 4, -19.999992)
-
-[node name="turret3" parent="zone1_koridor/enemy/zone2" unique_id=417869993 instance=ExtResource("5_4yico")]
-transform = Transform3D(0.78914917, 0.0018265408, -0.61419886, 0.04736728, 0.9968361, 0.06382363, 0.61237204, -0.0794593, 0.78656566, -16, 0, -12)
-
-[node name="turret2" parent="zone1_koridor/enemy/zone2" unique_id=1505157412 instance=ExtResource("5_4yico")]
-transform = Transform3D(1, 0, 0, 0, -0.9999997, 1.192093e-07, 0, -1.192093e-07, -0.9999997, 16, 4, -11)
-
 [node name="zone3" parent="zone1_koridor/enemy" unique_id=1009401619 instance=ExtResource("5_50ugt")]
 transform = Transform3D(1, 0, 0, 0, -5.9604645e-08, -0.99999994, 0, 0.99999994, -5.9604645e-08, 116, -5, -34)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="zone1_koridor/enemy/zone3" unique_id=760532893]
 transform = Transform3D(1, 0, 0, 0, 0.999996, 2.7959857e-12, 0, -2.7959857e-12, 0.999996, -0.5, 6.999901, 10.999821)
 shape = SubResource("BoxShape3D_tvy4v")
-
-[node name="turret" parent="zone1_koridor/enemy/zone3" unique_id=461637716 instance=ExtResource("5_4yico")]
-transform = Transform3D(-4.371139e-08, 0.99999994, -5.9604645e-08, -0.9999997, -4.3711367e-08, 5.9604645e-08, 5.9604645e-08, 5.960463e-08, 0.99999964, -3, -7, 8.999998)
-
-[node name="turret2" parent="zone1_koridor/enemy/zone3" unique_id=1289951012 instance=ExtResource("5_4yico")]
-transform = Transform3D(-4.371139e-08, 0.99999994, -5.9604645e-08, -0.99999964, -4.3711363e-08, 5.9604645e-08, 5.9604645e-08, 5.9604627e-08, 0.9999996, -3, 11, 8.999996)
-
-[node name="turret3" parent="zone1_koridor/enemy/zone3" unique_id=2109333468 instance=ExtResource("5_4yico")]
-transform = Transform3D(-4.3711356e-08, -0.9999999, 5.9604634e-08, 0.9999994, -4.3711395e-08, 5.960459e-08, -5.9604595e-08, 5.9604613e-08, 0.9999994, 2, 26, 8.999992)
 
 [node name="arena1" type="Node3D" parent="zone1_koridor/enemy" unique_id=376644127]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 0, 26)
@@ -314,36 +291,9 @@ shape = SubResource("BoxShape3D_yf5fn")
 
 [node name="wave1" type="Node3D" parent="zone1_koridor/enemy/arena1/Wave_spawner" unique_id=415979291]
 
-[node name="Sphere_enemy" parent="zone1_koridor/enemy/arena1/Wave_spawner/wave1" unique_id=1429829728 instance=ExtResource("11_rrgpa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -16, 10)
-
-[node name="Sphere_enemy2" parent="zone1_koridor/enemy/arena1/Wave_spawner/wave1" unique_id=938440239 instance=ExtResource("11_rrgpa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -16, 10)
-
 [node name="wave2" type="Node3D" parent="zone1_koridor/enemy/arena1/Wave_spawner" unique_id=512464365]
 
-[node name="Sphere_enemy3" parent="zone1_koridor/enemy/arena1/Wave_spawner/wave2" unique_id=1697320406 instance=ExtResource("11_rrgpa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3, 10)
-
-[node name="turret" parent="zone1_koridor/enemy/arena1/Wave_spawner/wave2" unique_id=41431499 instance=ExtResource("5_4yico")]
-transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 13, -15, -12)
-
-[node name="turret2" parent="zone1_koridor/enemy/arena1/Wave_spawner/wave2" unique_id=154022421 instance=ExtResource("5_4yico")]
-transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, -11, -15, -12)
-
 [node name="wave3" type="Node3D" parent="zone1_koridor/enemy/arena1/Wave_spawner" unique_id=414778739]
-
-[node name="Sphere_enemy3" parent="zone1_koridor/enemy/arena1/Wave_spawner/wave3" unique_id=354212731 instance=ExtResource("11_rrgpa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -3, 3)
-
-[node name="Sphere_enemy4" parent="zone1_koridor/enemy/arena1/Wave_spawner/wave3" unique_id=1188429247 instance=ExtResource("11_rrgpa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -3, 1)
-
-[node name="Sphere_enemy11" parent="zone1_koridor/enemy/arena1/Wave_spawner/wave3" unique_id=1061803531 instance=ExtResource("11_rrgpa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -3, 14)
-
-[node name="turret3" parent="zone1_koridor/enemy/arena1/Wave_spawner/wave3" unique_id=1165778207 instance=ExtResource("5_4yico")]
-transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 13, -15, 11)
 
 [node name="door" type="Node3D" parent="zone1_koridor/enemy/arena1" unique_id=194186962]
 
@@ -365,18 +315,6 @@ shape = SubResource("BoxShape3D_57qmd")
 
 [node name="wawe1" type="Node3D" parent="zone1_koridor/zone1_3/Wave_spawner" unique_id=892225076]
 
-[node name="Sphere_enemy" parent="zone1_koridor/zone1_3/Wave_spawner/wawe1" unique_id=97792139 instance=ExtResource("11_rrgpa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40)
-
-[node name="Sphere_enemy2" parent="zone1_koridor/zone1_3/Wave_spawner/wawe1" unique_id=556578933 instance=ExtResource("11_rrgpa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -49, 11)
-
-[node name="Sphere_enemy3" parent="zone1_koridor/zone1_3/Wave_spawner/wawe1" unique_id=188235101 instance=ExtResource("11_rrgpa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -11, -21)
-
-[node name="Sphere_enemy4" parent="zone1_koridor/zone1_3/Wave_spawner/wawe1" unique_id=853144591 instance=ExtResource("11_rrgpa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, -16, -21)
-
 [node name="Wave_spawner2" parent="zone1_koridor/zone1_3" unique_id=956436415 node_paths=PackedStringArray("waves") instance=ExtResource("10_4lm07")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 44, -36)
 waves = [NodePath("wawe1")]
@@ -386,18 +324,6 @@ transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70
 shape = SubResource("BoxShape3D_57qmd")
 
 [node name="wawe1" type="Node3D" parent="zone1_koridor/zone1_3/Wave_spawner2" unique_id=1801878568]
-
-[node name="Sphere_enemy" parent="zone1_koridor/zone1_3/Wave_spawner2/wawe1" unique_id=809086342 instance=ExtResource("11_rrgpa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40)
-
-[node name="Sphere_enemy2" parent="zone1_koridor/zone1_3/Wave_spawner2/wawe1" unique_id=1920797809 instance=ExtResource("11_rrgpa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -49, 11)
-
-[node name="Sphere_enemy3" parent="zone1_koridor/zone1_3/Wave_spawner2/wawe1" unique_id=306608014 instance=ExtResource("11_rrgpa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -11, -21)
-
-[node name="Sphere_enemy4" parent="zone1_koridor/zone1_3/Wave_spawner2/wawe1" unique_id=161963118 instance=ExtResource("11_rrgpa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, -16, -21)
 
 [node name="other" type="Node3D" parent="." unique_id=1164926232]
 

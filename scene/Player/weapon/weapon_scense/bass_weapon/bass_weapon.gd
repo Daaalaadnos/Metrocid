@@ -105,21 +105,24 @@ func st_charge(delta) -> void:
 		change_state(State.SHOT)
 
 func shot() -> void:
-	if WpRes.bullet_scene == null:
+	if WpRes.bullet_res == null:
 		return
+
 	
 	for a in range(WpRes.bullet_in_shot):
 		add_bullet(%bullet_marker.global_position)
 
 func add_bullet(pos:Vector3):
-	var bullet:BaseBullet = WpRes.bullet_scene.instantiate()
+	var a = WpRes.bullet_res.bullet_scene
+	var bullet = a.instantiate()
 	get_tree().current_scene.add_child(bullet)
+	
 
-	bullet.global_position = pos
 	set_bullet_data(bullet)
+	bullet.global_position = pos
 	
 func set_bullet_data(bullet:BaseBullet):
-	bullet.set_start(spread_dir(),WpRes.damage,WpRes.bullet_speed,WpRes.bullet_vfx)
+	bullet.set_start(spread_dir(),WpRes.bullet_res,target_node)
 
 func spread_dir() -> Vector3:
 			# Считаем ВЕКТОР НАПРАВЛЕНИЯ от дула до точки прицеливания

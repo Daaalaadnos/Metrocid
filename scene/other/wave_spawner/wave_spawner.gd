@@ -45,7 +45,7 @@ func start_next_wave() -> void:
 	alive_enemies_in_wave = children.size()
 	
 	for child in children:
-		if child is BaseEnemyClass:
+		if child is Enemy:
 			# Подмешиваем игрока, чтобы они знали кого атаковать
 			child.pl_status_update(true)  #wake_up(player, self) 
 			

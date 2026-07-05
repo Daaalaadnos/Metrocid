@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dvqejt1ew5ly7" path="res://scene/Player/weapon/weapon_scense/laser_aim_gun/laser_aim_gun.tscn" id="7_5ddy2"]
 [ext_resource type="Resource" uid="uid://cjnhas78ch2vc" path="res://scene/Player/weapon/weapon_res/weapon_stats/WS_laser_aim_gun.tres" id="7_ycb5k"]
 [ext_resource type="Resource" uid="uid://ik4mdk36hjw4" path="res://scene/Player/weapon/weapon_res/weapon_stats/WS_Laser_Machine_Gun.tres" id="10_ejb8r"]
+[ext_resource type="Resource" uid="uid://4gyaavbjjgmw" path="res://scene/bullet/res/PL_Elektrik_bullet.tres" id="14_bup02"]
 
 [sub_resource type="Resource" id="Resource_5ddy2"]
 script = ExtResource("2_pq37n")
@@ -35,6 +36,7 @@ metadata/_custom_type_script = "uid://crfbtns47xrlq"
 
 [sub_resource type="Resource" id="Resource_i3xxk"]
 script = ExtResource("6_ycb5k")
+bullet_res = ExtResource("14_bup02")
 metadata/_custom_type_script = "uid://c6neg8abyy62m"
 
 [sub_resource type="Resource" id="Resource_f384y"]

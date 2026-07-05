@@ -1,0 +1,318 @@
+[gd_scene format=3 uid="uid://djrlm12m7167d"]
+
+[ext_resource type="Script" uid="uid://dsk6s4sbdii8m" path="res://scene/test_level/other/text_enemy/test_enemy.gd" id="1_14kee"]
+[ext_resource type="AudioStream" uid="uid://5i7tn5pi7jol" path="res://export/audio/ice_sphere_take_hit.wav" id="2_ckhne"]
+[ext_resource type="PackedScene" uid="uid://cal3rypach271" path="res://scene/bullet/Elektrik_plasm_bullet_scene/Elektrik_plasm_bullet.tscn" id="2_h8ykg"]
+[ext_resource type="AudioStream" uid="uid://cy4a1vrod1by1" path="res://export/audio/ice_sphere_dead.wav" id="3_h8ykg"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7qp81"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ihv6u"]
+radius = 1.0
+
+[sub_resource type="Gradient" id="Gradient_14kee"]
+colors = PackedColorArray(2.055, 2.055, 2.055, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7fhfl"]
+gradient = SubResource("Gradient_14kee")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ckhne"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_7fhfl")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_h8ykg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.87108004, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3m0hg"]
+curve = SubResource("Curve_h8ykg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p4t7e"]
+lifetime_randomness = 0.24
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 3.0
+initial_velocity_max = 3.5
+gravity = Vector3(0, 0, 0)
+scale_min = 0.049999997
+scale_max = 0.099999994
+color = Color(1.433, 1.015, 0.696, 1)
+alpha_curve = SubResource("CurveTexture_3m0hg")
+
+[sub_resource type="QuadMesh" id="QuadMesh_6uqk2"]
+
+[sub_resource type="Gradient" id="Gradient_8nx7n"]
+offsets = PackedFloat32Array(0.7987805, 0.9268293, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1oeh8"]
+gradient = SubResource("Gradient_8nx7n")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p2yuw"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_1oeh8")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+stencil_flags = 2
+
+[sub_resource type="Curve" id="Curve_s7xkf"]
+_data = [Vector2(0.252809, 1), 0.0, 0.0, 0, 0, Vector2(0.83623683, 0.0064285994), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xb13k"]
+curve = SubResource("Curve_s7xkf")
+
+[sub_resource type="Gradient" id="Gradient_dmw23"]
+colors = PackedColorArray(1.5565991, 1.5565991, 1.5565991, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uu3lo"]
+gradient = SubResource("Gradient_dmw23")
+
+[sub_resource type="Curve" id="Curve_6mqmh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.64111495, 0.0064285994), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vj0u6"]
+curve = SubResource("Curve_6mqmh")
+
+[sub_resource type="Curve" id="Curve_hpdlk"]
+_data = [Vector2(0, 0), 0.0, 4.4615393, 0, 0, Vector2(1, 1), 1.6744187, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_b3esm"]
+curve = SubResource("Curve_hpdlk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g1x4x"]
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.5
+scale_curve = SubResource("CurveTexture_b3esm")
+color = Color(1.433, 1.015, 0.696, 1)
+color_ramp = SubResource("GradientTexture1D_uu3lo")
+alpha_curve = SubResource("CurveTexture_xb13k")
+emission_curve = SubResource("CurveTexture_vj0u6")
+
+[sub_resource type="QuadMesh" id="QuadMesh_k2t8p"]
+
+[sub_resource type="Gradient" id="Gradient_q7wul"]
+offsets = PackedFloat32Array(0, 0.6280488, 0.9085366, 1)
+colors = PackedColorArray(1, 1, 1, 0.16862746, 0.95, 0.95, 0.95, 0.38039216, 0.65073967, 0.65073967, 0.65073967, 0.65073967, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3mspg"]
+gradient = SubResource("Gradient_q7wul")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0.1)
+metadata/_snap_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4n6bi"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.703, 0.33999997, 1)
+albedo_texture = SubResource("GradientTexture2D_3mspg")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_a4f1q"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ckhne"]
+size = Vector2(2, 2)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ckhne"]
+radius = 0.8
+height = 1.6
+
+[sub_resource type="SphereMesh" id="SphereMesh_5vt4q"]
+radius = 1.0
+height = 2.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g4v7s"]
+random_pitch = 1.122462
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("2_ckhne")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yf5fn"]
+random_pitch = 1.122462
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("3_h8ykg")
+
+[sub_resource type="Animation" id="Animation_ckhne"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body_cont:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body_cont:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_h8ykg"]
+resource_name = "pulse"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body_cont:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.5, 1.5, 1.5), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body_cont:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.70000005, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.2, 0, 0), Vector3(0.15, -0.2, 0), Vector3(0.075, -0.1, 0.2), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3m0hg"]
+_data = {
+&"RESET": SubResource("Animation_ckhne"),
+&"pulse": SubResource("Animation_h8ykg")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g4v7s"]
+radius = 30.0
+
+[node name="Test_enemy" type="CharacterBody3D" unique_id=910593581 groups=["enemy"]]
+collision_layer = 4
+script = ExtResource("1_14kee")
+HP = 20
+bullet_scene = ExtResource("2_h8ykg")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1782880122]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=196941539]
+shape = SubResource("SphereShape3D_7qp81")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=538277325]
+shape = SubResource("SphereShape3D_ihv6u")
+
+[node name="Timer" type="Timer" parent="." unique_id=1126098472]
+wait_time = 2.0
+autostart = true
+
+[node name="vfx" type="Node3D" parent="." unique_id=1908714100]
+
+[node name="sparks" type="GPUParticles3D" parent="vfx" unique_id=1305013374]
+material_override = SubResource("StandardMaterial3D_ckhne")
+emitting = false
+amount = 50
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.97
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_p4t7e")
+draw_pass_1 = SubResource("QuadMesh_6uqk2")
+
+[node name="vfx_shot_spark" type="GPUParticles3D" parent="vfx" unique_id=1867680596]
+material_override = SubResource("StandardMaterial3D_p2yuw")
+emitting = false
+amount = 1
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.61
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_g1x4x")
+draw_pass_1 = SubResource("QuadMesh_k2t8p")
+
+[node name="body_cont" type="Node3D" parent="." unique_id=938648431]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="body_cont" unique_id=513997570]
+material_override = SubResource("StandardMaterial3D_4n6bi")
+mesh = SubResource("QuadMesh_a4f1q")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="body_cont" unique_id=1753411967]
+material_override = SubResource("StandardMaterial3D_4n6bi")
+mesh = SubResource("QuadMesh_ckhne")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="body_cont" unique_id=333644535]
+material_override = SubResource("StandardMaterial3D_4n6bi")
+mesh = SubResource("SphereMesh_ckhne")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="body_cont" unique_id=869911526]
+material_override = SubResource("StandardMaterial3D_4n6bi")
+mesh = SubResource("SphereMesh_5vt4q")
+
+[node name="take_hit" type="AudioStreamPlayer3D" parent="." unique_id=1528590515]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_g4v7s")
+volume_db = 50.0
+max_polyphony = 20
+
+[node name="dead" type="AudioStreamPlayer3D" parent="." unique_id=1405985617]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_yf5fn")
+volume_db = 25.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1223136153]
+libraries/ = SubResource("AnimationLibrary_3m0hg")
+autoplay = &"pulse"
+
+[node name="fire_rate" type="Timer" parent="." unique_id=802094615]
+one_shot = true
+
+[node name="Area3D2" type="Area3D" parent="." unique_id=1411019339]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" unique_id=1430616970]
+shape = SubResource("SphereShape3D_g4v7s")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_2_body_entered"]
+[connection signal="body_exited" from="Area3D2" to="." method="_on_area_3d_2_body_exited"]

@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://dtxohlhimoo64"]
-
-[ext_resource type="Script" uid="uid://cr6in3fngm31c" path="res://scene/enemy/component_test/component/ec_chese/ec_chese.gd" id="1_tdupg"]
-
-[node name="EC_chese_manager" type="Node" unique_id=1073523569]
-script = ExtResource("1_tdupg")
