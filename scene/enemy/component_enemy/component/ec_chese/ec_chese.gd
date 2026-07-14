@@ -1,11 +1,16 @@
 extends EC_Base
-# Для наземных мобов
+
 
 enum State {DREAM, CHESE}
 var state: State
 
+@export var min_dist:float = 5.0
+
 func _physics_process(delta: float) -> void:
 	if player == null: return
+	
+	if not enemy.is_on_floor():
+		enemy.velocity += enemy.get_gravity() * delta
 	
 	match state:
 		State.DREAM:
@@ -23,6 +28,11 @@ func _physics_process(delta: float) -> void:
 			else:
 				target_point = player.global_position
 			
+			if enemy.global_position.distance_to(player.global_position) <= min_dist:
+				enemy.velocity.x = lerp(enemy.velocity.x, 0.0, delta * 5.0)
+				enemy.velocity.z = lerp(enemy.velocity.z, 0.0, delta * 5.0)
+				return
+
 			# Наземный смотрит ровно перед собой
 			var look_target = target_point
 			look_target.y = enemy.global_position.y
@@ -31,9 +41,10 @@ func _physics_process(delta: float) -> void:
 			
 			var direction = enemy.global_position.direction_to(target_point)
 			
-			if not enemy.is_on_floor():
-				enemy.velocity += enemy.get_gravity() * delta
 			
 			if direction:
 				enemy.velocity.x = lerp(enemy.velocity.x, direction.x * enemy_res.SPEED, delta * 5.0)
 				enemy.velocity.z = lerp(enemy.velocity.z, direction.z * enemy_res.SPEED, delta * 5.0)
+			else:
+				enemy.velocity.x = lerp(enemy.velocity.x, 0.0, delta * 5.0)
+				enemy.velocity.z = lerp(enemy.velocity.z, 0.0, delta * 5.0)

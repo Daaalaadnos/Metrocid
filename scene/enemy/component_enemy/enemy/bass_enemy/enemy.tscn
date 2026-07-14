@@ -21,6 +21,7 @@ shape = SubResource("SphereShape3D_g4v7s")
 
 [node name="body_cont" type="Node3D" parent="." unique_id=1875976887]
 script = ExtResource("2_tuk4i")
+flash_color = Color(0.8193202, 0.6146891, 0.23466024, 0.24705882)
 
 [node name="player_detected_area" type="Area3D" parent="." unique_id=993267055]
 unique_name_in_owner = true

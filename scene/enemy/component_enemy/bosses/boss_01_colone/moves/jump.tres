@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ColoneBossAttack" format=3 uid="uid://ccalsp8xl1osp"]
+
+[ext_resource type="PackedScene" uid="uid://dt7g8js73r3n1" path="res://scene/bullet/mine_exp_bullet/mine_exp_bullet.tscn" id="1_2ss60"]
+[ext_resource type="Script" uid="uid://cnfra4vikoqmn" path="res://scene/enemy/component_enemy/bosses/boss_01_colone/moves/colone_boss_attack_res.gd" id="1_dxtms"]
+
+[resource]
+script = ExtResource("1_dxtms")
+attack_name = "jump"
+move_time = 3
+can_jump = true
+jump_time_mod = 0.7
+max_jump_height = 5.0
+colone_marker = NodePath("colone_cont/mid_colon_cont")
+can_shot = true
+time_to_shot = 2
+damage = 40
+bullet_speed = 0.7
+spred = 30002.0
+fire_rait = 20.0
+bullet_in_shot = 30
+bullet_pull = 30
+shot_marker = NodePath("attack_spawn_marker")
+bullet_scene = ExtResource("1_2ss60")
+metadata/_custom_type_script = "uid://cnfra4vikoqmn"

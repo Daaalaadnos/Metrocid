@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://blwf2187kd7v" path="res://scene/Player/weapon/weapon_scense/bass_weapon/bass_weapon.gd" id="1_jada4"]
 [ext_resource type="Script" uid="uid://dbkg41g4xxu12" path="res://scene/Player/weapon/ui/aim.gd" id="2_1imua"]
 [ext_resource type="Script" uid="uid://bxe08koe1yrsy" path="res://scene/Player/weapon/weapon_scense/bass_weapon/vfx.gd" id="2_s7834"]
+[ext_resource type="Script" uid="uid://c87h4rcqfvro" path="res://scene/Player/weapon/weapon_scense/bass_weapon/weapon_sweem.gd" id="4_f384y"]
 
 [sub_resource type="Animation" id="Animation_fb6s1"]
 length = 0.001
@@ -142,6 +143,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2555605)
 
 [node name="anim_container" type="Node3D" parent="container" unique_id=1031952059]
+unique_name_in_owner = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="container/anim_container" unique_id=46814845]
 visible = false
@@ -160,7 +162,6 @@ script = ExtResource("2_s7834")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=851247255]
 libraries/ = SubResource("AnimationLibrary_ba7lx")
-autoplay = &"idle"
 playback_default_blend_time = 0.2
 
 [node name="timers" type="Node" parent="." unique_id=1754419544]
@@ -229,3 +230,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_f384y")
 expand_mode = 1
+
+[node name="weapon_sweem" type="Node" parent="." unique_id=977584863]
+script = ExtResource("4_f384y")
+speed = 5.0

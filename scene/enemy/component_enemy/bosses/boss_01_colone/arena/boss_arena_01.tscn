@@ -1,0 +1,197 @@
+[gd_scene format=3 uid="uid://cepaajyrqfyxp"]
+
+[ext_resource type="PackedScene" uid="uid://duuu8fkk84i0d" path="res://scene/enemy/component_enemy/bosses/boss_01_colone/boss_01_colone.tscn" id="1_jlheq"]
+[ext_resource type="Script" uid="uid://b07e1r0x6bj40" path="res://scene/enemy/component_enemy/bosses/boss_01_colone/arena/boss_arena_01.gd" id="1_kea1p"]
+[ext_resource type="Texture2D" uid="uid://b174bcm086x2a" path="res://export/texture/iron_wall_plate002.png" id="3_m3ep8"]
+[ext_resource type="PackedScene" uid="uid://buas6fk85bv77" path="res://scene/enemy/component_enemy/bosses/boss_01_colone/arena/colone/colone.tscn" id="4_m3ep8"]
+[ext_resource type="PackedScene" uid="uid://dfdqpdp7eoao8" path="res://scene/Player/main/player.tscn" id="6_yhxef"]
+
+[sub_resource type="Environment" id="Environment_d8awl"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 1
+tonemap_mode = 3
+ssao_enabled = true
+ssao_radius = 9.76
+ssil_radius = 16.0
+ssil_intensity = 9.65
+sdfgi_bounce_feedback = 0.0
+fog_enabled = true
+fog_light_color = Color(0.3417386, 0.41842598, 0.4906953, 1)
+fog_height = -30.0
+fog_height_density = 0.01
+volumetric_fog_density = 0.03
+volumetric_fog_albedo = Color(0.1291287, 0.23513559, 0.31506446, 1)
+volumetric_fog_emission = Color(0.11372549, 0.15294118, 0.18431373, 1)
+volumetric_fog_emission_energy = 5.0
+volumetric_fog_gi_inject = 0.03
+volumetric_fog_length = 32.0
+volumetric_fog_ambient_inject = 16.0
+adjustment_enabled = true
+adjustment_brightness = 0.9
+adjustment_contrast = 1.1
+adjustment_saturation = 1.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1koqp"]
+albedo_color = Color(0.73483044, 0.84962773, 0.92781854, 1)
+albedo_texture = ExtResource("3_m3ep8")
+uv1_scale = Vector3(0.165, 0.165, 0.165)
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yykt3"]
+size = Vector3(62, 1, 67)
+
+[node name="boss_arena01" type="Node3D" unique_id=1932197578 node_paths=PackedStringArray("boss")]
+script = ExtResource("1_kea1p")
+boss = NodePath("boss01_colone")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1188132667]
+environment = SubResource("Environment_d8awl")
+
+[node name="boss01_colone" parent="." unique_id=1940006177 node_paths=PackedStringArray("start_colon", "center_colon_cont", "midl_colon_cont", "far_colon_cont") instance=ExtResource("1_jlheq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33, 31)
+start_colon = NodePath("../colone_cont/centre_low_colon_cont/colone9")
+center_colon_cont = NodePath("../colone_cont/low_colon_cont")
+midl_colon_cont = NodePath("../colone_cont/mid_colon_cont")
+far_colon_cont = NodePath("../colone_cont/far_colon_cont")
+
+[node name="attack_spawn_marker" type="Marker3D" parent="." unique_id=191949687]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 24.565, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=178986743]
+material_override = SubResource("StandardMaterial3D_1koqp")
+cast_shadow = 0
+use_collision = true
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=1453752568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.0702915, 0)
+radius = 46.0
+height = 14.436523
+sides = 10
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D/CSGCylinder3D2" unique_id=1959113242]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.3506203, 0)
+operation = 2
+radius = 24.0
+height = 15.268066
+sides = 10
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=1169388994]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.875, 0)
+radius = 64.0
+height = 62.75
+sides = 10
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D/CSGCylinder3D3" unique_id=207788790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.755249, 0)
+operation = 2
+radius = 26.5
+height = 61.510498
+sides = 10
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="CSGCombiner3D/CSGCylinder3D3" unique_id=1173636435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27.177399, 0)
+operation = 2
+radius = 12.0
+height = 16.682617
+sides = 10
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGCombiner3D/CSGCylinder3D3" unique_id=485577985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.5, 0)
+operation = 2
+radius = 33.05078
+height = 33.0
+sides = 10
+
+[node name="Area3D" type="Area3D" parent="." unique_id=853602883]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1254395114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18, 0)
+shape = SubResource("BoxShape3D_yykt3")
+
+[node name="colone_cont" type="Node3D" parent="." unique_id=1151340578]
+
+[node name="centre_low_colon_cont" type="Node3D" parent="colone_cont" unique_id=1747896368]
+unique_name_in_owner = true
+
+[node name="colone9" parent="colone_cont/centre_low_colon_cont" unique_id=1037559452 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -9.294264, 0)
+
+[node name="low_colon_cont" type="Node3D" parent="colone_cont" unique_id=1985002816]
+unique_name_in_owner = true
+
+[node name="colone" parent="colone_cont/low_colon_cont" unique_id=513064384 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(0.840665, 0.5415557, 0, -0.5415557, 0.840665, 0, 0, 0, 1, -23.706675, 6.7649717, 0)
+
+[node name="colone2" parent="colone_cont/low_colon_cont" unique_id=1654749627 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(-0.840665, -0.5415557, 5.9604645e-08, -0.5415557, 0.840665, 0, -2.9802322e-08, -1.4901161e-08, -1.0000001, 24.293325, 6.7649717, 0)
+
+[node name="colone3" parent="colone_cont/low_colon_cont" unique_id=409917197 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(-3.6746634e-08, -2.3672152e-08, 1, -0.5415557, 0.840665, 0, -0.840665, -0.5415557, -4.371139e-08, 0.29332647, 6.7649717, 24)
+
+[node name="colone4" parent="colone_cont/low_colon_cont" unique_id=391615823 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(6.944312e-09, 8.770991e-09, -1.0000001, -0.5415557, 0.840665, 1.7763566e-15, 0.840665, 0.5415557, -1.5893253e-08, 0.29332438, 6.7649717, -24)
+
+[node name="mid_colon_cont" type="Node3D" parent="colone_cont" unique_id=1690214050]
+unique_name_in_owner = true
+transform = Transform3D(1.445, 0, 0, 0, 1.445, 0, 0, 0, 1.445, 0, 4, 0)
+
+[node name="colone" parent="colone_cont/mid_colon_cont" unique_id=461534237 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(0.53877056, 0.8424522, 0, -0.8424522, 0.53877056, 0, 0, 0, 0.9999995, -19.00346, 9.424727, 0)
+
+[node name="colone2" parent="colone_cont/mid_colon_cont" unique_id=1553303960 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(-0.53877056, -0.8424522, -8.742274e-08, -0.8424522, 0.53877056, -3.6060907e-15, 4.7100812e-08, 7.3649495e-08, -0.99999946, 19.003, 9.424999, 0)
+
+[node name="colone3" parent="colone_cont/mid_colon_cont" unique_id=1729327074 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(-2.3550408e-08, -3.6824755e-08, -0.9999996, -0.8424522, 0.53877056, 0, 0.53877044, 0.842452, -4.3711374e-08, -0.00022884314, 9.424727, -19.003227)
+
+[node name="colone4" parent="colone_cont/mid_colon_cont" unique_id=1624803156 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(-2.355039e-08, -3.6824733e-08, 0.99999946, -0.8424522, 0.53877056, -4.097979e-15, -0.53877044, -0.8424523, -4.371137e-08, -0.00023050443, 9.424999, 19.003227)
+
+[node name="colone5" parent="colone_cont/mid_colon_cont" unique_id=753095598 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(0.38096836, 0.5957036, -0.7071065, -0.8424522, 0.53877056, 1.45836765e-08, 0.38096827, 0.59570354, 0.7071065, -13.437542, 9.424727, -13.437311)
+
+[node name="colone6" parent="colone_cont/mid_colon_cont" unique_id=2141468426 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(-0.38096827, -0.5957037, 0.7071063, -0.8424522, 0.53877056, -1.4583683e-08, -0.3809681, -0.5957035, -0.7071065, 13.437081, 9.424999, 13.437311)
+
+[node name="colone7" parent="colone_cont/mid_colon_cont" unique_id=567780766 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(-0.38096818, -0.59570354, -0.7071065, -0.8424522, 0.53877056, 0, 0.38096815, 0.5957034, -0.7071065, 13.437081, 9.424727, -13.437311)
+
+[node name="colone8" parent="colone_cont/mid_colon_cont" unique_id=454968206 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(0.38096818, 0.59570366, 0.70710635, -0.8424522, 0.53877056, 1.4583666e-08, -0.3809682, -0.5957038, 0.7071065, -13.437539, 9.424999, 13.437311)
+
+[node name="far_colon_cont" type="Node3D" parent="colone_cont" unique_id=872813647]
+unique_name_in_owner = true
+transform = Transform3D(1.74, 0, 0, 0, 1.74, 0, 0, 0, 1.74, 0, 21, 0)
+
+[node name="colone" parent="colone_cont/far_colon_cont" unique_id=612782483 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(0.052335892, 0.9986296, 0, -0.9986296, 0.052335892, 0, 0, 0, 1, -19.37931, 15.605374, 0)
+
+[node name="colone2" parent="colone_cont/far_colon_cont" unique_id=1649020530 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(-0.052335892, -0.9986296, 8.742278e-08, -0.9986296, 0.052335892, 0, -4.575349e-09, -8.730297e-08, -1, 19.379, 15.605, 0)
+
+[node name="colone3" parent="colone_cont/far_colon_cont" unique_id=2006849090 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(-2.2876745e-09, -4.3651486e-08, -1, -0.9986296, 0.052335892, 0, 0.052335892, 0.9986296, -4.371139e-08, -0.0001548101, 15.605374, -19.379154)
+
+[node name="colone4" parent="colone_cont/far_colon_cont" unique_id=1685339440 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(6.8630235e-09, 1.3095446e-07, 1, -0.9986296, 0.052335892, -5.104473e-16, -0.052335892, -0.9986296, 1.3113416e-07, -0.00015650428, 15.604999, 19.379154)
+
+[node name="colone5" parent="colone_cont/far_colon_cont" unique_id=1368877585 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(0.037007064, 0.7061377, -0.70710677, -0.9986296, 0.052335892, 0, 0.037007064, 0.7061377, 0.70710677, -13.703288, 15.605374, -13.703133)
+
+[node name="colone6" parent="colone_cont/far_colon_cont" unique_id=620812246 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(-0.03700706, -0.70613766, 0.7071068, -0.9986296, 0.052335892, -5.1044736e-16, -0.037007067, -0.7061378, -0.70710665, 13.702976, 15.604999, 13.703133)
+
+[node name="colone7" parent="colone_cont/far_colon_cont" unique_id=1315252051 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(-0.037007064, -0.7061377, -0.70710677, -0.9986296, 0.052335892, -2.5522368e-16, 0.037007064, 0.7061377, -0.70710677, 13.702978, 15.605374, -13.703131)
+
+[node name="colone8" parent="colone_cont/far_colon_cont" unique_id=1863105303 instance=ExtResource("4_m3ep8")]
+transform = Transform3D(0.037007067, 0.7061378, 0.70710665, -0.9986296, 0.052335892, 1.2170012e-22, -0.03700706, -0.70613766, 0.7071068, -13.703289, 15.604999, 13.703131)
+
+[node name="Player" parent="." unique_id=1663602563 instance=ExtResource("6_yhxef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.775, 0)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

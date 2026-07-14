@@ -108,26 +108,53 @@ show_percentage = false
 
 [node name="Control" type="Control" parent="." unique_id=740290200]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -395.0
-offset_top = -179.0
-offset_right = 395.0
-offset_bottom = 179.0
-grow_horizontal = 2
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -506.0
+offset_top = 170.0
+offset_right = -60.0
+offset_bottom = -38.0
+grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("2_v106a")
 massage_lable_scene = ExtResource("3_ipwia")
 
-[node name="loot_masage_cont" type="VBoxContainer" parent="Control" unique_id=2094286148]
+[node name="ivent_console" type="VBoxContainer" parent="Control" unique_id=2094286148]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -146.0
-offset_bottom = 146.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="Panel" type="Panel" parent="Control/ivent_console" unique_id=328563937]
+propagate_maximum_size = true
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="sistem_consol" type="VBoxContainer" parent="Control" unique_id=102590363]
+modulate = Color(1, 0.53999996, 0.53999996, 0.1254902)
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_right = 37.0
+grow_horizontal = 2
+grow_vertical = 0
+offset_transform_enabled = true
+alignment = 2
+
+[node name="Panel" type="Panel" parent="Control/sistem_consol" unique_id=1572706801]
+propagate_maximum_size = true
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3

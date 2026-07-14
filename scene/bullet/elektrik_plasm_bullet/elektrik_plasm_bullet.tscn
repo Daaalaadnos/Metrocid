@@ -3,10 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://bbtyrhbxdoxu4" path="res://scene/bullet/parent_bullet/bass_bullet.tscn" id="1_lvq0b"]
 [ext_resource type="Script" uid="uid://b1qrle7o23a4" path="res://scene/bullet/elektrik_plasm_bullet/elektrik_plasm_bullet.gd" id="2_s0dhh"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_gt6xx"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_8bdce"]
+radius = 1.0
 
 [node name="Elektrik_plasm_bullet" unique_id=171724009 instance=ExtResource("1_lvq0b")]
 script = ExtResource("2_s0dhh")
 
 [node name="CollisionShape3D" parent="." index="0" unique_id=291462547]
-shape = SubResource("SphereShape3D_gt6xx")
+shape = SubResource("SphereShape3D_8bdce")

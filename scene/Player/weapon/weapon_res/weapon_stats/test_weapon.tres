@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://cglmnjultdjms"]
+
+[ext_resource type="Script" uid="uid://c6neg8abyy62m" path="res://scene/Player/weapon/weapon_res/weapon_stats/weapon_stars_res.gd" id="1_fh8hg"]
+[ext_resource type="PackedScene" uid="uid://dt7g8js73r3n1" path="res://scene/bullet/mine_exp_bullet/mine_exp_bullet.tscn" id="1_ulubw"]
+[ext_resource type="Script" uid="uid://kxvre1rpvl4a" path="res://scene/bullet/res/bullet_res.gd" id="2_8wgwe"]
+
+[sub_resource type="Resource" id="Resource_4c4p8"]
+script = ExtResource("2_8wgwe")
+speed = 1
+bullet_scene = ExtResource("1_ulubw")
+metadata/_custom_type_script = "uid://kxvre1rpvl4a"
+
+[resource]
+script = ExtResource("1_fh8hg")
+name = "test"
+is_unlocked = true
+fire_rate = 0.5
+max_spred = 0.0
+spred_pre_shot = 0.0
+spred_damp_mod = 0.0
+bullet_res = SubResource("Resource_4c4p8")
+metadata/_custom_type_script = "uid://c6neg8abyy62m"

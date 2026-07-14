@@ -9,6 +9,6 @@ font_color = Color(0.68, 0, 0, 1)
 [node name="console_massage_lable" type="Label" unique_id=1465165277]
 offset_right = 40.0
 offset_bottom = 23.0
-text = "aaaaa"
+text = "1"
 label_settings = SubResource("LabelSettings_g4v7s")
 script = ExtResource("1_7ypu8")

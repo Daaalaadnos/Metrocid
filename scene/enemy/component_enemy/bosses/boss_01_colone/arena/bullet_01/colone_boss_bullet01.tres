@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BulletStats" format=3 uid="uid://doptcb2y262vy"]
+
+[ext_resource type="Script" uid="uid://kxvre1rpvl4a" path="res://scene/bullet/res/bullet_res.gd" id="1_3vgbo"]
+[ext_resource type="PackedScene" uid="uid://c3s6pa6dhu53s" path="res://scene/enemy/component_enemy/bosses/boss_01_colone/arena/bullet_01/colone_boss_bullet_01.tscn" id="1_cnljt"]
+[ext_resource type="PackedScene" uid="uid://px664nbvuf54" path="res://scene/bullet/bullet_visual/colone_boss_bullet_vfx_01.tscn" id="3_lybhn"]
+
+[resource]
+script = ExtResource("1_3vgbo")
+damage = 15.0
+speed = 20
+bullet_scene = ExtResource("1_cnljt")
+visual_part_scene = ExtResource("3_lybhn")
+metadata/_custom_type_script = "uid://kxvre1rpvl4a"

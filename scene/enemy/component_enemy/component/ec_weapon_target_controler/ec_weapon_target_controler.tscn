@@ -4,3 +4,7 @@
 
 [node name="EC_weapon_target_controler" type="Node" unique_id=181684004]
 script = ExtResource("1_b8am7")
+
+[node name="Timer" type="Timer" parent="." unique_id=2081771722]
+wait_time = 0.1
+autostart = true

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ColoneBossAttack" format=3 uid="uid://bna2xssyv74g6"]
+
+[ext_resource type="Resource" uid="uid://c131ndjghva7f" path="res://scene/bullet/res/mine_granade_bullet_res.tres" id="1_4x8v0"]
+[ext_resource type="Script" uid="uid://cnfra4vikoqmn" path="res://scene/enemy/component_enemy/bosses/boss_01_colone/moves/colone_boss_attack_res.gd" id="2_jwlb8"]
+
+[resource]
+script = ExtResource("2_jwlb8")
+attack_name = "graned_shot_in_jump"
+can_move = 0
+jump_time_mod = 0.1
+colone_marker = null
+shot_marker = null
+bullet_scene = ExtResource("1_4x8v0")
+metadata/_custom_type_script = "uid://cnfra4vikoqmn"

@@ -16,11 +16,17 @@ func _physics_process(delta: float) -> void:
 		desh(target)
 		
 		var dir_to_target:Vector3 = enemy.global_position.direction_to(target)
-		var lokal_coords:Vector3 = enemy.to_local(dir_to_target).normalized()
-		var rot_y = atan2(dir_to_target.x,dir_to_target.z)
 		
+		var rot_y = atan2(-dir_to_target.x,-dir_to_target.z)
 		enemy.global_rotation.y = lerp_angle(enemy.global_rotation.y,rot_y,delta * 5.0)
 		
+		var horizontal_dist = Vector2(dir_to_target.x, dir_to_target.z).length()
+		var rot_x = atan2(dir_to_target.y, horizontal_dist)
+		rot_x = clamp(rot_x, deg_to_rad(-45.0), deg_to_rad(45.0))
+		enemy.global_rotation.x = lerp_angle(enemy.global_rotation.x, rot_x, delta * 5.0)
+	
+	enemy.velocity.x = lerp(enemy.velocity.x, 0.0, delta * 5.0)
+	enemy.velocity.z = lerp(enemy.velocity.z, 0.0, delta * 5.0)
 	
 
 func desh(target_:Vector3) -> void:

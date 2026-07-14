@@ -19,7 +19,6 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is Player and current_wave_index == 0:
-		print('a')
 		player = body
 		# Отключаем сам триггер, чтобы игрок прыжками не вызвал его снова
 		collision_mask = 0 
@@ -61,7 +60,6 @@ func update_events(new_status:bool = false) -> void:
 			event.update_event(new_status)
 
 func enemy_died() -> void:
-	print(alive_enemies_in_wave)
 	alive_enemies_in_wave -= 1
 	
 	# Если в текущей волне все мертвы — запускаем следующую

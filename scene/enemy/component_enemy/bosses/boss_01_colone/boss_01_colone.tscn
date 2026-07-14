@@ -1,0 +1,236 @@
+[gd_scene format=3 uid="uid://duuu8fkk84i0d"]
+
+[ext_resource type="PackedScene" uid="uid://dbhaap73tyo6c" path="res://scene/enemy/component_enemy/enemy/bass_enemy/enemy.tscn" id="1_snrnr"]
+[ext_resource type="Script" uid="uid://6tor2ybqr0mc" path="res://scene/enemy/component_enemy/bosses/boss_01_colone/boss_01_colone.gd" id="2_7o6b5"]
+[ext_resource type="Script" uid="uid://cnfra4vikoqmn" path="res://scene/enemy/component_enemy/bosses/boss_01_colone/moves/colone_boss_attack_res.gd" id="3_muh2g"]
+[ext_resource type="Resource" uid="uid://ccalsp8xl1osp" path="res://scene/enemy/component_enemy/bosses/boss_01_colone/moves/jump.tres" id="4_lkp3t"]
+[ext_resource type="Script" uid="uid://te0h2sxloqis" path="res://scene/enemy/res/enemy_res.gd" id="5_eaahx"]
+[ext_resource type="Script" uid="uid://pa2oni5736c0" path="res://scene/enemy/component_enemy/bosses/boss_01_colone/move_manager.gd" id="6_eaahx"]
+[ext_resource type="Script" uid="uid://bd8vwv265y7t8" path="res://scene/enemy/component_enemy/bosses/boss_01_colone/jump.gd" id="7_b4stc"]
+[ext_resource type="Script" uid="uid://cblxdien76tua" path="res://scene/enemy/component_enemy/bosses/boss_01_colone/shot_manager.gd" id="9_cqwp5"]
+[ext_resource type="PackedScene" uid="uid://bqkh3aj6s2tcc" path="res://scene/enemy/component_enemy/component/ec_weapon_target_controler/ec_weapon_target_controler.tscn" id="12_lkp3t"]
+[ext_resource type="AudioStream" uid="uid://toajatrefya3" path="res://export/audio/laser_shot01.wav" id="14_i72vr"]
+[ext_resource type="AudioStream" uid="uid://0w70ce2o1kt2" path="res://export/audio/dash.wav" id="14_s6y1j"]
+[ext_resource type="AudioStream" uid="uid://jmrhk1hxva5s" path="res://export/audio/35_Miss_Evade_02.wav" id="15_yykt3"]
+
+[sub_resource type="Curve" id="Curve_kq1rg"]
+_data = [Vector2(0.009433962, 0.008196712), 0.0, 4.344261, 0, 0, Vector2(1, 0), -3.5995288, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_5wgmf"]
+script = ExtResource("5_eaahx")
+HP = 1000
+damage = 30
+fire_rite = 0.3
+spred_power = 20.0
+metadata/_custom_type_script = "uid://te0h2sxloqis"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r36x8"]
+radius = 0.9296875
+height = 2.7939453
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4v7s"]
+albedo_color = Color(0.83692276, 0.47550786, 0.72186744, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yf5fn"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_g4v7s"]
+top_radius = 0.34765625
+bottom_radius = 0.34765625
+height = 1.7385254
+radial_segments = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r36x8"]
+bg_color = Color(0.6, 0.6, 0.6, 0.22745098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mnisu"]
+bg_color = Color(0.9, 0.585, 0.27, 0.7372549)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i72vr"]
+bg_color = Color(0.66, 0.66, 0.66, 0.7372549)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_f8qvf"]
+random_pitch = 1.122462
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("14_i72vr")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g4v7s"]
+random_pitch = 1.0594631
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("14_s6y1j")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yykt3"]
+random_pitch = 1.0594631
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("15_yykt3")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_m5bjk"]
+random_pitch = 1.122462
+random_volume_offset_db = 1.0
+
+[node name="boss01_colone" unique_id=1940006177 instance=ExtResource("1_snrnr")]
+collision_mask = 0
+script = ExtResource("2_7o6b5")
+max_stamina = 200
+jump_curve = SubResource("Curve_kq1rg")
+attack_list = Array[ExtResource("3_muh2g")]([ExtResource("4_lkp3t")])
+level = 0
+dont_move = true
+enemy_res = SubResource("Resource_5wgmf")
+
+[node name="CollisionShape3D" parent="." index="0" unique_id=414709209]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_r36x8")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="body_cont" parent_id_path=PackedInt32Array(1875976887) index="0" unique_id=1484670849]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 0.99999976, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_g4v7s")
+material_overlay = SubResource("StandardMaterial3D_yf5fn")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="body_cont/CSGCombiner3D" index="0" unique_id=1966995609]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7062988, 0)
+radius = 0.2680664
+height = 0.9538574
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="body_cont/CSGCombiner3D/CSGCylinder3D" index="0" unique_id=1718022691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2994995, 0)
+radius = 0.4267578
+height = 0.81359863
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="body_cont/CSGCombiner3D/CSGCylinder3D" index="1" unique_id=807408134]
+transform = Transform3D(0.8122453, -0.38983053, 0.4339235, 0.014027898, 0.7567301, 0.6535769, -0.5831473, -0.5247778, 0.62011886, -0.35894537, 0.2994995, 0.16733524)
+radius = 0.1459961
+height = 0.81359863
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="body_cont/CSGCombiner3D/CSGCylinder3D" index="2" unique_id=1700214402]
+transform = Transform3D(1.46004995e-08, 0.9798229, 0.19986749, 2.9782579e-09, 0.1998675, -0.9798228, -0.9999999, 0, 8.881784e-16, 0.07404187, -0.0012319088, 0.45498)
+radius = 0.1459961
+height = 0.5673828
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="body_cont/CSGCombiner3D/CSGCylinder3D" index="3" unique_id=1468530304]
+transform = Transform3D(-0.21940576, 0.8601601, -0.460419, -7.032126e-09, -0.47191793, -0.88164246, -0.9756337, -0.19343746, 0.10354151, 0.07404187, 0.058107615, 0.45498)
+radius = 0.1459961
+height = 0.5673828
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="body_cont/CSGCombiner3D/CSGCylinder3D" index="4" unique_id=1852599314]
+transform = Transform3D(0.82482564, 0.3607255, -0.4353617, 0.15983786, 0.58983856, 0.7915442, 0.54232335, -0.7224733, 0.4288561, 0.40643018, 0.2994995, 0.16733524)
+radius = 0.1459961
+height = 0.81359863
+
+[node name="CSGBox3D" type="CSGBox3D" parent="body_cont/CSGCombiner3D" index="1" unique_id=1807515127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.37623537, 0)
+size = Vector3(0.3947754, 2.3344116, 0.21582031)
+
+[node name="head_cont" type="Node3D" parent="body_cont" parent_id_path=PackedInt32Array(1875976887) index="1" unique_id=1415126703]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="body_cont/head_cont" index="0" unique_id=929043997]
+transform = Transform3D(1, 0, 0, 0, -0.42925006, 0.9031856, 0, -0.9031856, -0.42925006, 0, 2.8890786, -0.274092)
+mesh = SubResource("CylinderMesh_g4v7s")
+
+[node name="shot_marker" type="Marker3D" parent="body_cont/head_cont/MeshInstance3D" index="0" unique_id=1581658740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1121417, 0.03616929)
+
+[node name="player_detected_area" parent="." index="2" unique_id=993267055]
+monitoring = false
+
+[node name="hit_zone_area1" parent="hit_zone_area_cont" parent_id_path=PackedInt32Array(730089215) index="0" unique_id=597151584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1512451, 0)
+
+[node name="move_manager" type="Node" parent="." index="4" unique_id=819853362]
+script = ExtResource("6_eaahx")
+
+[node name="jump" type="Node" parent="." index="5" unique_id=1092878501]
+script = ExtResource("7_b4stc")
+
+[node name="timers" type="Node" parent="." index="6" unique_id=1879914763]
+
+[node name="change_colone_timer" type="Timer" parent="timers" index="0" unique_id=70325533]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
+[node name="move_timer" type="Timer" parent="timers" index="1" unique_id=2018328303]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="fire_rate" type="Timer" parent="timers" index="2" unique_id=2002628032]
+one_shot = true
+
+[node name="chain_jamp_timer" type="Timer" parent="timers" index="3" unique_id=751532838]
+one_shot = true
+
+[node name="shot" type="Node" parent="." index="7" unique_id=153493820]
+script = ExtResource("9_cqwp5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="8" unique_id=283072217]
+layer = 2
+
+[node name="Control" type="Control" parent="CanvasLayer" index="0" unique_id=1051482116]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -548.0
+offset_right = 548.0
+offset_bottom = 136.62
+grow_horizontal = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" index="0" unique_id=1673221758]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="hp_bar" type="ProgressBar" parent="CanvasLayer/Control/VBoxContainer" index="0" unique_id=1413139708]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 12)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_r36x8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mnisu")
+value = 61.18
+show_percentage = false
+
+[node name="stamima_bar" type="ProgressBar" parent="CanvasLayer/Control/VBoxContainer" index="1" unique_id=1576862271]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 10)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_r36x8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_i72vr")
+value = 61.18
+show_percentage = false
+
+[node name="audion" type="Node3D" parent="." index="9" unique_id=20720403]
+
+[node name="shot_player" type="AudioStreamPlayer3D" parent="audion" index="0" unique_id=1283993561]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_f8qvf")
+volume_db = -6.514
+pitch_scale = 0.51
+bus = &"shot"
+
+[node name="short_jump" type="AudioStreamPlayer3D" parent="audion" index="1" unique_id=1060218382]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_g4v7s")
+
+[node name="long_jump" type="AudioStreamPlayer3D" parent="audion" index="2" unique_id=2100498593]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_yykt3")
+
+[node name="final_jump" type="AudioStreamPlayer3D" parent="audion" index="3" unique_id=164543757]
+stream = SubResource("AudioStreamRandomizer_m5bjk")
+
+[node name="marker_cont" type="Node3D" parent="." index="10" unique_id=1672777442]
+
+[node name="granad_marker" type="Marker3D" parent="marker_cont" index="0" unique_id=1755655793]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="EC_weapon_target_controler" parent="." index="11" unique_id=181684004 node_paths=PackedStringArray("weapon_array") instance=ExtResource("12_lkp3t")]
+weapon_array = [NodePath("../body_cont/head_cont/MeshInstance3D"), NodePath("../marker_cont")]

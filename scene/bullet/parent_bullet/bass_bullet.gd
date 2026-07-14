@@ -52,26 +52,27 @@ func apply_change_state() -> void:
 	nex_state = null
 
 #func set_start(new_dir:Vector3,new_damage:int = 1,new_speed:float = 10.0,new_vfx:PackedScene = null,is_enemy_bullet:bool = false) -> void:
-func set_start(new_dir:Vector3,new_res:BulletStats,new_target:Node3D,is_enemy_bullet:bool = false) -> void:
+func set_start(new_dir:Vector3,new_res:BulletStats,new_target:Node3D = null,is_enemy_bullet:bool = false) -> void:
 	res = new_res
 	
 	if res.visual_part_scene == null:
 		push_warning('bullet_vfx_scene == null')
-		call_deferred('queue_free')
-		return
+	else:
+		add_visual(res.visual_part_scene)
 
 	target = new_target
 	direction = new_dir
 	damage = res.damage
 	SPEED = res.speed
 
+	set_collision(is_enemy_bullet)
+	change_state(State.ATTACK)
+
+func set_collision(is_enemy_bullet:bool) -> void:
 	if is_enemy_bullet:
 		collision_mask = LAYER_WORLD | LAYER_PLAYER
 	else:
 		collision_mask = LAYER_WORLD | LAYER_ENEMY
-
-	add_visual(res.visual_part_scene)
-	change_state(State.ATTACK)
 
 func add_visual(vfx_scene:PackedScene = null) -> void:
 	bullet_visual_scene = vfx_scene.instantiate()
@@ -89,7 +90,10 @@ func freez() -> void:
 func dead() -> void:
 	velocity = Vector3.ZERO
 	
-	bullet_visual_scene.dead()
+	if is_instance_valid(bullet_visual_scene):
+		bullet_visual_scene.dead()
+	set_physics_process(false)
+	set_process(false)
 	await get_tree().create_timer(1.0).timeout
 	call_deferred('queue_free')
 

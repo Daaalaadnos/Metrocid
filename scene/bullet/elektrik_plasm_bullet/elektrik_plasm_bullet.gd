@@ -4,9 +4,9 @@ func st_ph_attack(delta) -> void:
 	if not direction:
 		return
 
-	var motion:Vector3 = direction * SPEED * delta
+	velocity = direction * SPEED * delta
 
-	var collision = move_and_collide(motion)
+	var collision = move_and_collide(velocity)
 	if collision:
 		var collider = collision.get_collider()
 		if collider == GlobalData.player:

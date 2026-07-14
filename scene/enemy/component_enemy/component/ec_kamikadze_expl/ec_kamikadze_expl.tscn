@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dfje6ckb6t6f2"]
+
+[ext_resource type="Script" uid="uid://bsomli4casedj" path="res://scene/enemy/component_enemy/component/ec_kamikadze_expl/ec_kamikadze_expl.gd" id="1_8qecp"]
+[ext_resource type="PackedScene" uid="uid://cpvw0v523dto" path="res://scene/other/explosion/explosion.tscn" id="2_klllc"]
+
+[node name="ec_kamikadze_expl" type="Node" unique_id=2037723946]
+script = ExtResource("1_8qecp")
+explosion_scene = ExtResource("2_klllc")

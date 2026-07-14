@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="BulletStats" format=3 uid="uid://bysw61i6ukk70"]
 
 [ext_resource type="Script" uid="uid://kxvre1rpvl4a" path="res://scene/bullet/res/bullet_res.gd" id="1_lycnl"]
-[ext_resource type="PackedScene" uid="uid://q2mrjee58clf" path="res://scene/bullet/aim_ionick_plasm_bullet/aim_ionick_plasm_bullet.tscn" id="1_o1fyp"]
-[ext_resource type="PackedScene" uid="uid://bqditdcri3atj" path="res://scene/bullet/bullet_visual/enemy_laser_bullet.tscn" id="2_lycnl"]
+[ext_resource type="PackedScene" uid="uid://do02i7brdshbc" path="res://scene/bullet/elektrik_plasm_bullet/elektrik_plasm_bullet.tscn" id="1_o1fyp"]
+[ext_resource type="PackedScene" uid="uid://bqditdcri3atj" path="res://scene/bullet/bullet_visual/enemy_laser_bullet.tscn" id="3_o1fyp"]
 
 [resource]
 script = ExtResource("1_lycnl")
-damage = 5
-speed = 20
+damage = 10.0
+speed = 10
 bullet_scene = ExtResource("1_o1fyp")
-visual_part_scene = ExtResource("2_lycnl")
+visual_part_scene = ExtResource("3_o1fyp")
 metadata/_custom_type_script = "uid://kxvre1rpvl4a"

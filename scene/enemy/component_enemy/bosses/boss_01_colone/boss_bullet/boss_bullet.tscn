@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dt8e4b8knuenp"]
+
+[ext_resource type="Script" uid="uid://b0gk75ah1qpt8" path="res://scene/enemy/component_enemy/bosses/boss_01_colone/boss_bullet/boss_bullet.gd" id="1_cypl2"]
+
+[node name="BossBullet" type="Node3D" unique_id=1367609687]
+script = ExtResource("1_cypl2")
+
+[node name="Timer" type="Timer" parent="." unique_id=2082453682]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

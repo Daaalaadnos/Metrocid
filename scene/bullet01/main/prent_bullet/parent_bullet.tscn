@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://di4mqld2cjkc3"]
+
+[ext_resource type="Script" uid="uid://dc6asit6c00it" path="res://scene/bullet01/main/prent_bullet/parent_bullet.gd" id="1_4m62k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57qmd"]
+shading_mode = 0
+albedo_color = Color(0.70802057, 1.3530157, 1.753959, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_g4v7s"]
+radius = 0.2
+height = 0.4
+radial_segments = 4
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4v7s"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="Gradient" id="Gradient_4ofvo"]
+offsets = PackedFloat32Array(0, 0.19166666, 1)
+colors = PackedColorArray(1.8247963, 1.8247963, 1.8247963, 1, 0.16799998, 0.5998667, 0.8, 1, 0.07680001, 0.35232005, 0.48, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d0u6y"]
+gradient = SubResource("Gradient_4ofvo")
+
+[sub_resource type="Curve" id="Curve_4m62k"]
+_data = [Vector2(0, 0), 0.0, 1.2337664, 0, 0, Vector2(1, 1), 2.326531, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4m62k"]
+curve = SubResource("Curve_4m62k")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_57qmd"]
+lifetime_randomness = 0.49
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.1
+gravity = Vector3(0, 0, 0)
+scale_min = 0.049999997
+scale_max = 0.29999998
+scale_curve = SubResource("CurveTexture_4m62k")
+color_ramp = SubResource("GradientTexture1D_d0u6y")
+
+[sub_resource type="SphereMesh" id="SphereMesh_yf5fn"]
+radial_segments = 4
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4m62k"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture_force_srgb = true
+uv1_triplanar = true
+
+[sub_resource type="Curve" id="Curve_4ofvo"]
+_data = [Vector2(0, 0.43877554), 0.0, 0.0, 0, 0, Vector2(0.18421054, 1), 0.0, 0.0, 0, 0, Vector2(0.80451125, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bkakp"]
+curve = SubResource("Curve_4ofvo")
+
+[sub_resource type="Gradient" id="Gradient_b7k0i"]
+offsets = PackedFloat32Array(0, 0.40416667, 0.60833335, 1)
+colors = PackedColorArray(0.23899658, 1.4283465, 1.8247963, 1, 0.110000014, 0.62916684, 1, 1, 0.064399995, 0.064399995, 0.46, 0.7372549, 0.15959997, 0.22799991, 0.57, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eqaj6"]
+gradient = SubResource("Gradient_b7k0i")
+
+[sub_resource type="Curve" id="Curve_j36kt"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ck3p7"]
+curve = SubResource("Curve_j36kt")
+
+[sub_resource type="Curve" id="Curve_6gwmb"]
+_data = [Vector2(0, 0), 0.0, 2.9857142, 0, 0, Vector2(1, 1), 0.019047737, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_054go"]
+curve = SubResource("Curve_6gwmb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sowy1"]
+gravity = Vector3(0, 0, 0)
+scale_min = 0.39999998
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_054go")
+color = Color(1, 1, 1, 0.88235295)
+color_ramp = SubResource("GradientTexture1D_eqaj6")
+alpha_curve = SubResource("CurveTexture_bkakp")
+emission_curve = SubResource("CurveTexture_ck3p7")
+
+[sub_resource type="SphereMesh" id="SphereMesh_dtn0r"]
+radius = 1.0
+height = 2.0
+radial_segments = 8
+rings = 4
+
+[node name="ParentBullet" type="Node3D" unique_id=1697323189]
+script = ExtResource("1_4m62k")
+speed = 50.0
+is_bouncing = true
+is_separation = true
+
+[node name="ray_cast" type="Node3D" parent="." unique_id=512502602]
+
+[node name="RayCast3D" type="RayCast3D" parent="ray_cast" unique_id=755565220]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.47491577)
+target_position = Vector3(0, 0, -5)
+collision_mask = 5
+
+[node name="timers" type="Node" parent="." unique_id=13209675]
+
+[node name="life_timer" type="Timer" parent="timers" unique_id=442595409]
+wait_time = 10.0
+autostart = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1165456845]
+material_override = SubResource("StandardMaterial3D_57qmd")
+mesh = SubResource("SphereMesh_g4v7s")
+
+[node name="vfx" type="Node3D" parent="." unique_id=181583050]
+
+[node name="spark" type="GPUParticles3D" parent="vfx" unique_id=863851448]
+material_override = SubResource("StandardMaterial3D_g4v7s")
+cast_shadow = 0
+emitting = false
+amount = 12
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.33
+process_material = SubResource("ParticleProcessMaterial_57qmd")
+draw_pass_1 = SubResource("SphereMesh_yf5fn")
+
+[node name="expl" type="GPUParticles3D" parent="vfx" unique_id=604756951]
+material_override = SubResource("StandardMaterial3D_4m62k")
+emitting = false
+amount = 1
+lifetime = 0.3
+one_shot = true
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_sowy1")
+draw_pass_1 = SubResource("SphereMesh_dtn0r")
+
+[connection signal="timeout" from="timers/life_timer" to="." method="_on_life_timer_timeout"]

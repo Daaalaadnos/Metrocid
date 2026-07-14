@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://c3s6pa6dhu53s"]
+
+[ext_resource type="PackedScene" uid="uid://bbtyrhbxdoxu4" path="res://scene/bullet/parent_bullet/bass_bullet.tscn" id="1_016u4"]
+[ext_resource type="Script" uid="uid://e7pml7trgyhd" path="res://scene/enemy/component_enemy/bosses/boss_01_colone/arena/bullet_01/colone_boss_bullet_01.gd" id="2_f8qvf"]
+[ext_resource type="PackedScene" uid="uid://px664nbvuf54" path="res://scene/bullet/bullet_visual/colone_boss_bullet_vfx_01.tscn" id="3_s7acb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_25p3g"]
+radius = 0.9315945
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g4v7s"]
+radius = 1.0
+
+[node name="colon_boss_bullet_01" unique_id=171724009 instance=ExtResource("1_016u4")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_f8qvf")
+SPEED = 40.0
+
+[node name="CollisionShape3D" parent="." index="0" unique_id=291462547]
+shape = SubResource("SphereShape3D_25p3g")
+disabled = true
+
+[node name="life_timer" parent="timers" parent_id_path=PackedInt32Array(1499029250) index="0" unique_id=267332042]
+wait_time = 5.0
+
+[node name="forward_cast" type="RayCast3D" parent="." index="3" unique_id=1180912751]
+target_position = Vector3(0, -2, 0)
+
+[node name="colone_boss_bullet_vfx01" parent="." index="4" unique_id=226797834 instance=ExtResource("3_s7acb")]
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="." index="5" unique_id=1543781186]
+enabled = false
+shape = SubResource("SphereShape3D_g4v7s")
+target_position = Vector3(0, 0, 0)
+max_results = 5
+collision_mask = 0

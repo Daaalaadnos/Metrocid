@@ -15,4 +15,4 @@ func add_loot(new_loot) -> void:
 	
 	if new_loot is WeaponResourse:
 		weapon_inventory.add_weapon(new_loot)
-		SignalHub.show_new_massage.emit(new_loot.weapon_stats.name)
+		SignalHub.show_new_massage.emit(new_loot.weapon_stats.cnsole_massage)

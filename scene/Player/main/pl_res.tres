@@ -15,6 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://dvqejt1ew5ly7" path="res://scene/Player/weapon/weapon_scense/laser_aim_gun/laser_aim_gun.tscn" id="7_5ddy2"]
 [ext_resource type="Resource" uid="uid://cjnhas78ch2vc" path="res://scene/Player/weapon/weapon_res/weapon_stats/WS_laser_aim_gun.tres" id="7_ycb5k"]
 [ext_resource type="Resource" uid="uid://ik4mdk36hjw4" path="res://scene/Player/weapon/weapon_res/weapon_stats/WS_Laser_Machine_Gun.tres" id="10_ejb8r"]
+[ext_resource type="Resource" uid="uid://cglmnjultdjms" path="res://scene/Player/weapon/weapon_res/weapon_stats/test_weapon.tres" id="13_6oo3g"]
+[ext_resource type="PackedScene" uid="uid://dyik483fx5y6c" path="res://scene/Player/weapon/weapon_scense/test_weapon/test_weapon.tscn" id="13_gdcp2"]
+[ext_resource type="PackedScene" uid="uid://df6n42cb5rqdl" path="res://scene/Player/weapon/weapon_scense/laser_ray_weapon/laser_ray_weapon.tscn" id="13_rei88"]
+[ext_resource type="Resource" uid="uid://cg01mjjqct08s" path="res://scene/Player/weapon/weapon_res/weapon_stats/WS_laser_ray_weapon.tres" id="14_3kwsg"]
 [ext_resource type="Resource" uid="uid://4gyaavbjjgmw" path="res://scene/bullet/res/PL_Elektrik_bullet.tres" id="14_bup02"]
 
 [sub_resource type="Resource" id="Resource_5ddy2"]
@@ -32,6 +36,18 @@ metadata/_custom_type_script = "uid://crfbtns47xrlq"
 script = ExtResource("3_i3xxk")
 weapon_scene = ExtResource("7_5ddy2")
 weapon_stats = ExtResource("7_ycb5k")
+metadata/_custom_type_script = "uid://crfbtns47xrlq"
+
+[sub_resource type="Resource" id="Resource_iipdt"]
+script = ExtResource("3_i3xxk")
+weapon_scene = ExtResource("13_rei88")
+weapon_stats = ExtResource("14_3kwsg")
+metadata/_custom_type_script = "uid://crfbtns47xrlq"
+
+[sub_resource type="Resource" id="Resource_fh8hg"]
+script = ExtResource("3_i3xxk")
+weapon_scene = ExtResource("13_gdcp2")
+weapon_stats = ExtResource("13_6oo3g")
 metadata/_custom_type_script = "uid://crfbtns47xrlq"
 
 [sub_resource type="Resource" id="Resource_i3xxk"]
@@ -61,10 +77,26 @@ script = ExtResource("2_cq5l3")
 weapon_resurs = SubResource("Resource_bmd2s")
 metadata/_custom_type_script = "uid://eud75lbyih57"
 
+[sub_resource type="Resource" id="Resource_q44e2"]
+script = ExtResource("3_i3xxk")
+weapon_scene = ExtResource("13_gdcp2")
+weapon_stats = ExtResource("13_6oo3g")
+metadata/_custom_type_script = "uid://crfbtns47xrlq"
+
+[sub_resource type="Resource" id="Resource_8vek0"]
+script = ExtResource("2_cq5l3")
+weapon_resurs = SubResource("Resource_q44e2")
+metadata/_custom_type_script = "uid://eud75lbyih57"
+
+[sub_resource type="Resource" id="Resource_gdcp2"]
+script = ExtResource("2_cq5l3")
+weapon_resurs = SubResource("Resource_fh8hg")
+metadata/_custom_type_script = "uid://eud75lbyih57"
+
 [sub_resource type="Resource" id="Resource_b7atn"]
 script = ExtResource("2_mly16")
-weapon_array = Array[ExtResource("3_i3xxk")]([SubResource("Resource_qcyv4"), SubResource("Resource_7ey71")])
-weapon_slots = Array[ExtResource("2_cq5l3")]([SubResource("Resource_s7834"), SubResource("Resource_0ryj2")])
+weapon_array = Array[ExtResource("3_i3xxk")]([SubResource("Resource_qcyv4"), SubResource("Resource_7ey71"), SubResource("Resource_iipdt"), SubResource("Resource_fh8hg")])
+weapon_slots = Array[ExtResource("2_cq5l3")]([SubResource("Resource_s7834"), SubResource("Resource_0ryj2"), SubResource("Resource_8vek0"), SubResource("Resource_gdcp2")])
 metadata/_custom_type_script = "uid://c6b7qo2uifdve"
 
 [sub_resource type="Resource" id="Resource_p44hq"]
@@ -75,5 +107,6 @@ metadata/_custom_type_script = "uid://dbc3qbq1i2277"
 
 [resource]
 script = ExtResource("1_o56i4")
+shild_restore_delay = 4.0
 inventory = SubResource("Resource_p44hq")
 metadata/_custom_type_script = "uid://bgaov43dal53d"

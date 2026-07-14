@@ -981,8 +981,8 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.43
 size = Vector3(50, 6, 7)
 
 [node name="CSGBox3D46" type="CSGBox3D" parent="zone1_3/Node3D/CSGCombiner3D" unique_id=1820698514]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.43500137, 490.63568, -1.8012695)
-size = Vector3(19, 929, 25)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.43500137, 649.6357, -1.8012695)
+size = Vector3(19, 1247, 25)
 
 [node name="CSGBox3D48" type="CSGBox3D" parent="zone1_3/Node3D/CSGCombiner3D" unique_id=134802584]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 169.62616, 262.13568, -7.3101044)
@@ -1038,6 +1038,46 @@ size = Vector3(263, 24, 158)
 [node name="CSGBox3D72" type="CSGBox3D" parent="zone1_3/Node3D/CSGCombiner3D" unique_id=464856332]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 375.12552, 53.13568, 276.1899)
 size = Vector3(263, 24, 158)
+
+[node name="CSGBox3D80" type="CSGBox3D" parent="zone1_3/Node3D/CSGCombiner3D" unique_id=964274542]
+transform = Transform3D(0.9659256, -0.18301272, -0.18301265, 3.0908613e-08, 0.70710677, -0.70710665, 0.25881898, 0.6830126, 0.6830125, -3.1878433, 500.2341, 31.628632)
+size = Vector3(495.65, 388, 139)
+
+[node name="CSGBox3D81" type="CSGBox3D" parent="zone1_3/Node3D/CSGCombiner3D" unique_id=1487977247]
+transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 0.9999998, -3.8743858, 315.13568, -54.81009)
+size = Vector3(263, 24, 158)
+
+[node name="CSGBox3D82" type="CSGBox3D" parent="zone1_3/Node3D/CSGCombiner3D" unique_id=1971343140]
+transform = Transform3D(0.9659256, -0.18301272, -0.18301265, 3.0908613e-08, 0.70710677, -0.70710665, 0.25881898, 0.6830126, 0.6830125, 21.701603, 404.06754, -61.26111)
+size = Vector3(495.65, 24, 158)
+
+[node name="CSGBox3D83" type="CSGBox3D" parent="zone1_3/Node3D/CSGCombiner3D" unique_id=1081988231]
+transform = Transform3D(0.9659256, -0.18301272, -0.18301265, 3.0908613e-08, 0.70710677, -0.70710665, 0.25881898, 0.6830126, 0.6830125, 13.649021, 435.1802, -31.208557)
+size = Vector3(495.65, 24, 158)
+
+[node name="CSGBox3D84" type="CSGBox3D" parent="zone1_3/Node3D/CSGCombiner3D" unique_id=1791682925]
+transform = Transform3D(0.9659256, -0.18301272, -0.18301265, 3.0908613e-08, 0.70710677, -0.70710665, 0.25881898, 0.6830126, 0.6830125, 5.047386, 468.41425, 0.89302063)
+size = Vector3(495.65, 24, 158)
+
+[node name="CSGBox3D85" type="CSGBox3D" parent="zone1_3/Node3D/CSGCombiner3D" unique_id=470999560]
+transform = Transform3D(0.9659256, -0.18301272, -0.18301265, 3.0908613e-08, 0.70710677, -0.70710665, 0.25881898, 0.6830126, 0.6830125, -3.0052032, 499.52692, 30.945587)
+size = Vector3(495.65, 24, 158)
+
+[node name="CSGBox3D86" type="CSGBox3D" parent="zone1_3/Node3D/CSGCombiner3D" unique_id=1855583416]
+transform = Transform3D(0.9659256, -0.18301272, -0.18301265, 3.0908613e-08, 0.70710677, -0.70710665, 0.25881898, 0.6830126, 0.6830125, -11.423788, 532.05383, 62.364166)
+size = Vector3(495.65, 24, 158)
+
+[node name="CSGBox3D87" type="CSGBox3D" parent="zone1_3/Node3D/CSGCombiner3D" unique_id=1623848778]
+transform = Transform3D(0.9659256, -0.18301272, -0.18301265, 3.0908613e-08, 0.70710677, -0.70710665, 0.25881898, 0.6830126, 0.6830125, -22.221539, 573.77313, 102.66193)
+size = Vector3(495.65, 24, 158)
+
+[node name="CSGBox3D88" type="CSGBox3D" parent="zone1_3/Node3D/CSGCombiner3D" unique_id=1835610143]
+transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 0.9999998, -3.874508, 654.1357, -54.81006)
+size = Vector3(263, 24, 158)
+
+[node name="CSGBox3D89" type="CSGBox3D" parent="zone1_3/Node3D/CSGCombiner3D" unique_id=1104781661]
+transform = Transform3D(0.9659256, -0.18301272, -0.18301265, 3.0908613e-08, 0.70710677, -0.70710665, 0.25881898, 0.6830126, 0.6830125, -31.555183, 609.8356, 137.49554)
+size = Vector3(495.65, 24, 158)
 
 [node name="CSGBox3D73" type="CSGBox3D" parent="zone1_3/Node3D/CSGCombiner3D" unique_id=1723754015]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 375.1255, 98.13568, 276.1899)

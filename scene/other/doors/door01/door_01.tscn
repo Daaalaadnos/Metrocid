@@ -1,0 +1,330 @@
+[gd_scene format=3 uid="uid://b0riyiqrgpw3n"]
+
+[ext_resource type="Script" uid="uid://klc114i4ja5w" path="res://scene/other/doors/door01/door_01.gd" id="1_vqj1c"]
+[ext_resource type="Texture2D" uid="uid://b174bcm086x2a" path="res://export/texture/iron_wall_plate002.png" id="2_vqj1c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_be0p4"]
+size = Vector3(2.6582031, 5.5264893, 4.2666016)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vcxh4"]
+albedo_texture = ExtResource("2_vqj1c")
+albedo_texture_force_srgb = true
+uv1_scale = Vector3(2.94, 2.94, 2.94)
+
+[sub_resource type="Animation" id="Animation_vqj1c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door/CSGBox3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.3625333, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("door/CSGBox3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.7853982)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("door/CSGBox3D2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.3625333, -0.099999994)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("door/CSGBox3D2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("door/CSGBox3D3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1024943, 2.3200786, -0.19999999)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("door/CSGBox3D3:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.7853982)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("door/CSGBox3D4:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.17235553, 1.3200781, -0.29999998)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("door/CSGBox3D4:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.26179937)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("door/CSGBox3D6:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.1669922, -0.42195034)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("door/CSGBox3D5:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.1669922, 0.15589666)]
+}
+
+[sub_resource type="Animation" id="Animation_vcxh4"]
+resource_name = "open"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door/CSGBox3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.46666667, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 2.3625333, 0), Vector3(-2, 3.3625333, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("door/CSGBox3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.46666667, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.7853982), Vector3(0, 0, 2.094395)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("door/CSGBox3D2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6333333, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 2.3625333, -0.099999994), Vector3(3, -0.3, -0.1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("door/CSGBox3D2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6333333, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -1.0471976)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("door/CSGBox3D3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.73333335, 1.4333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.1024943, 2.3200786, -0.19999999), Vector3(2.1024942, 3.3200786, -0.19999999)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("door/CSGBox3D3:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.73333335, 1.4333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.7853982), Vector3(0, 0, -2.3561945)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("door/CSGBox3D4:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.1, 1.7666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.17235553, 1.3200781, -0.29999998), Vector3(-4, -0.68, -0.3)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("door/CSGBox3D4:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.1, 1.7666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.26179937), Vector3(0, 0, 1.8325957)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("door/CSGBox3D6:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 2.1669922, -0.42195034), Vector3(0, 6, -0.422)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("door/CSGBox3D5:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 2.1669922, 0.15589666), Vector3(0, 6, 0.156)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_be0p4"]
+_data = {
+&"RESET": SubResource("Animation_vqj1c"),
+&"open": SubResource("Animation_vcxh4")
+}
+
+[node name="door01" type="Node3D" unique_id=1781052062]
+script = ExtResource("1_vqj1c")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=599239404]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1548506954]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2632446, 0.15393066)
+shape = SubResource("BoxShape3D_be0p4")
+
+[node name="door" type="CSGCombiner3D" parent="." unique_id=469386337]
+material_override = SubResource("StandardMaterial3D_vcxh4")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="door" unique_id=1119150188]
+transform = Transform3D(0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 0, 0, 1, 0, 2.3625333, 0)
+size = Vector3(2.0527344, 4.6660156, 0.1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="door" unique_id=380532145]
+transform = Transform3D(0.9659257, -0.25881898, 0, 0.25881898, 0.9659257, 0, 0, 0, 1, -0.17235553, 1.3200781, -0.29999998)
+size = Vector3(2.0527344, 4.6660156, 0.1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="door" unique_id=976273625]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0, 2.3625333, -0.099999994)
+size = Vector3(2.0527344, 4.6660156, 0.1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="door" unique_id=493928754]
+transform = Transform3D(0.70710653, 0.70710653, 0, -0.70710653, 0.70710653, 0, 0, 0, 1, 0.1024943, 2.3200786, -0.19999999)
+size = Vector3(2.0527344, 4.6660156, 0.1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="door" unique_id=379700595]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999964, 0, 0, 0, 1, 0, 2.1669922, 0.15589666)
+size = Vector3(3.97, 6.3, 0.1)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="door" unique_id=1133867317]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999964, 0, 0, 0, 1, 0, 2.1669922, -0.42195034)
+size = Vector3(3.97, 6.3, 0.1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1192981187]
+libraries/ = SubResource("AnimationLibrary_be0p4")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1386134611]
+visible = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=621158523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2.4950747, 0)
+size = Vector3(0.5595703, 5.9903564, 0.68530273)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=851694482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2.4950747, 0)
+size = Vector3(0.35253906, 5.9903564, 0.385)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=900409650]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.005, 5, 0)
+size = Vector3(1, 3, 0.385)
+
+[node name="Timer" type="Timer" parent="." unique_id=785763970]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

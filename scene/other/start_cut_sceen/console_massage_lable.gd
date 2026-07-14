@@ -13,3 +13,11 @@ func animate_text(text_message: String) -> void:
 	
 	# Ждем, пока твин закончит анимацию
 	await tween.finished
+
+
+func kill() -> void:
+	
+	var tween:Tween = create_tween()
+	
+	tween.tween_property(self,'modulate.a',0.0,0.5)
+	

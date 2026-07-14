@@ -7,10 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://dtxohlhimoo64" path="res://scene/enemy/component_enemy/component/ec_chese/ec_chese.tscn" id="3_wuev0"]
 [ext_resource type="PackedScene" uid="uid://bbtyrhbxdoxu4" path="res://scene/bullet/parent_bullet/bass_bullet.tscn" id="4_ntl61"]
 [ext_resource type="PackedScene" uid="uid://difwywbiv6lq8" path="res://scene/enemy/component_enemy/component/ec_stats_manager/ec_stats_manager.tscn" id="7_ntl61"]
+[ext_resource type="PackedScene" uid="uid://7qq2auot6lb4" path="res://scene/enemy/component_enemy/component/ec_cilde_enemy_manager/ec_cilde_enemy_manager.tscn" id="8_1grfr"]
+[ext_resource type="PackedScene" uid="uid://bsyeo6h3leytq" path="res://scene/enemy/component_enemy/enemy/statick_shot_enemy/statick_shot_enemy.tscn" id="9_wx1u7"]
+[ext_resource type="PackedScene" uid="uid://dfje6ckb6t6f2" path="res://scene/enemy/component_enemy/component/ec_kamikadze_expl/ec_kamikadze_expl.tscn" id="10_wx1u7"]
 
 [sub_resource type="Resource" id="Resource_wuev0"]
 script = ExtResource("3_b0qqy")
-HP = 150
+HP = 50
 SPEED = 3.0
 bullet_scene = ExtResource("4_ntl61")
 bullet_res = ExtResource("3_sntne")
@@ -24,15 +27,46 @@ transparency = 1
 shading_mode = 0
 albedo_color = Color(1, 1, 1, 0)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_g4v7s"]
+radius = 2.0
+
+[sub_resource type="Resource" id="Resource_wx1u7"]
+resource_local_to_scene = true
+script = ExtResource("3_b0qqy")
+HP = 50
+bullet_res = ExtResource("3_sntne")
+spred_power = 6.0
+metadata/_custom_type_script = "uid://te0h2sxloqis"
+
 [node name="Chese_enemy" unique_id=1940006177 instance=ExtResource("1_ui3np")]
 script = ExtResource("2_tyinx")
 enemy_res = SubResource("Resource_wuev0")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="body_cont" parent_id_path=PackedInt32Array(1875976887) index="0" unique_id=914320382]
+[node name="CollisionShape3D" parent="." index="0" unique_id=414709209]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1884597, 0)
+
+[node name="body_cont" parent="." index="1" unique_id=1875976887]
+flash_color = Color(0.5333242, 1.0949746e-06, 2.8878452e-07, 1)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="body_cont" index="0" unique_id=914320382]
 material_override = SubResource("StandardMaterial3D_74ks4")
 material_overlay = SubResource("StandardMaterial3D_1koqp")
+calculate_tangents = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="body_cont/CSGCombiner3D" index="0" unique_id=1311862531]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14045298, 0)
+size = Vector3(1, 0.34594727, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="body_cont/CSGCombiner3D" index="1" unique_id=923239551]
+transform = Transform3D(0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0, 1, -0.59968376, 0.14045298, 0)
+size = Vector3(0.32226563, 0.70703125, 1.28125)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="body_cont/CSGCombiner3D" index="2" unique_id=10300578]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, 0.6, 0.14, 0)
+size = Vector3(0.32226563, 0.70703125, 1.28125)
+
+[node name="hit_zone_area1" parent="hit_zone_area_cont" parent_id_path=PackedInt32Array(730089215) index="0" unique_id=597151584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2466234, 0)
 
 [node name="EC_chese_manager" parent="." index="4" unique_id=1073523569 instance=ExtResource("3_wuev0")]
 
@@ -41,3 +75,22 @@ areas = [null]
 
 [node name="ground_cast" type="RayCast3D" parent="." index="6" unique_id=1234189801]
 target_position = Vector3(0, -3, 0)
+
+[node name="EC_cilde_enemy_manager" parent="." index="7" unique_id=1780348987 node_paths=PackedStringArray("child_enemy") instance=ExtResource("8_1grfr")]
+child_enemy = [NodePath("../statick_shot_enemy")]
+
+[node name="ec_kamikadze_expl" parent="." index="8" unique_id=2037723946 node_paths=PackedStringArray("area") instance=ExtResource("10_wx1u7")]
+area = NodePath("../Area3D")
+is_work = false
+
+[node name="Area3D" type="Area3D" parent="." index="9" unique_id=1520325000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51292604, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=1455736900]
+shape = SubResource("SphereShape3D_g4v7s")
+
+[node name="statick_shot_enemy" parent="." index="10" unique_id=938953312 instance=ExtResource("9_wx1u7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36518252, 0)
+enemy_res = SubResource("Resource_wx1u7")

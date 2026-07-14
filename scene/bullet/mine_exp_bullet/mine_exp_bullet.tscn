@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://dt7g8js73r3n1"]
+
+[ext_resource type="PackedScene" uid="uid://bbtyrhbxdoxu4" path="res://scene/bullet/parent_bullet/bass_bullet.tscn" id="1_1gve0"]
+[ext_resource type="Script" uid="uid://fgoo0hejdim4" path="res://scene/bullet/mine_exp_bullet/mine_exp_bullet.gd" id="2_dfia1"]
+[ext_resource type="PackedScene" uid="uid://cpvw0v523dto" path="res://scene/other/explosion/explosion.tscn" id="3_dfia1"]
+[ext_resource type="Texture2D" uid="uid://dei2j2wlqk2pq" path="res://export/texture/iron_wall_plate001.png" id="4_4c4p8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4c4p8"]
+radius = 0.23046786
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dfia1"]
+albedo_texture = ExtResource("4_4c4p8")
+texture_filter = 2
+
+[sub_resource type="SphereMesh" id="SphereMesh_g4v7s"]
+radius = 0.3
+height = 0.6
+
+[sub_resource type="Gradient" id="Gradient_4c4p8"]
+offsets = PackedFloat32Array(0.23809524, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d0u6y"]
+gradient = SubResource("Gradient_4c4p8")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yf5fn"]
+transparency = 1
+albedo_color = Color(3.045841, 3.045841, 3.045841, 1)
+albedo_texture = SubResource("GradientTexture2D_d0u6y")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_g4v7s"]
+size = Vector2(2.02, 1.99)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57qmd"]
+transparency = 1
+albedo_color = Color(0.42, 0.19600001, 0, 0.68235296)
+
+[sub_resource type="SphereMesh" id="SphereMesh_yf5fn"]
+radius = 1.005
+height = 0.62
+
+[node name="mine_exp_bullet" unique_id=171724009 instance=ExtResource("1_1gve0")]
+script = ExtResource("2_dfia1")
+explosion_scene = ExtResource("3_dfia1")
+explosion_delay = 2.0
+SPEED = 2.0
+
+[node name="CollisionShape3D" parent="." index="0" unique_id=291462547]
+shape = SubResource("SphereShape3D_4c4p8")
+
+[node name="life_timer" parent="timers" parent_id_path=PackedInt32Array(1499029250) index="0" unique_id=267332042]
+wait_time = 20.0
+
+[node name="explosion_timer" type="Timer" parent="timers" parent_id_path=PackedInt32Array(1499029250) index="1" unique_id=847376369]
+one_shot = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="3" unique_id=294647804]
+material_override = SubResource("StandardMaterial3D_dfia1")
+cast_shadow = 0
+mesh = SubResource("SphereMesh_g4v7s")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" index="0" unique_id=922955784]
+material_override = SubResource("StandardMaterial3D_yf5fn")
+mesh = SubResource("QuadMesh_g4v7s")
+
+[node name="Node3D" type="Node3D" parent="." index="4" unique_id=1275247389]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" index="0" unique_id=1028109205]
+material_override = SubResource("StandardMaterial3D_57qmd")
+transparency = 0.31
+mesh = SubResource("SphereMesh_yf5fn")

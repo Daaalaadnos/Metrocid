@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BulletStats" format=3 uid="uid://c131ndjghva7f"]
+
+[ext_resource type="PackedScene" uid="uid://dt7g8js73r3n1" path="res://scene/bullet/mine_exp_bullet/mine_exp_bullet.tscn" id="1_kho81"]
+[ext_resource type="Script" uid="uid://kxvre1rpvl4a" path="res://scene/bullet/res/bullet_res.gd" id="2_ybpvy"]
+
+[resource]
+script = ExtResource("2_ybpvy")
+damage = 40.0
+speed = 1
+bullet_scene = ExtResource("1_kho81")
+metadata/_custom_type_script = "uid://kxvre1rpvl4a"

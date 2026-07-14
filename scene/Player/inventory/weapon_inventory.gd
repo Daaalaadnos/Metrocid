@@ -29,7 +29,6 @@ func get_weapon_from_slot(slot_id:int) -> WeaponResourse:##WeaponRes:
 
 func add_weapon(new_weapon:WeaponResourse) -> void:
 	if new_weapon in weapon_array:
-		print('weapon finded before')
 		return
 	
 	weapon_array.append(new_weapon)

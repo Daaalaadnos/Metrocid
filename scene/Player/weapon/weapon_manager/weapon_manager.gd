@@ -21,10 +21,10 @@ func _input(event: InputEvent) -> void:
 		set_weapon(0)
 	if event.is_action_pressed('2'):
 		set_weapon(1)
-	#if event.is_action_pressed('3'):
-		#set_weapon(2)
-	#if event.is_action_pressed('4'):
-		#set_weapon(3)
+	if event.is_action_pressed('3'):
+		set_weapon(2)
+	if event.is_action_pressed('4'):
+		set_weapon(3)
 
 	#if event.is_action_pressed('well_up') or event.is_action_pressed('well_down'):
 		#change_weapon_well()

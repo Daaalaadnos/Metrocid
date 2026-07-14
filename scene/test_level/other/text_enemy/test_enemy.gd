@@ -42,7 +42,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func get_damage(damage) -> void:
-	print(damage)
 	HP -= damage
 	if HP <= 0:
 		dead()

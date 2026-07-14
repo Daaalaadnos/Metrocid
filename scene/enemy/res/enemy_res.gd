@@ -4,6 +4,7 @@ class_name EnemyRes
 
 @export_category('main')
 @export var HP:int = 10
+@export var mod_if_sub_enemy:float = 0.5
 @export var SPEED:float = 5.0
 
 @export_category('dash')
@@ -18,3 +19,4 @@ class_name EnemyRes
 @export var fire_rite:float = 1.0
 @export var bullet_in_shot:int = 1
 @export var spred_power:float = 2.0
+@export var aim_speed_mod:float = 5.0

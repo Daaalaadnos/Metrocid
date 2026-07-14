@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dyik483fx5y6c"]
+
+[ext_resource type="PackedScene" uid="uid://b3eb8l66eunfe" path="res://scene/Player/weapon/weapon_scense/bass_weapon/bass_weapon.tscn" id="1_nmk71"]
+[ext_resource type="Resource" uid="uid://cglmnjultdjms" path="res://scene/Player/weapon/weapon_res/weapon_stats/test_weapon.tres" id="2_ib541"]
+
+[node name="test_weapon" unique_id=1142635454 instance=ExtResource("1_nmk71")]
+WpRes = ExtResource("2_ib541")
+
+[node name="CSGBox3D" parent="container/anim_container" parent_id_path=PackedInt32Array(1031952059) index="0" unique_id=46814845]
+visible = true

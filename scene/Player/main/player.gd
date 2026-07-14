@@ -4,28 +4,51 @@ class_name Player
 
 var PR:PlRes
 
+var was_in_air:bool = false
+var old_vel:Vector3
+
+var god:bool = false
+
 @onready var head:Node3D = get_node('head')
 
 var hook_tween:Tween = null
 
 func _input(event: InputEvent) -> void:
+
+	if event.is_action_pressed('F4'):
+		god = !god
+
 	
-	if event.is_action_pressed('F1'):
-		SignalHub.emit_signal('show_new_massage','jopa' + str(randf()))
-
-
 func _ready() -> void:
 	PR = GlobalData.pl_res
 	GlobalData.player = self
 
 func _physics_process(delta: float) -> void:
+
+
+	if god:
+		var input_dir := Input.get_vector('left','right','forward','backward')
+		var direction = (%head_camera.global_transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		if direction:
+			velocity = direction * PR.speed
+		else:
+			velocity = Vector3.ZERO
+		
+		if Input.is_action_pressed('jump'):
+			velocity.y =  PR.speed
+		if Input.is_action_pressed('dash'):
+			velocity.y = -PR.speed
+		move_and_slide()
+		return
+		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta #* 2.5
+	
 
 	# Handle jump.
 	if Input.is_action_just_pressed('jump') and is_on_floor():
-		$audio_player/player_jump.play()
+		%player_jump.play()
 		velocity.y = PR.jump_velocity
 
 	# Get the input direction and handle the movement/deceleration.
@@ -39,7 +62,14 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, delta * 10)
 		velocity.z = move_toward(velocity.z, 0, delta * 10)
 
+	old_vel = velocity
 	move_and_slide()
+
+	$UI/FPS_lable.text = str(Engine.get_frames_per_second())
+	if is_on_floor() and was_in_air and old_vel.y <= -2:
+		$Timers/step/step.play()
+	
+	was_in_air = !is_on_floor()
 
 func jump_pad_impuls(impuls:Vector3) -> void:
 	if hook_tween and hook_tween.is_valid():
@@ -54,4 +84,4 @@ func add_loot(new_loot) -> void:
 
 func _on_step_timer_timeout() -> void:
 	if velocity.length() >= 1 and is_on_floor():
-		$Timers/step/AudioStreamPlayer.play()
+		%step.play()

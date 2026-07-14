@@ -8,6 +8,10 @@ class_name BulletVfx
 @onready var live_vfx_cont:Node3D = get_node('life_vfx')
 @onready var dead_vfx_cont:Node3D = get_node('dead_vfx')
 
+func set_color(new_color:Color = Color(0.71, 0.686, 0.0, 0.549)) -> void:
+	var mat:StandardMaterial3D = $body/MeshInstance3D.material_override
+	mat.albedo_color = new_color
+
 func _ready() -> void:
 	set_vfx(start_vfx_cont,true)
 	set_vfx(live_vfx_cont,true)

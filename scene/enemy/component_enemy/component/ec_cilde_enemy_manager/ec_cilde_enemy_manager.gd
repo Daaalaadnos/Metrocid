@@ -4,6 +4,13 @@ extends EC_Base
 
 var player_status:bool = false
 
+func _ready() -> void:
+	await get_tree().process_frame
+	for child in child_enemy:
+		if child is Enemy:
+			var new_hp = child.enemy_res.HP * child.enemy_res.mod_if_sub_enemy
+			child.HP = new_hp
+
 func _process(delta: float) -> void:
 
 	pl_status_update() 

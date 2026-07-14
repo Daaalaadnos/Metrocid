@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://b66aoyr5u1f4l"]
 
-[sub_resource type="SystemFont" id="SystemFont_ocgq1"]
+[ext_resource type="Script" uid="uid://be67aodmfcmg" path="res://scene/Player/ui/hud/massage_lable/massage_lable.gd" id="1_ocgq1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_v106a"]
-font = SubResource("SystemFont_ocgq1")
-font_size = 64
+font_size = 40
 
 [sub_resource type="Gradient" id="Gradient_kaowi"]
 colors = PackedColorArray(0, 0, 0, 0.5254902, 0.33279997, 0.5632, 0.64, 0.43529412)
@@ -34,11 +33,12 @@ expand_margin_bottom = 5.0
 
 [node name="massage_lable" type="Label" unique_id=390137126]
 size_flags_vertical = 10
-text = "loot 2"
 label_settings = SubResource("LabelSettings_v106a")
-horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("1_ocgq1")
 
 [node name="Panel" type="TextureRect" parent="." unique_id=174026016]
+visible = false
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -51,6 +51,7 @@ expand_mode = 2
 stretch_mode = 1
 
 [node name="Panel2" type="Panel" parent="." unique_id=343353309]
+visible = false
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15

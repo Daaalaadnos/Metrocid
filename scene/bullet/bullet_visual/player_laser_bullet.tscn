@@ -22,7 +22,7 @@ billboard_mode = 1
 billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_5ld8s"]
-size = Vector2(0.4, 0.4)
+size = Vector2(1.5, 1.5)
 
 [sub_resource type="Gradient" id="Gradient_orkhi"]
 offsets = PackedFloat32Array(0, 0.35365853, 1)
@@ -44,8 +44,6 @@ billboard_mode = 1
 billboard_keep_scale = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_l21rd"]
-radius = 0.1
-height = 0.2
 
 [sub_resource type="Gradient" id="Gradient_ynm5u"]
 colors = PackedColorArray(2.055, 2.055, 2.055, 1, 1, 1, 1, 0)

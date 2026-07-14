@@ -11,8 +11,10 @@ var nex_state = null
 @onready var fire_rate_timer:Timer = get_node('%fire_rate_timer')
 
 @onready var weapon_cont: Node3D = %container
+@onready var anim_container: Node3D = %anim_container
 @onready var sub_container: Node3D = %sub_container
 @onready var vfx: WeaponVFXManager = $container/vfx
+@onready var weapon_sweem: Node = $weapon_sweem
 
 
 @export var WpRes:WeaponStats
@@ -20,6 +22,8 @@ var nex_state = null
 var aim_assist:AimAsistManager
 
 var target_node:Node3D
+
+var bullet_pull:int = 0
 
 func _input(event: InputEvent) -> void:
 	match state:
@@ -53,19 +57,21 @@ func aplly_change_state() -> void:
 	nex_state = null
 
 func ch_idle() -> void:
-	anim_player.play('idle')
+	#anim_player.play('idle')
 	vfx.idle()
 	
 func ch_charge() -> void:
 	pass
 func ch_shot() -> void:
-	anim_player.play('shot')
+	#anim_player.play('shot')
 	var rand_fire_rate = (randf_range(WpRes.fire_rate,WpRes.fire_rate * 1.3))
 	fire_rate_timer.start(rand_fire_rate)
-	shot()
+	#shot()
+	bullet_pull = WpRes.bullet_in_shot
 	%shot_player.play()
 	vfx.shot()
-
+	weapon_sweem.weapon_recoil()
+	$recoil.recoil_update()
 func ch_reload() -> void:
 	pass
 
@@ -89,7 +95,8 @@ func _process(delta: float) -> void:
 	aplly_change_state()
 
 func st_idle(delta) -> void:
-	pass
+	weapon_sweem.sweem_weapn(delta)
+	
 
 
 func st_shot(delta):
@@ -98,6 +105,11 @@ func st_shot(delta):
 			change_state(State.SHOT)
 			return
 		change_state(State.IDLE)
+	
+	if bullet_pull > 0:
+		bullet_pull -= 1
+		shot()
+		#print('shot')
 
 func st_charge(delta) -> void:
 	
@@ -105,24 +117,24 @@ func st_charge(delta) -> void:
 		change_state(State.SHOT)
 
 func shot() -> void:
-	if WpRes.bullet_res == null:
+	if WpRes.bullet_scene == null:
 		return
 
 	
-	for a in range(WpRes.bullet_in_shot):
-		add_bullet(%bullet_marker.global_position)
+	#for a in range(WpRes.bullet_in_shot):
+	add_bullet(%bullet_marker.global_position)
 
 func add_bullet(pos:Vector3):
-	var a = WpRes.bullet_res.bullet_scene
-	var bullet = a.instantiate()
+	var a = WpRes.bullet_scene
+	var bullet = a.instantiate()#(PackedScene.GEN_EDIT_STATE_DISABLED)
 	get_tree().current_scene.add_child(bullet)
 	
-
 	set_bullet_data(bullet)
 	bullet.global_position = pos
 	
-func set_bullet_data(bullet:BaseBullet):
-	bullet.set_start(spread_dir(),WpRes.bullet_res,target_node)
+func set_bullet_data(bullet):
+	target_node = null if !is_instance_valid(target_node) else target_node
+	bullet.set_start(spread_dir(),WpRes,target_node)
 
 func spread_dir() -> Vector3:
 			# Считаем ВЕКТОР НАПРАВЛЕНИЯ от дула до точки прицеливания
@@ -165,6 +177,5 @@ func weapon_aim(delta) -> void:
 	weapon_cont.rotation.x = lerp_angle(weapon_cont.rotation.x,angle_x,delta * WpRes.aim_assist_power_mod)
 	weapon_cont.rotation.y = lerp_angle(weapon_cont.rotation.y,angle_y,delta * WpRes.aim_assist_power_mod)
 	weapon_cont.rotation.z = 0
-	
-	
+
 	

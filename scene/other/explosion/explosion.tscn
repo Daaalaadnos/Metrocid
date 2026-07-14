@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://cpvw0v523dto"]
+
+[ext_resource type="Script" uid="uid://dss0u8bavp87c" path="res://scene/other/explosion/explosion.gd" id="1_6ytk3"]
+[ext_resource type="Animation" uid="uid://bjjt2j71w64r" path="res://scene/other/explosion/explosion.res" id="2_3c4ki"]
+[ext_resource type="AudioStream" uid="uid://fdelvohjwra6" path="res://export/audio/55_Encounter_02.wav" id="2_b8boy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5f55u"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture_force_srgb = true
+uv1_triplanar = true
+
+[sub_resource type="Curve" id="Curve_tqutu"]
+_data = [Vector2(0, 0.43877554), 0.0, 0.0, 0, 0, Vector2(0.18421054, 1), 0.0, 0.0, 0, 0, Vector2(0.80451125, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3c4ki"]
+curve = SubResource("Curve_tqutu")
+
+[sub_resource type="Gradient" id="Gradient_b8boy"]
+offsets = PackedFloat32Array(0, 0.40416667, 0.60833335, 1)
+colors = PackedColorArray(1.6397864, 1.8247963, 0.23899658, 1, 1, 0.49566668, 0.110000014, 1, 0.46, 0.064399995, 0.064399995, 0.7372549, 0.57, 0.32376, 0.15959997, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b8boy"]
+gradient = SubResource("Gradient_b8boy")
+
+[sub_resource type="Curve" id="Curve_aujrc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lfhij"]
+curve = SubResource("Curve_aujrc")
+
+[sub_resource type="Curve" id="Curve_3c4ki"]
+_data = [Vector2(0, 0), 0.0, 2.9857142, 0, 0, Vector2(1, 1), 0.019047737, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_slvvo"]
+curve = SubResource("Curve_3c4ki")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6ytk3"]
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_slvvo")
+color = Color(1, 1, 1, 0.88235295)
+color_ramp = SubResource("GradientTexture1D_b8boy")
+alpha_curve = SubResource("CurveTexture_3c4ki")
+emission_curve = SubResource("CurveTexture_lfhij")
+
+[sub_resource type="SphereMesh" id="SphereMesh_dtn0r"]
+radius = 1.0
+height = 2.0
+radial_segments = 8
+rings = 4
+
+[sub_resource type="Curve" id="Curve_6ytk3"]
+_data = [Vector2(0.27896994, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_b8boy"]
+curve = SubResource("Curve_6ytk3")
+
+[sub_resource type="Curve" id="Curve_slvvo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5064378, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_aujrc"]
+curve = SubResource("Curve_slvvo")
+
+[sub_resource type="Curve" id="Curve_ecnut"]
+_data = [Vector2(0, 0), 0.0, 1.8055022, 0, 0, Vector2(0.87969923, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mqx4h"]
+curve = SubResource("Curve_ecnut")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pflss"]
+gravity = Vector3(0, 0, 0)
+scale_min = 3.5
+scale_max = 3.5
+scale_curve = SubResource("CurveTexture_mqx4h")
+color = Color(0.68, 0.6681, 0.63240004, 0.03529412)
+alpha_curve = SubResource("CurveTexture_b8boy")
+emission_curve = SubResource("CurveTexture_aujrc")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g4v7s"]
+radius = 1.0
+
+[sub_resource type="Animation" id="Animation_yfuak"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("expl_1:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area3D:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("expl_2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_itgpu"]
+_data = {
+&"RESET": SubResource("Animation_yfuak"),
+&"explosion": ExtResource("2_3c4ki")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g4v7s"]
+random_pitch = 1.1553527
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("2_b8boy")
+
+[node name="explosion" type="Node3D" unique_id=1421232596]
+script = ExtResource("1_6ytk3")
+
+[node name="expl_1" type="GPUParticles3D" parent="." unique_id=117024424]
+material_override = SubResource("StandardMaterial3D_5f55u")
+emitting = false
+amount = 1
+one_shot = true
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_6ytk3")
+draw_pass_1 = SubResource("SphereMesh_dtn0r")
+
+[node name="expl_2" type="GPUParticles3D" parent="." unique_id=812363294]
+material_override = SubResource("StandardMaterial3D_5f55u")
+amount = 1
+one_shot = true
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_pflss")
+draw_pass_1 = SubResource("SphereMesh_dtn0r")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1888746723]
+collision_layer = 0
+collision_mask = 6
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=850306969]
+shape = SubResource("SphereShape3D_g4v7s")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=646190065]
+libraries/ = SubResource("AnimationLibrary_itgpu")
+autoplay = &"explosion"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=465809360]
+stream = SubResource("AudioStreamRandomizer_g4v7s")
+volume_db = -5.0
+pitch_scale = 2.5
+
+[connection signal="finished" from="expl_1" to="." method="_on_expl_1_finished"]
+[connection signal="finished" from="expl_2" to="." method="_on_expl_1_finished"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

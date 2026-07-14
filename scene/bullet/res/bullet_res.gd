@@ -4,7 +4,7 @@ class_name BulletStats
 
 
 @export_category('stats')
-@export var damage:int = 1
+@export var damage:float = 1
 @export var speed:int = 50
 
 

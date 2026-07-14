@@ -10,6 +10,9 @@ enum State{DREAM,ACTIVE,STAN,DEAD}
 var state = State.DREAM
 var nex_state = null
 
+@export var dont_move:bool = false
+@export var dont_dead:bool = false
+
 @export var enemy_res:EnemyRes
 @export var bullet_res:BulletStats
 
@@ -36,7 +39,9 @@ func _ready() -> void:
 	HP = enemy_res.HP
 	await get_tree().process_frame
 	start_pos = global_position
-
+	
+	if dont_dead:
+		collision_layer = 0
 func change_state(new_state:State) -> void:	
 	if nex_state != null and new_state < nex_state:
 		return
@@ -68,7 +73,6 @@ func  ch_stan() -> void:
 	pass
 
 func  ch_dead() -> void:
-	
 	call_deferred('queue_free')
 
 
@@ -97,7 +101,8 @@ func _physics_process(delta: float) -> void:
 			st_ph_dead(delta)
 
 	apply_change_state()
-	move_and_slide()
+	if !dont_move:
+		move_and_slide()
 
 func st_dream(delta):
 	pass
@@ -124,12 +129,14 @@ func st_ph_dead(delta):
 	pass
 
 func get_damage(damage:float) -> void:
+	#print(damage,'-',HP,'=',HP - damage)
 	HP -= damage
 	body_cont.take_damage_flash()
 	if HP <= 0:
 		dead()
 
 func dead() -> void:
+	emit_signal('sg_enemy_dead')
 	change_state(State.DEAD)
 
 func _on_player_ready(player_ref: CharacterBody3D) -> void:
@@ -137,8 +144,7 @@ func _on_player_ready(player_ref: CharacterBody3D) -> void:
 
 	if SignalHub.player_initialized.is_connected(_on_player_ready):
 		SignalHub.player_initialized.disconnect(_on_player_ready)
-		
-	print("Враг ", name, " успешно нашел игрока!")
+	
 
 
 func pl_status_update(new_status:bool = false) -> void:

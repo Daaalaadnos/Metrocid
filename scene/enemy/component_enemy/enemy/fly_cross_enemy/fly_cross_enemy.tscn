@@ -5,9 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://bl782qwa7n65y" path="res://scene/bullet/bullet_visual/player_aim_bullets.tscn" id="3_k1qvb"]
 [ext_resource type="PackedScene" uid="uid://bbtyrhbxdoxu4" path="res://scene/bullet/parent_bullet/bass_bullet.tscn" id="4_qx5rv"]
 [ext_resource type="Script" uid="uid://te0h2sxloqis" path="res://scene/enemy/res/enemy_res.gd" id="5_asgdj"]
+[ext_resource type="Texture2D" uid="uid://dpmwf7bhyoitn" path="res://export/texture/iron_wall_plate005.png" id="6_4nyr2"]
+[ext_resource type="Resource" uid="uid://bysw61i6ukk70" path="res://scene/bullet/res/defolt_enemy_bullet.tres" id="9_6kwnu"]
 [ext_resource type="PackedScene" uid="uid://7qq2auot6lb4" path="res://scene/enemy/component_enemy/component/ec_cilde_enemy_manager/ec_cilde_enemy_manager.tscn" id="9_21jak"]
 [ext_resource type="PackedScene" uid="uid://bsyeo6h3leytq" path="res://scene/enemy/component_enemy/enemy/statick_shot_enemy/statick_shot_enemy.tscn" id="10_6in1u"]
 [ext_resource type="PackedScene" uid="uid://d2m3k23sads5a" path="res://scene/enemy/component_enemy/component/ec_fly_cross_dash/ec_fly_cross_dash.tscn" id="10_21jak"]
+[ext_resource type="PackedScene" uid="uid://dfje6ckb6t6f2" path="res://scene/enemy/component_enemy/component/ec_kamikadze_expl/ec_kamikadze_expl.tscn" id="11_vkfwq"]
 
 [sub_resource type="Resource" id="Resource_25ajv"]
 script = ExtResource("2_fbfki")
@@ -26,12 +29,40 @@ metadata/_custom_type_script = "uid://te0h2sxloqis"
 radius = 0.868293
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4v7s"]
-albedo_color = Color(0.41902497, 0.45, 0.18450001, 1)
+albedo_texture = ExtResource("6_4nyr2")
+albedo_texture_force_srgb = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yf5fn"]
 transparency = 1
 shading_mode = 0
 albedo_color = Color(1, 0.5, 0, 0)
+
+[sub_resource type="Resource" id="Resource_vkfwq"]
+resource_local_to_scene = true
+script = ExtResource("5_asgdj")
+HP = 100
+bullet_res = ExtResource("9_6kwnu")
+bullet_in_shot = 3
+spred_power = 6.0
+metadata/_custom_type_script = "uid://te0h2sxloqis"
+
+[sub_resource type="Resource" id="Resource_v34vi"]
+resource_local_to_scene = true
+script = ExtResource("5_asgdj")
+HP = 100
+bullet_res = ExtResource("9_6kwnu")
+bullet_in_shot = 3
+spred_power = 6.0
+metadata/_custom_type_script = "uid://te0h2sxloqis"
+
+[sub_resource type="Resource" id="Resource_my1vr"]
+resource_local_to_scene = true
+script = ExtResource("5_asgdj")
+HP = 100
+bullet_res = ExtResource("9_6kwnu")
+bullet_in_shot = 3
+spred_power = 6.0
+metadata/_custom_type_script = "uid://te0h2sxloqis"
 
 [node name="fly_cross_enemy" unique_id=1940006177 instance=ExtResource("1_s187p")]
 enemy_res = SubResource("Resource_a2vjr")
@@ -45,11 +76,16 @@ material_overlay = SubResource("StandardMaterial3D_yf5fn")
 cast_shadow = 0
 
 [node name="CSGBox3D" type="CSGBox3D" parent="body_cont/CSGCombiner3D" index="0" unique_id=1528349192]
-size = Vector3(0.71777344, 0.701416, 1.7451172)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.21166992)
+size = Vector3(0.71777344, 0.701416, 1.3217773)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="body_cont/CSGCombiner3D" index="1" unique_id=1579418052]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29963028, 0)
-size = Vector3(3, 0.15588379, 1)
+[node name="CSGBox3D3" type="CSGBox3D" parent="body_cont/CSGCombiner3D" index="1" unique_id=1803987073]
+transform = Transform3D(1, 0, 0, 0, 0.8857984, -0.46407023, 0, 0.46407023, 0.8857984, 0.0034694374, -0.20872666, 0.6593295)
+size = Vector3(0.71777344, 0.701416, 0.93151855)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="body_cont/CSGCombiner3D" index="2" unique_id=836677715]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44424438, 0)
+size = Vector3(2.1591797, 0.20617676, 0.671875)
 
 [node name="ground_cast" type="RayCast3D" parent="." index="4" unique_id=171406216]
 unique_name_in_owner = true
@@ -60,12 +96,22 @@ unique_name_in_owner = true
 target_position = Vector3(0, -3, 0)
 
 [node name="EC_cilde_enemy_manager" parent="." index="6" unique_id=1780348987 node_paths=PackedStringArray("child_enemy") instance=ExtResource("9_21jak")]
-child_enemy = [NodePath("../statick_shot_enemy"), NodePath("../statick_shot_enemy2")]
+child_enemy = [NodePath("../statick_shot_enemy"), NodePath("../statick_shot_enemy2"), NodePath("../statick_shot_enemy3")]
 
 [node name="ec_fly_cross_dash" parent="." index="7" unique_id=222826156 instance=ExtResource("10_21jak")]
 
 [node name="statick_shot_enemy" parent="." index="8" unique_id=1160169725 instance=ExtResource("10_6in1u")]
-transform = Transform3D(-0.9659258, 0.2588191, 0, -0.2588191, -0.9659258, 0, 0, 0, 1, 1, 0.5405779, 0)
+transform = Transform3D(-0.9659258, 0.25881913, 0, -0.25881913, -0.9659258, 0, 0, 0, 1, 0.8, 0.267, 0)
+enemy_res = SubResource("Resource_vkfwq")
 
 [node name="statick_shot_enemy2" parent="." index="9" unique_id=1039112643 instance=ExtResource("10_6in1u")]
-transform = Transform3D(-0.9659258, -0.25881913, 0, 0.25881913, -0.9659258, 0, 0, 0, 1, -1, 0.5405779, 0)
+transform = Transform3D(-0.9659258, -0.25881913, 0, 0.25881913, -0.9659258, 0, 0, 0, 1, -0.8, 0.267, 0)
+enemy_res = SubResource("Resource_v34vi")
+
+[node name="ec_kamikadze_expl" parent="." index="11" unique_id=2037723946 instance=ExtResource("11_vkfwq")]
+damage = 50.0
+exp_scale = 5.0
+
+[node name="statick_shot_enemy3" parent="." index="12" unique_id=196878958 instance=ExtResource("10_6in1u")]
+transform = Transform3D(-0.5, 7.54979e-08, 0, -7.54979e-08, -0.5, 0, 0, 0, 0.5, 0, 0.026999295, 0)
+enemy_res = SubResource("Resource_my1vr")

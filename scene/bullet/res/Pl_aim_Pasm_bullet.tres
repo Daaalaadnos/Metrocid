@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_epolm")
-speed = 30
+speed = 5
 bullet_scene = ExtResource("1_ecixf")
 visual_part_scene = ExtResource("3_3kegw")
 metadata/_custom_type_script = "uid://kxvre1rpvl4a"

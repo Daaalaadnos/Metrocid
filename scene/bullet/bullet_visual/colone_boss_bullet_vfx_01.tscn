@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://px664nbvuf54"]
+
+[ext_resource type="PackedScene" uid="uid://bweump2df66i1" path="res://scene/bullet/bullet_visual/bullet_vfx.tscn" id="1_a54nd"]
+[ext_resource type="Shader" uid="uid://by2j04hnuv8sc" path="res://scene/bullet/bullet_visual/noise_3d_shader.gdshader" id="2_cdnpe"]
+[ext_resource type="Texture2D" uid="uid://djsy5qworw3y5" path="res://export/texture/T_Noise_HU85k.png" id="2_f72pc"]
+
+[sub_resource type="Gradient" id="Gradient_7numd"]
+offsets = PackedFloat32Array(0, 0.04761905, 0.30555555, 1)
+colors = PackedColorArray(1.0029721, 0.84765595, 0.38170728, 0.4559999, 0.13025612, 0.11008519, 0.04957238, 0.9293506, 0, 0, 0, 1, 1.4749589, 1.2465527, 0.5613342, 0.2)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fcnqv"]
+noise_type = 3
+frequency = 0.0283
+fractal_lacunarity = 1.505
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_3gngh"]
+width = 128
+height = 128
+depth = 128
+noise = SubResource("FastNoiseLite_fcnqv")
+color_ramp = SubResource("Gradient_7numd")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
+render_priority = 0
+shader = ExtResource("2_cdnpe")
+shader_parameter/noise_tex_3d = SubResource("NoiseTexture3D_3gngh")
+shader_parameter/change_speed = 0.105
+
+[sub_resource type="SphereMesh" id="SphereMesh_g4v7s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a54nd"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.70980394, 0.6862745, 0, 0.54901963)
+albedo_texture = ExtResource("2_f72pc")
+
+[node name="colone_boss_bullet_vfx01" unique_id=226797834 instance=ExtResource("1_a54nd")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="body" parent_id_path=PackedInt32Array(665708626) index="0" unique_id=727394165]
+material_override = SubResource("ShaderMaterial_g4v7s")
+cast_shadow = 0
+mesh = SubResource("SphereMesh_g4v7s")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="body" parent_id_path=PackedInt32Array(665708626) index="1" unique_id=1071096163]
+transform = Transform3D(0.2873804, 0.5400585, -0.2968996, 0, -0.32759243, -0.59588856, -0.6162893, 0.25183338, -0.13844654, 0, 0, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_a54nd")
+mesh = SubResource("SphereMesh_g4v7s")

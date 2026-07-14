@@ -26,6 +26,6 @@ func tween_flash(node:CSGCombiner3D) -> void:
 	var bass_color:Color = mat.albedo_color
 		
 	if mat:
-		tween.tween_property(mat, "albedo_color", flash_color, 0.2)
+		tween.tween_property(mat, "albedo_color", flash_color, 0.05)
 		tween.tween_property(mat, "albedo_color", Color(1.0, 1.0, 1.0, 0.0), 0.3)
 	

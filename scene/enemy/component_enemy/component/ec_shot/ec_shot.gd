@@ -40,11 +40,6 @@ func shot() -> void:
 			# Ставим пулю на дуло
 			bullet.global_position = bullet_marker.global_position
 
-			# Считаем ВЕКТОР НАПРАВЛЕНИЯ от дула до точки прицеливания
-			#var target_point:Vector3
-			#target_point = player.global_position + Vector3.UP if is_instance_valid(player) else bullet_start_markers_area[0].global_transform.basis.z
-			
-			#var direction: Vector3 = enemy.global_position.direction_to(bullet_marker.global_transform.basis.z)
 			var direction: Vector3 = -bullet_marker.global_transform.basis.z
 			var sprad_dir := direction
 			sprad_dir = sprad_dir.rotated(Vector3.UP, deg_to_rad(randf_range(-enemy_res.spred_power,enemy_res.spred_power)))

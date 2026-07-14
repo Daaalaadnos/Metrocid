@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://fc78bhpbx2ei" path="res://export/audio/just_step_1.wav" id="7_k55kj"]
 [ext_resource type="AudioStream" uid="uid://6f2ukvjh0nr2" path="res://export/audio/just_step_2.wav" id="8_6hlt5"]
 [ext_resource type="AudioStream" uid="uid://363xcad3g7sd" path="res://export/audio/just_step_3.wav" id="9_0x5o8"]
-[ext_resource type="AudioStream" uid="uid://b6hwo01yssvp6" path="res://export/audio/30_Jump_03.wav" id="11_0x5o8"]
+[ext_resource type="AudioStream" uid="uid://dwsgx146xmkcf" path="res://export/audio/42_Cling_climb_03.wav" id="10_p44hq"]
 [ext_resource type="PackedScene" uid="uid://bwalgjqqqvf07" path="res://scene/Player/ui/hud/player_hud.tscn" id="12_p44hq"]
 [ext_resource type="Script" uid="uid://b2lmnpjs42wtn" path="res://scene/Player/main/ability_manager.gd" id="16_mabfd"]
 [ext_resource type="Script" uid="uid://mvq5rcllrlso" path="res://scene/Player/main/stats_manager.gd" id="16_vd63o"]
@@ -34,7 +34,10 @@ stream_2/stream = ExtResource("9_0x5o8")
 random_pitch = 1.0594631
 random_volume_offset_db = 1.0
 streams_count = 1
-stream_0/stream = ExtResource("11_0x5o8")
+stream_0/stream = ExtResource("10_p44hq")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yf5fn"]
+size = Vector3(1, 1.7363281, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
 shader = ExtResource("6_76ncx")
@@ -51,7 +54,7 @@ shader_parameter/shake = 0.010000000475
 shader_parameter/noiseQuality = 0.10000000149012
 shader_parameter/noiseIntensity = 0.0
 shader_parameter/offsetIntensity = 0.0059999998482
-shader_parameter/colorOffsetIntensity = 0.0930000044175
+shader_parameter/colorOffsetIntensity = 0.050000002375
 shader_parameter/pixelSize = 400.0000189525
 shader_parameter/grainIntensity = 0.010000000475
 shader_parameter/use_overlay = false
@@ -61,8 +64,8 @@ shader_parameter/lens_distortion_strength = 0.0010000000475
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_vd63o"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_yf5fn"]
-size = Vector3(1, 1.7363281, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font_size = 20
 
 [node name="Player" type="CharacterBody3D" unique_id=1663602563]
 collision_layer = 2
@@ -99,7 +102,7 @@ script = ExtResource("4_vd63o")
 [node name="aim_assist_area" type="Area3D" parent="aim_assist" unique_id=859536703]
 unique_name_in_owner = true
 collision_layer = 0
-collision_mask = 48
+collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="aim_assist/aim_assist_area" unique_id=772343]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -20.728525)
@@ -122,7 +125,8 @@ unique_name_in_owner = true
 wait_time = 0.75
 autostart = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Timers/step" unique_id=3725772]
+[node name="step" type="AudioStreamPlayer" parent="Timers/step" unique_id=3725772]
+unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_t0e0l")
 volume_db = -5.0
 bus = &"shot"
@@ -130,9 +134,27 @@ bus = &"shot"
 [node name="audio_player" type="Node" parent="." unique_id=86945806]
 
 [node name="player_jump" type="AudioStreamPlayer" parent="audio_player" unique_id=733650018]
+unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_76ncx")
 volume_db = -15.0
 bus = &"shot"
+
+[node name="player_jump_end" type="AudioStreamPlayer" parent="audio_player" unique_id=1620079586]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_76ncx")
+volume_db = -15.0
+bus = &"shot"
+
+[node name="ability_manager" type="Node" parent="." unique_id=1900304865]
+script = ExtResource("16_mabfd")
+
+[node name="take_damage_area" type="Area3D" parent="." unique_id=997897843]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="take_damage_area" unique_id=1373303029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83517456, 0)
+shape = SubResource("BoxShape3D_yf5fn")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1193700662]
 
@@ -162,16 +184,11 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_vd63o")
 
-[node name="ability_manager" type="Node" parent="." unique_id=1900304865]
-script = ExtResource("16_mabfd")
+[node name="FPS_lable" type="Label" parent="UI" unique_id=1501238989]
+offset_right = 161.0
+offset_bottom = 79.0
+label_settings = SubResource("LabelSettings_g4v7s")
 
-[node name="take_damage_area" type="Area3D" parent="." unique_id=997897843]
-collision_layer = 0
-collision_mask = 64
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="take_damage_area" unique_id=1373303029]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83517456, 0)
-shape = SubResource("BoxShape3D_yf5fn")
-
+[connection signal="timeout" from="stats_manager/shild_delay_timer" to="stats_manager" method="_on_shild_delay_timer_timeout"]
 [connection signal="timeout" from="Timers/step/step_timer" to="." method="_on_step_timer_timeout"]
 [connection signal="body_entered" from="take_damage_area" to="stats_manager" method="_on_take_damage_area_body_entered"]

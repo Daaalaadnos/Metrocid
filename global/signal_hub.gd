@@ -9,4 +9,5 @@ signal _on_enemy_died
 signal ability_unlocked(new_ability)
 
 
-signal show_new_massage(new_massage)
+signal show_new_massage(new_massage:String)
+signal show_sistem_massage(new_massage:String)
